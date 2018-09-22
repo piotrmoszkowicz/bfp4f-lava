@@ -1,5 +1,4 @@
-import { Response, Request } from "express";
-
+import { Request, Response } from "express";
 
 /**
  * GET /api
@@ -7,6 +6,6 @@ import { Response, Request } from "express";
  */
 export let getApi = (req: Request, res: Response) => {
   return res.json({
-     hello: "world"
+    hello: "world"
   });
 };

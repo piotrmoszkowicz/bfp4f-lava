@@ -14,6 +14,8 @@
     "serve": "node dist/server.js",
     "watch": "nodemon dist/server.js",
     "test": "jest --forceExit --coverage --verbose",
+    "reformat": "npm run prettier && npm run tslint",
+    "prettier": "prettier --write '**/*.ts'",
     "watch-test": "npm run test -- --watchAll",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
@@ -31,6 +33,7 @@
     "express": "^4.16.2",
     "express-validator": "^4.3.0",
     "lodash": "^4.17.4",
+    "prettier": "^1.14.3",
     "winston": "^2.4.0"
   },
   "devDependencies": {
@@ -51,6 +54,7 @@
     "ts-jest": "^22.0.4",
     "ts-node": "^5.0.0",
     "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.15.0",
     "typescript": "^2.7.2"
   }
 }

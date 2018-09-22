@@ -1,6 +1,6 @@
-import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import express from "express";
 import expressValidator from "express-validator";
 
 // Load environment variables from .env file, where API keys and passwords are configured
@@ -8,7 +8,6 @@ dotenv.config({ path: ".env.example" });
 
 // Controllers (route handlers)
 import * as apiController from "./controllers/api";
-
 
 // Create Express server
 const app = express();
