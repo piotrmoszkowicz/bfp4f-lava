@@ -13,14 +13,8 @@ logs
 results
 tmp
 
-# Build
-public/css/main.css
-
 # Coverage reports
 coverage
-
-# API keys and secrets
-.env
 
 # Dependency directory
 node_modules
@@ -36,4 +30,7 @@ Thumbs.db
 
 # Ignore built ts files
 dist/**/*
+
+# Ignore dev configs
+/config/local-*
 
