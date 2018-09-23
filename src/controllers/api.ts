@@ -6,7 +6,11 @@ import database from "../database";
  * List of API examples.
  */
 export let getApi = (req: Request, res: Response) => {
-  return res.json({
-    hello: "world"
-  });
+  database.query("SELECT * FROM game_heroes", { type: database.QueryTypes.SELECT})
+    .then(users => {
+      return res.json({
+        hello: users
+      });
+    });
+
 };
