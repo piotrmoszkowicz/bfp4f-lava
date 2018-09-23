@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import database from "../database";
 
 /**
  * GET /api
