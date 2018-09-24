@@ -33,6 +33,9 @@ export default class Hero extends Model<Hero> {
   @Column
   private online: number;
 
+  @Column
+  private sessionId: string;
+
   @Column({
     field: "ip_address"
   })
