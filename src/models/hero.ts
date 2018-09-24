@@ -1,5 +1,24 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, Model, Scopes, Table } from "sequelize-typescript";
 
+import Wallet from "./wallet";
+
+@Scopes({
+  full: {
+    include: [
+      {
+        model: () => Wallet
+      }
+    ]
+  },
+  wallet: {
+    attributes: [],
+    include: [
+      {
+        model: () => Wallet
+      }
+    ]
+  }
+})
 @Table({
   tableName: "game_heroes"
 })
@@ -28,16 +47,16 @@ export default class Hero extends Model<Hero> {
   @Column({
     field: "user_id"
   })
-  private userId: number;
+  public userId: number;
 
   @Column
-  private online: number;
+  public online: number;
 
   @Column
-  private sessionId: string;
+  public sessionId: string;
 
   @Column({
     field: "ip_address"
   })
-  private ipAddress: string;
+  public ipAddress: string;
 }
