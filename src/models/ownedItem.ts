@@ -1,4 +1,4 @@
-import {Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript";
+import {BelongsTo, Column, DataType, HasOne, Model, Table} from "sequelize-typescript";
 import Hero from "./hero";
 import Item from "./item";
 
@@ -6,16 +6,14 @@ import Item from "./item";
   tableName: "game_owned_items"
 })
 export default class OwnedItem extends Model<OwnedItem> {
-  @ForeignKey(() => Item)
-  @Column
-  public itemId: number;
+  @BelongsTo(() => Hero, "ownerId")
+  public hero: Hero;
+
+  @HasOne(() => Item, "itemId")
+  public item: Item;
 
   @Column
   public useCount: number;
-
-  @ForeignKey(() => Hero)
-  @Column
-  public ownerId: number;
 
   @Column({
     field: "created_at",

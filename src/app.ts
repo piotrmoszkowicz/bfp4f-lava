@@ -5,7 +5,7 @@ import expressValidator from "express-validator";
 import { RequestBFP4F } from "ExpressOverride";
 
 // Controllers (route handlers)
-import * as apiController from "./controllers/api";
+import { GameRouter } from "./controllers/game";
 
 // Create Express server
 const app = express();
@@ -32,6 +32,6 @@ app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
 /**
  * API examples routes.
  */
-app.get("/api", apiController.getApi);
+app.use("/en/game", GameRouter);
 
 export default app;
