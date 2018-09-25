@@ -1,5 +1,13 @@
-import { Column, DataType, Model, Scopes, Table } from "sequelize-typescript";
+import {
+  Column,
+  DataType,
+  HasMany,
+  Model,
+  Scopes,
+  Table
+} from "sequelize-typescript";
 
+import OwnedItem from "./ownedItem";
 import Wallet from "./wallet";
 
 @Scopes({
@@ -59,4 +67,7 @@ export default class Hero extends Model<Hero> {
     field: "ip_address"
   })
   public ipAddress: string;
+
+  @HasMany(() => OwnedItem)
+  public items: OwnedItem[];
 }

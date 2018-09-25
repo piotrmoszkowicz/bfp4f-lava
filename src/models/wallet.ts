@@ -1,4 +1,11 @@
-import {BelongsTo, Column, DataType, DefaultScope, Model, Table} from "sequelize-typescript";
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  DefaultScope,
+  Model,
+  Table
+} from "sequelize-typescript";
 import Hero from "./hero";
 
 @DefaultScope({
