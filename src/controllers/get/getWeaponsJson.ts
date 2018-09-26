@@ -2,6 +2,7 @@ import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
 import { WeaponsJson, WeaponsJsonResponse } from "WeaponsJson";
 
+import HeroService from "../../services/heroService";
 import ItemService from "../../services/itemService";
 
 import Logger from "../../util/logger";
@@ -15,6 +16,8 @@ export const getWeaponsJson = async (
       req.sessionId,
       "weapons"
     );
+
+    const hero = await HeroService.getHeroBySessionId(req.sessionId, ["level"]);
 
     return res.json({
       result: "success",
@@ -34,6 +37,8 @@ export const getWeaponsJson = async (
             expired = !(expireTS === false || expireTS > +new Date());
             buyable = weapon.buyable && expired;
           }
+
+          const isLocked = weapon.lockCriteria > hero.level;
 
           return {
             id: weapon.id,
@@ -56,7 +61,7 @@ export const getWeaponsJson = async (
             validationGroup: weapon.category,
             prices: [], // TODO: Probably needs fix?
             promotionType: null,
-            isLocked: false, // TODO: Fix, check via level and lock
+            isLocked,
             stats: [], // TODO Add stats to DB
             attachments: []
           };
