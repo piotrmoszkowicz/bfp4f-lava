@@ -68,6 +68,9 @@ export default class Hero extends Model<Hero> {
   })
   public ipAddress: string;
 
+  @Column
+  public level: number;
+
   @HasMany(() => OwnedItem)
   public items: OwnedItem[];
 }
