@@ -40,6 +40,8 @@ export const getWeaponsJson = async (
 
           const isLocked = weapon.lockCriteria > hero.level;
 
+          Logger.info(weapon.offers);
+
           return {
             id: weapon.id,
             type: weapon.type,
@@ -59,7 +61,14 @@ export const getWeaponsJson = async (
             buyable,
             equippedSlot: null, // TODO: Add EQ from DB
             validationGroup: weapon.category,
-            prices: [], // TODO: Probably needs fix?
+            prices: buyable ? weapon.offers.map(offer => ({
+              offer: offer.id,
+              limit: offer.limit,
+              isUnlimited: offer.isUnlimited,
+              currency: offer.currency,
+              cost: offer.cost,
+              isUnlockOffer: offer.isUnlockOffer
+            })) : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
             promotionType: null,
             isLocked,
             stats: [], // TODO Add stats to DB

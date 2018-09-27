@@ -1,4 +1,5 @@
 import Item from "../models/item";
+import Offer from "../models/offer";
 import OwnedItem from "../models/ownedItem";
 
 const ItemService = {
@@ -7,6 +8,9 @@ const ItemService = {
       include: [
         {
           model: OwnedItem
+        },
+        {
+          model: Offer
         }
       ],
       where: {

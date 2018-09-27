@@ -31,6 +31,9 @@ export default class Offer extends Model<Offer> {
   @Column
   public isUnlockOffer: boolean;
 
+  @Column
+  public isUnlimited: boolean;
+
   @ForeignKey(() => Item)
   @Column
   public itemId: number;

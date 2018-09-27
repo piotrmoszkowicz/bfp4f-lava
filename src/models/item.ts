@@ -1,5 +1,6 @@
-import { Column, DataType, HasOne, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, HasOne, Model, Table } from "sequelize-typescript";
 
+import Offer from "./offer";
 import OwnedItem from "./ownedItem";
 
 @Table({
@@ -57,4 +58,7 @@ export default class Item extends Model<Item> {
 
   @HasOne(() => OwnedItem)
   public ownerData: OwnedItem;
+
+  @HasMany(() => Offer)
+  public offers: Offer[];
 }
