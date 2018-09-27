@@ -1,4 +1,7 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, HasOne, Model, Table } from "sequelize-typescript";
+
+import Offer from "./offer";
+import OwnedItem from "./ownedItem";
 
 @Table({
   tableName: "game_items"
@@ -52,4 +55,10 @@ export default class Item extends Model<Item> {
     field: "lock_criteria"
   })
   public lockCriteria: number;
+
+  @HasOne(() => OwnedItem)
+  public ownerData: OwnedItem;
+
+  @HasMany(() => Offer)
+  public offers: Offer[];
 }

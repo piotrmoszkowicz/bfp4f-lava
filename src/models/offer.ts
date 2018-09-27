@@ -1,4 +1,10 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import {
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table
+} from "sequelize-typescript";
 
 import Item from "./item";
 
@@ -24,6 +30,9 @@ export default class Offer extends Model<Offer> {
 
   @Column
   public isUnlockOffer: boolean;
+
+  @Column
+  public isUnlimited: boolean;
 
   @ForeignKey(() => Item)
   @Column

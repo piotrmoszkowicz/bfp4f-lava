@@ -6,7 +6,7 @@
     "target": "es2017",
     "noImplicitAny": false,
     "moduleResolution": "node",
-    "sourceMap": false,
+    "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
@@ -21,6 +21,6 @@
     "skipLibCheck": true
   },
   "include": [
-      "src/**/*"
+    "src/**/**/*"
   ]
 }

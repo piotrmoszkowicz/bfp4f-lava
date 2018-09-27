@@ -4,6 +4,4 @@ interface RequestBFP4F extends Request {
   sessionId: string;
 }
 
-export {
-  RequestBFP4F
-}
+export { RequestBFP4F };
