@@ -48,6 +48,11 @@ export default class Item extends Model<Item> {
   })
   public description: string;
 
+  @Column({
+    type: DataType.TEXT
+  })
+  public stats: string;
+
   @Column
   public buyable: boolean;
 

@@ -18,7 +18,7 @@ type WeaponsJson = {
   prices: any[];
   promotionType: string | null;
   isLocked: boolean;
-  stats: any[];
+  stats: any;
   attachments: any[];
 };
 
