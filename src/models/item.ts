@@ -1,4 +1,11 @@
-import { Column, DataType, HasMany, HasOne, Model, Table } from "sequelize-typescript";
+import {
+  Column,
+  DataType,
+  HasMany,
+  HasOne,
+  Model,
+  Table
+} from "sequelize-typescript";
 
 import Offer from "./offer";
 import OwnedItem from "./ownedItem";
