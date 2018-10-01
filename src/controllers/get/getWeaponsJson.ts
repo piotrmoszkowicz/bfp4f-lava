@@ -71,6 +71,8 @@ export const getWeaponsJson = async (
             })) : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
             promotionType: null,
             isLocked,
+            lockType: "level",
+            lockCriteria: weapon.lockCriteria,
             stats: weapon.stats,
             attachments: []
           };
