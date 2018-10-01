@@ -1,4 +1,4 @@
-import Hero from "../models/hero";
+import User from "../models/user";
 import Wallet from "../models/wallet";
 
 const WalletService = {
@@ -7,7 +7,7 @@ const WalletService = {
       include: [
         {
           attributes: [],
-          model: Hero,
+          model: User,
           where: {
             sessionId
           }

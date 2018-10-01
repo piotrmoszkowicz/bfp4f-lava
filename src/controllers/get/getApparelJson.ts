@@ -2,8 +2,8 @@ import { ApparelJson, ApparelJsonResponse } from "ApparelJson";
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
 
-import HeroService from "../../services/heroService";
 import ItemService from "../../services/itemService";
+import SoldierService from "../../services/soldierService";
 
 import Logger from "../../util/logger";
 
@@ -17,7 +17,7 @@ export const getApparelJson = async (
       "appearance"
     );
 
-    const hero = await HeroService.getHeroBySessionId(req.sessionId, ["level"]);
+    const hero = await SoldierService.getSoldierByID(req.soldierId, ["level"]);
 
     return res.json({
       result: "success",

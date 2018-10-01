@@ -6,7 +6,7 @@ import {
   Model,
   Table
 } from "sequelize-typescript";
-import Hero from "./hero";
+import User from "./user";
 
 @DefaultScope({
   attributes: ["currency", "value"]
@@ -15,8 +15,8 @@ import Hero from "./hero";
   tableName: "game_wallets"
 })
 export default class Wallet extends Model<Wallet> {
-  @BelongsTo(() => Hero, "heroID")
-  public hero: Hero;
+  @BelongsTo(() => User, "userID")
+  public user: User;
 
   @Column({
     type: DataType.ENUM("_PF", "_AC")
