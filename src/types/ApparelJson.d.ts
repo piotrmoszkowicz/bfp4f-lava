@@ -1,4 +1,4 @@
-type WeaponsJson = {
+type ApparelJson = {
   id: number;
   type: ItemType;
   name: string;
@@ -20,17 +20,19 @@ type WeaponsJson = {
   isLocked: boolean;
   lockType: string;
   lockCriteria: number;
-  stats: any;
-  attachments: any[];
+  numberOfPockets: number;
+  minNumPockets: number;
+  maxNumPockets: number;
+  upgrades: any[];
 };
 
-type WeaponsJsonResponse = {
+type ApparelJsonResponse = {
   result: string;
   status: string;
   data: {
     status: string;
-    weapons: WeaponsJson[];
+    apparel: ApparelJson[];
   };
 };
 
-export { WeaponsJson, WeaponsJsonResponse };
+export { ApparelJson, ApparelJsonResponse };

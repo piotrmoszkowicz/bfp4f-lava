@@ -1,20 +1,17 @@
+import { ApparelJson, ApparelJsonResponse } from "ApparelJson";
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
-import { WeaponsJson, WeaponsJsonResponse } from "WeaponsJson";
 
 import HeroService from "../../services/heroService";
 import ItemService from "../../services/itemService";
 
 import Logger from "../../util/logger";
 
-export const getWeaponsJson = async (
-  req: RequestBFP4F,
-  res: Response
-): Promise<Response> => {
+export const getApparelJson = async (req: RequestBFP4F, res: Response): Promise<Response> => {
   try {
-    const weapons = await ItemService.getOwnedItemsBySessionId(
+    const apparels = await ItemService.getOwnedItemsBySessionId(
       req.sessionId,
-      "weapons"
+      "appearance"
     );
 
     const hero = await HeroService.getHeroBySessionId(req.sessionId, ["level"]);
@@ -24,44 +21,44 @@ export const getWeaponsJson = async (
       status: "success",
       data: {
         status: "SUCCESS",
-        weapons: weapons.map<WeaponsJson>(weapon => {
+        apparel: apparels.map<ApparelJson>(apparel => {
           let expireTS: boolean | number = false;
           let expired = true;
           let buyable = true;
 
-          if (weapon.ownerData.createdAt !== null) {
+          if (apparel.ownerData.createdAt !== null) {
             expireTS =
-              weapon.ownerData.availableTill === null
+              apparel.ownerData.availableTill === null
                 ? false
-                : +new Date(weapon.ownerData.availableTill);
+                : +new Date(apparel.ownerData.availableTill);
             expired = !(expireTS === false || expireTS > +new Date());
-            buyable = weapon.buyable && expired;
+            buyable = apparel.buyable && expired;
           }
 
-          const isLocked = weapon.lockCriteria > hero.level;
+          const isLocked = apparel.lockCriteria > hero.level;
 
-          Logger.info(weapon.offers);
+          Logger.info(apparel.offers);
 
           return {
-            id: weapon.id,
-            type: weapon.type,
-            name: weapon.name,
-            category: weapon.category,
+            id: apparel.id,
+            type: apparel.type,
+            name: apparel.name,
+            category: apparel.category,
             categoryname:
-              weapon.category.charAt(0).toUpperCase() +
-              weapon.category.substr(1).replace(/_/g, " "),
-            usecount: weapon.ownerData.useCount,
+              apparel.category.charAt(0).toUpperCase() +
+              apparel.category.substr(1).replace(/_/g, " "),
+            usecount: apparel.ownerData.useCount,
             isnew: false,
-            expiredate: weapon.ownerData.availableTill || "",
+            expiredate: apparel.ownerData.availableTill || "",
             expireTS,
             expired,
-            description: weapon.description,
+            description: apparel.description,
             owned: !expired,
             ownedPermanent: !!!expireTS,
             buyable,
             equippedSlot: null, // TODO: Add EQ from DB
-            validationGroup: weapon.category,
-            prices: buyable ? weapon.offers.map(offer => ({
+            validationGroup: apparel.category,
+            prices: buyable ? apparel.offers.map(offer => ({
               offer: offer.id,
               limit: offer.limit,
               isUnlimited: offer.isUnlimited,
@@ -72,15 +69,17 @@ export const getWeaponsJson = async (
             promotionType: null,
             isLocked,
             lockType: "level",
-            lockCriteria: weapon.lockCriteria,
-            stats: weapon.stats,
-            attachments: []
+            lockCriteria: apparel.lockCriteria,
+            numberOfPockets: 0,
+            minNumPockets: 0,
+            maxNumPockets: 0,
+            upgrades: []
           };
         })
       }
-    } as WeaponsJsonResponse);
+    } as ApparelJsonResponse);
   } catch (err) {
-    Logger.error("Error in /getWeaponsJson", err);
+    Logger.error("Error in /getApparelJson", err);
     return res.json({
       status: "error"
     });
