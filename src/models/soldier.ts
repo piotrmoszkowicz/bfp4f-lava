@@ -1,6 +1,8 @@
 import {
+  BelongsTo,
   Column,
   DataType,
+  ForeignKey,
   HasMany,
   Model,
   Scopes,
@@ -8,6 +10,7 @@ import {
 } from "sequelize-typescript";
 
 import OwnedItem from "./ownedItem";
+import User from "./user";
 import Wallet from "./wallet";
 
 @Scopes({
@@ -28,11 +31,11 @@ import Wallet from "./wallet";
   }
 })
 @Table({
-  tableName: "game_heroes"
+  tableName: "game_soldiers"
 })
-export default class Hero extends Model<Hero> {
+export default class Soldier extends Model<Soldier> {
   @Column
-  public heroName: string;
+  public soldierName: string;
 
   @Column({
     field: "created_at",
@@ -52,16 +55,11 @@ export default class Hero extends Model<Hero> {
   })
   public updatedAt: string;
 
-  @Column({
-    field: "user_id"
-  })
-  public userId: number;
+  @BelongsTo(() => User, "user_id")
+  public user: User;
 
   @Column
   public online: number;
-
-  @Column
-  public sessionId: string;
 
   @Column({
     field: "ip_address"
@@ -70,6 +68,9 @@ export default class Hero extends Model<Hero> {
 
   @Column
   public level: number;
+
+  @Column
+  public kit: number;
 
   @HasMany(() => OwnedItem)
   public items: OwnedItem[];

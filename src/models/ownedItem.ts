@@ -6,8 +6,9 @@ import {
   Model,
   Table
 } from "sequelize-typescript";
-import Hero from "./hero";
+
 import Item from "./item";
+import Soldier from "./soldier";
 
 @DefaultScope({
   attributes: ["availableTill", "createdAt", "useCount"]
@@ -16,7 +17,7 @@ import Item from "./item";
   tableName: "game_owned_items"
 })
 export default class OwnedItem extends Model<OwnedItem> {
-  @ForeignKey(() => Hero)
+  @ForeignKey(() => Soldier)
   @Column
   public ownerId: number;
 

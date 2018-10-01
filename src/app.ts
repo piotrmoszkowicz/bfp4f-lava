@@ -26,6 +26,7 @@ app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
     return;
   }
   req.sessionId = req.cookies.magma;
+  req.soldierId = 1;
   return next();
 });
 
