@@ -71,7 +71,7 @@ export const getWeaponsJson = async (
             })) : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
             promotionType: null,
             isLocked,
-            stats: [], // TODO Add stats to DB
+            stats: weapon.stats,
             attachments: []
           };
         })
