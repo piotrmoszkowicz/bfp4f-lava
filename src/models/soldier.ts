@@ -2,7 +2,6 @@ import {
   BelongsTo,
   Column,
   DataType,
-  ForeignKey,
   HasMany,
   Model,
   Scopes,
@@ -71,6 +70,9 @@ export default class Soldier extends Model<Soldier> {
 
   @Column
   public kit: number;
+
+  @Column
+  public isMain: boolean;
 
   @HasMany(() => OwnedItem)
   public items: OwnedItem[];

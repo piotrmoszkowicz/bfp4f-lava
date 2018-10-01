@@ -9,7 +9,7 @@ const SoldierService = {
           model: User,
           where: {
             sessionId
-          },
+          }
         }
       ]
     } as {

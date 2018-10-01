@@ -1,8 +1,4 @@
-import {
-  Column,
-  Model,
-  Table
-} from "sequelize-typescript";
+import { Column, Model, Table } from "sequelize-typescript";
 
 @Table({
   tableName: "users"
@@ -15,4 +11,4 @@ export default class User extends Model<User> {
 
   @Column
   public sessionId: string;
-};
+}
