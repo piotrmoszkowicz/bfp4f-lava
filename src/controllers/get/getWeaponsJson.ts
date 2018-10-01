@@ -61,14 +61,16 @@ export const getWeaponsJson = async (
             buyable,
             equippedSlot: null, // TODO: Add EQ from DB
             validationGroup: weapon.category,
-            prices: buyable ? weapon.offers.map(offer => ({
-              offer: offer.id,
-              limit: offer.limit,
-              isUnlimited: offer.isUnlimited,
-              currency: offer.currency,
-              cost: offer.cost,
-              isUnlockOffer: offer.isUnlockOffer
-            })) : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
+            prices: buyable
+              ? weapon.offers.map(offer => ({
+                  offer: offer.id,
+                  limit: offer.limit,
+                  isUnlimited: offer.isUnlimited,
+                  currency: offer.currency,
+                  cost: offer.cost,
+                  isUnlockOffer: offer.isUnlockOffer
+                }))
+              : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
             promotionType: null,
             isLocked,
             lockType: "level",

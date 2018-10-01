@@ -7,7 +7,10 @@ import ItemService from "../../services/itemService";
 
 import Logger from "../../util/logger";
 
-export const getBoostersJson = async (req: RequestBFP4F, res: Response): Promise<Response> => {
+export const getBoostersJson = async (
+  req: RequestBFP4F,
+  res: Response
+): Promise<Response> => {
   try {
     const boosters = await ItemService.getOwnedItemsBySessionId(
       req.sessionId,
@@ -58,14 +61,16 @@ export const getBoostersJson = async (req: RequestBFP4F, res: Response): Promise
             buyable,
             equippedSlot: key,
             validationGroup: booster.category,
-            prices: buyable ? booster.offers.map(offer => ({
-              offer: offer.id,
-              limit: offer.limit,
-              isUnlimited: offer.isUnlimited,
-              currency: offer.currency,
-              cost: offer.cost,
-              isUnlockOffer: offer.isUnlockOffer
-            })) : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
+            prices: buyable
+              ? booster.offers.map(offer => ({
+                  offer: offer.id,
+                  limit: offer.limit,
+                  isUnlimited: offer.isUnlimited,
+                  currency: offer.currency,
+                  cost: offer.cost,
+                  isUnlockOffer: offer.isUnlockOffer
+                }))
+              : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
             promotionType: null,
             isLocked
           };
