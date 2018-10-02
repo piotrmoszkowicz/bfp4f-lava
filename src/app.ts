@@ -1,8 +1,12 @@
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import express, { NextFunction, Response } from "express";
+import expressSession from "express-session";
 import expressValidator from "express-validator";
 import { RequestBFP4F } from "ExpressOverride";
+
+import soldierService from "./services/soldierService";
+import Logger from "./util/logger";
 
 // Controllers (route handlers)
 import { GameRouter } from "./controllers/game";
@@ -26,8 +30,24 @@ app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
     return;
   }
   req.sessionId = req.cookies.magma;
-  req.soldierId = 1;
+
   return next();
+});
+
+app.use(expressSession({
+  genid: req => req.cookies.magma,
+  secret: "zjskhdfg*&^%6521ya"
+}));
+
+app.use(async (req: RequestBFP4F, res: Response, next: NextFunction) => {
+  if (!req.session.soldierId) {
+    try {
+      req.session.soldierId = (await soldierService.getMainSoldierIdBySessionId(req.sessionId)).id;
+    } catch (err) {
+      Logger.error("Error during getting main soldier", err);
+    }
+  }
+  next();
 });
 
 /**
