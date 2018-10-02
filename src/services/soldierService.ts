@@ -30,6 +30,23 @@ const SoldierService = {
       }
     };
     return Soldier.findOne(opts);
+  },
+
+  getMainSoldierIdBySessionId(sessionId: string) {
+    const opts = {
+      include: [
+        {
+          model: User,
+          where: {
+            sessionId
+          }
+        }
+      ],
+      where: {
+        isMain: true
+      }
+    };
+    return Soldier.findOne(opts);
   }
 };
 
