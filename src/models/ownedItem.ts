@@ -11,7 +11,7 @@ import Item from "./item";
 import Soldier from "./soldier";
 
 @DefaultScope({
-  attributes: ["availableTill", "createdAt", "useCount"]
+  attributes: ["availableTill", "barPosition", "createdAt", "useCount"]
 })
 @Table({
   tableName: "game_owned_items"
@@ -27,6 +27,9 @@ export default class OwnedItem extends Model<OwnedItem> {
 
   @Column
   public useCount: number;
+
+  @Column
+  public barPosition: number;
 
   @Column({
     field: "created_at",

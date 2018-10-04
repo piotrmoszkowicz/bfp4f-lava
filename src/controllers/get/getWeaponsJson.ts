@@ -17,7 +17,7 @@ export const getWeaponsJson = async (
       "weapons"
     );
 
-    const hero = await SoldierService.getSoldierByID(req.soldierId, ["level"]);
+    const hero = await SoldierService.getSoldierByID(req.session.soldierId, ["level"]);
 
     return res.json({
       result: "success",
@@ -40,8 +40,6 @@ export const getWeaponsJson = async (
 
           const isLocked = weapon.lockCriteria > hero.level;
 
-          Logger.info(weapon.offers);
-
           return {
             id: weapon.id,
             type: weapon.type,
@@ -59,7 +57,7 @@ export const getWeaponsJson = async (
             owned: !expired,
             ownedPermanent: !!!expireTS,
             buyable,
-            equippedSlot: null, // TODO: Add EQ from DB
+            equippedSlot: weapon.ownerData.barPosition === -1 ? null : weapon.ownerData.barPosition,
             validationGroup: weapon.category,
             prices: buyable
               ? weapon.offers.map(offer => ({
