@@ -17,7 +17,7 @@ export const getApparelJson = async (
       "appearance"
     );
 
-    const hero = await SoldierService.getSoldierByID(req.soldierId, ["level"]);
+    const hero = await SoldierService.getSoldierByID(req.session.soldierId, ["level"]);
 
     return res.json({
       result: "success",
