@@ -17,6 +17,18 @@ const ItemService = {
         type
       }
     });
+  },
+
+  equipItem(ownerId: number, itemId: number, slot: number) {
+    return OwnedItem.findOne({
+      where: {
+        ownerId,
+        itemId
+      }
+    }).then(item => {
+      item.barPosition = slot;
+      return item.save();
+    });
   }
 };
 
