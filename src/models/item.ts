@@ -65,12 +65,7 @@ export default class Item extends Model<Item> {
 
   @Column({
     field: "validation_group",
-    type: DataType.ENUM(
-        "primary",
-        "secondary",
-        "melee",
-        "gadget"
-    )
+    type: DataType.ENUM("primary", "secondary", "melee", "gadget")
   })
   public validationGroup?: ValidationGroup;
 
