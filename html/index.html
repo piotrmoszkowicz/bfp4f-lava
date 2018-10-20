@@ -779,23 +779,23 @@
 
 
             var personaUrl = nsConfig.personaUrl =
-                'http://localhost:3000//en/game?personaId=';
+                'http://localhost:3000/en/game?personaId=';
             var purchase_url = nsConfig.purchaseUrl =
                 'http://phoenixnetwork.net:88/p4f/rest/buy/609452444/OFFERID';
             var purchase_training_point_url = nsConfig.purchaseTrainingPointUrl =
                 'http://phoenixnetwork.net:88/p4f/rest/buytraining/609452444/offerId/OFFERID';
             var purchase_ability_url = nsConfig.purchaseAbilityUrl =
-                'http://localhost:1235//en/game/abilities/buy/609452444/ABILITYID'; //TODO HTML as response
+                'http://localhost:1235/en/game/abilities/buy/609452444/ABILITYID'; //TODO HTML as response
             var reset_abilities_url = nsConfig.resetAbilitiesUrl =
-                'http://localhost:1235//en/game/abilities/reset/609452444'; //TODO HTML as response
+                'http://localhost:1235/en/game/abilities/reset/609452444'; //TODO HTML as response
             var save_equipment_url = nsConfig.saveEquipmentUrl =
-                'http://phoenixnetwork.net:88/p4f/rest/saveEquipmentBar/609452444';
+                'http://localhost:3000/en/game/saveEquipmentBar/609452444';
             var save_appearance_url = nsConfig.saveAppearanceUrl =
                 'http://phoenixnetwork.net:88/p4f/rest/saveAppearance/609452444';
             var save_customization_url = nsConfig.saveCustomizationUrl =
                 'http://phoenixnetwork.net:88/p4f/rest/saveCustomization/609452444';
             var save_emotes_url =
-                'http://localhost:1235//en/game/saveEmotes/609452444';
+                'http://localhost:1235/en/game/saveEmotes/609452444';
             var check_wallet_url = nsConfig.walletUrl =
                 'http://localhost:3000/en/game/getWalletBalance';
             var eor_updated_data_url = nsConfig.eorUrl =
@@ -808,7 +808,7 @@
                 'http://phoenixnetwork.net:88/p4f/rest/allServerVip';
             var remove_friend_url = '';
             var change_server_page_url =
-                'http://localhost:1234//en/ajax/serversPage'; // not used
+                'http://localhost:1234/en/ajax/serversPage'; // not used
             var change_friend_page_url =
                 'http://phoenixnetwork.net:88/p4f/rest/friendsPage'; //HTML as response
             var lockbox_url = nsConfig.lockboxUrl =
@@ -816,9 +816,9 @@
             var buying_bundle = false;
             var bundle_items = [];
             var get_server_list_url = nsConfig.serverListUrl =
-                'http://localhost:3000//en/game/getGameList';
+                'http://localhost:3000/en/game/getGameList';
             var get_server_info_url = nsConfig.serverInfoUrl =
-                'http://localhost:3000//en/game/getGameDetails';
+                'http://localhost:3000/en/game/getGameDetails';
 
             nsConfig.getItemUrl =
                 'http://localhost:3000/en/game/getItemJson/itemId/';
