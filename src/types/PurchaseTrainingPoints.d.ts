@@ -7,5 +7,5 @@ type PurchaseTrainingPoints = {
     purchasedPoints: number;
     trainingPoints: number;
     offers: any;
-  }
+  };
 };

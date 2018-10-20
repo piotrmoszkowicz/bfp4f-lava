@@ -17,7 +17,9 @@ export const getWeaponsJson = async (
       "weapons"
     );
 
-    const hero = await SoldierService.getSoldierByID(req.session.soldierId, ["level"]);
+    const hero = await SoldierService.getSoldierByID(req.session.soldierId, [
+      "level"
+    ]);
 
     return res.json({
       result: "success",
@@ -38,7 +40,7 @@ export const getWeaponsJson = async (
             buyable = weapon.buyable && expired;
           }
 
-          const isLocked = weapon.lockCriteria > hero.level;
+          const isLocked = expired ? weapon.lockCriteria > hero.level : false;
 
           return {
             id: weapon.id,
@@ -55,10 +57,13 @@ export const getWeaponsJson = async (
             expired,
             description: weapon.description,
             owned: !expired,
-            ownedPermanent: !!!expireTS,
+            ownedPermanent: !expireTS,
             buyable,
-            equippedSlot: weapon.ownerData.barPosition === -1 ? null : weapon.ownerData.barPosition,
-            validationGroup: weapon.category,
+            equippedSlot:
+              weapon.ownerData.barPosition === -1
+                ? null
+                : weapon.ownerData.barPosition,
+            validationGroup: weapon.validationGroup, // TODO: Not that one - it has to be primary/secondary/melee/gadget
             prices: buyable
               ? weapon.offers.map(offer => ({
                   offer: offer.id,

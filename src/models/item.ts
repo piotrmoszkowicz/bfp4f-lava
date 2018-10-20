@@ -64,6 +64,12 @@ export default class Item extends Model<Item> {
   public buyable: boolean;
 
   @Column({
+    field: "validation_group",
+    type: DataType.ENUM("primary", "secondary", "melee", "gadget")
+  })
+  public validationGroup?: ValidationGroup;
+
+  @Column({
     field: "lock_criteria"
   })
   public lockCriteria: number;

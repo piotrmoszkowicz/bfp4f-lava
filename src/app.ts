@@ -1,5 +1,6 @@
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import express, { NextFunction, Response } from "express";
 import expressSession from "express-session";
 import expressValidator from "express-validator";
@@ -16,6 +17,7 @@ const app = express();
 
 // Express configuration
 app.set("port", process.env.PORT || 3000);
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,15 +36,19 @@ app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
   return next();
 });
 
-app.use(expressSession({
-  genid: req => req.cookies.magma,
-  secret: "zjskhdfg*&^%6521ya"
-}));
+app.use(
+  expressSession({
+    genid: req => req.cookies.magma,
+    secret: "zjskhdfg*&^%6521ya"
+  })
+);
 
 app.use(async (req: RequestBFP4F, res: Response, next: NextFunction) => {
   if (!req.session.soldierId) {
     try {
-      req.session.soldierId = (await soldierService.getMainSoldierIdBySessionId(req.sessionId)).id;
+      req.session.soldierId = (await soldierService.getMainSoldierIdBySessionId(
+        req.sessionId
+      )).id;
     } catch (err) {
       Logger.error("Error during getting main soldier", err);
     }
