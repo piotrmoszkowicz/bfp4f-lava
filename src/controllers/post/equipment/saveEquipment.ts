@@ -15,7 +15,7 @@ export const saveEquipment = async (
     });
   }
 
-  const newEquipmentBar = JSON.parse(req.body.equipment)  || [];
+  const newEquipmentBar = JSON.parse(req.body.equipment) || [];
 
   try {
     await ItemService.equipWholeBar(req.session.soldierId, newEquipmentBar);
