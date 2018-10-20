@@ -28,6 +28,9 @@ const ItemService = {
         itemId
       }
     }).then(item => {
+      if (!item) {
+        return;
+      }
       item.barPosition = slot;
       return item.save();
     });
