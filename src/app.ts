@@ -1,5 +1,6 @@
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import express, { NextFunction, Response } from "express";
 import expressSession from "express-session";
 import expressValidator from "express-validator";
@@ -16,6 +17,7 @@ const app = express();
 
 // Express configuration
 app.set("port", process.env.PORT || 3000);
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
