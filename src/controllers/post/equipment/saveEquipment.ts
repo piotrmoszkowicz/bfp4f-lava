@@ -7,11 +7,14 @@ export const saveEquipment = async (
   req: RequestBFP4F,
   res: Response
 ): Promise<Response> => {
-  if (!req.body || !req.body.data) {
+  if (!req.body || !req.body.equipment) {
     return res.json({
       status: "error"
     });
   }
+
+  Logger.info(req.body.equipment);
+  // [3005,3006,0,0,0,0,0,0,0,0]
   try {
     Logger.info(req.body);
     return res.json({

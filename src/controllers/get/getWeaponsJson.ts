@@ -55,10 +55,10 @@ export const getWeaponsJson = async (
             expired,
             description: weapon.description,
             owned: !expired,
-            ownedPermanent: !!!expireTS,
+            ownedPermanent: !expireTS,
             buyable,
             equippedSlot: weapon.ownerData.barPosition === -1 ? null : weapon.ownerData.barPosition,
-            validationGroup: weapon.category,
+            validationGroup: weapon.category, // TODO: Not that one - it has to be primary/secondary/melee/gadget
             prices: buyable
               ? weapon.offers.map(offer => ({
                   offer: offer.id,
