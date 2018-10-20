@@ -3,6 +3,8 @@ import { RequestBFP4F } from "ExpressOverride";
 
 import Logger from "../../../util/logger";
 
+import ItemService from "../../../services/itemService";
+
 export const saveEquipment = async (
   req: RequestBFP4F,
   res: Response
@@ -13,12 +15,12 @@ export const saveEquipment = async (
     });
   }
 
-  Logger.info(req.body.equipment);
-  // [3005,3006,0,0,0,0,0,0,0,0]
+  const newEquipmentBar = JSON.parse(req.body.equipment)  || [];
+
   try {
-    Logger.info(req.body);
+    await ItemService.equipWholeBar(req.session.soldierId, newEquipmentBar);
     return res.json({
-      result: "success"
+      status: "success"
     });
   } catch (err) {
     Logger.error("Error in /saveEquipment", err);
