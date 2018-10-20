@@ -34,15 +34,19 @@ app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
   return next();
 });
 
-app.use(expressSession({
-  genid: req => req.cookies.magma,
-  secret: "zjskhdfg*&^%6521ya"
-}));
+app.use(
+  expressSession({
+    genid: req => req.cookies.magma,
+    secret: "zjskhdfg*&^%6521ya"
+  })
+);
 
 app.use(async (req: RequestBFP4F, res: Response, next: NextFunction) => {
   if (!req.session.soldierId) {
     try {
-      req.session.soldierId = (await soldierService.getMainSoldierIdBySessionId(req.sessionId)).id;
+      req.session.soldierId = (await soldierService.getMainSoldierIdBySessionId(
+        req.sessionId
+      )).id;
     } catch (err) {
       Logger.error("Error during getting main soldier", err);
     }
