@@ -22,13 +22,13 @@ type GameListJson = {
   currentGameMode: string;
   nextMap: string;
   nextGameMode: string;
-}
+};
 
 type GameListJsonResponse = {
   result: string;
   status: string;
   data: {
-    [key: string]: GameListJson
+    [key: string]: GameListJson;
   };
 };
 
