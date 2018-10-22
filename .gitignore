@@ -34,3 +34,6 @@ dist/**/*
 # Ignore dev configs
 /config/local-*
 
+# Ignore public stuff
+/public
+
