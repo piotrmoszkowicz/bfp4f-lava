@@ -72,6 +72,9 @@ export default class Soldier extends Model<Soldier> {
   public kit: number;
 
   @Column
+  public xp: number;
+
+  @Column
   public isMain: boolean;
 
   @HasMany(() => OwnedItem)
