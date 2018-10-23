@@ -16,16 +16,7 @@ export const getWalletBalance = async (
       req.sessionId
     );
     return res.json({
-      data: wallet.reduce<WalletBalance>(
-        (convertedWallet, singleWallet) => {
-          convertedWallet[singleWallet.currency] = singleWallet.value;
-          return convertedWallet;
-        },
-        {
-          _PF: 0,
-          _AC: 0
-        }
-      ),
+      data: WalletService.parseWallet(wallet),
       status: "success"
     } as WalletBalanceResponse);
   } catch (err) {
