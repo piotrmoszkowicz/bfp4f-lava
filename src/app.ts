@@ -30,10 +30,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 
-app.use("/css", express.static(path.join(__dirname, "../", "public", "css")), cors(corsOptions));
-app.use("/js", express.static(path.join(__dirname, "../", "public", "js")), cors(corsOptions));
-app.use("/static", express.static(path.join(__dirname, "../", "public", "static")), cors(corsOptions));
-app.use("/uploads", express.static(path.join(__dirname, "../", "public", "uploads")), cors(corsOptions));
+app.use(
+  "/css",
+  express.static(path.join(__dirname, "../", "public", "css")),
+  cors(corsOptions)
+);
+app.use(
+  "/js",
+  express.static(path.join(__dirname, "../", "public", "js")),
+  cors(corsOptions)
+);
+app.use(
+  "/static",
+  express.static(path.join(__dirname, "../", "public", "static")),
+  cors(corsOptions)
+);
+app.use(
+  "/uploads",
+  express.static(path.join(__dirname, "../", "public", "uploads")),
+  cors(corsOptions)
+);
 
 app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
   if (!req.cookies || !req.cookies.magma) {

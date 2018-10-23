@@ -1,5 +1,5 @@
 import Bluebird from "bluebird";
-import {Response, Router} from "express";
+import { Response, Router } from "express";
 import { readFile } from "fs";
 import path from "path";
 
