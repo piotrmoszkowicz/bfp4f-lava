@@ -17,8 +17,13 @@ router.get(
   "/",
   async (req: RequestBFP4F, res: Response): Promise<any> => {
     try {
-      const soldierStats = await SoldierService.getSoldierByID(req.session.soldierId, ["id", "kit", "level", "soldierName", "xp"]);
-      const wallet = WalletService.parseWallet(await WalletService.getWalletBySessionId(req.sessionId));
+      const soldierStats = await SoldierService.getSoldierByID(
+        req.session.soldierId,
+        ["id", "kit", "level", "soldierName", "xp"]
+      );
+      const wallet = WalletService.parseWallet(
+        await WalletService.getWalletBySessionId(req.sessionId)
+      );
 
       const currentTrainingPoints = "0";
       const numberOfTrainingPointsPurchased = "0";
@@ -65,7 +70,8 @@ router.get(
         xp: soldierStats.xp,
         xpForNextLevel: 800, // TODO: Add xpForNextLevel
         lastAuthenticated: lastAuthed.toString(), // TODO: Fix lastAuthed
-        mugShot: "http:\/\/battlefield.play4free.com:3000\/static\/20140225100054\/bulk-images\/mugshots-64\/6-7-9.png", // TODO: Add mugshots
+        mugShot:
+          "http://battlefield.play4free.com:3000/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
         isMaxLevel: soldierStats.level === 30,
         level: soldierStats.level,
         levelUpProgression: 0, // TODO: Add level progression

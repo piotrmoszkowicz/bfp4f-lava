@@ -28,7 +28,7 @@ const WalletService = {
         _PF: 0,
         _AC: 0
       }
-    )
+    );
   }
 };
 
