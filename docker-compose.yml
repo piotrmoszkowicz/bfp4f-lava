@@ -1,0 +1,8 @@
+services:
+  bfp4f-lava:
+    build: .
+    command: npm run debug
+    volumes:
+      - ./dist:/server/dist
+    ports:
+      - "3000:3000"
