@@ -4,7 +4,9 @@ import userService from "./userService";
 
 const SoldierService = {
   getSoldiersBySessionId(sessionId: string) {
-    return userService.getUserIdFromSessionId(sessionId).then(userId => this.getSoldiersByUserId(userId));
+    return userService
+      .getUserIdFromSessionId(sessionId)
+      .then(userId => this.getSoldiersByUserId(userId));
   },
 
   getMainSoldierIdBySessionId(sessionId: string) {

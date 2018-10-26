@@ -27,5 +27,4 @@ try {
   Logger.error("Error during creating MyBB DB Instance", err);
 }
 
-
 export default mybbDatabase;
