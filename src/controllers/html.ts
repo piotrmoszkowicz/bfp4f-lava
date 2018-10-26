@@ -30,7 +30,7 @@ router.get(
       const numberOfTrainingPointsPurchased = "0";
       const maxNumberOfExtraPoints = "10";
 
-      const { interfaceUrl, interfacePort } = config.get("lava");
+      const { debug, interfaceUrl, interfacePort } = config.get("lava");
 
       const lastAuthed = +new Date();
       const timeNow = +new Date();
@@ -85,6 +85,7 @@ router.get(
         path.join(__dirname + "../../../html/index.html")
       ))
         .toString()
+        .replace(/%debug%/g, debug)
         .replace(/%interfaceUrl%/g, interfaceUrl)
         .replace(/%interfacePort%/g, interfacePort.toString())
         .replace(/%soldierId%/g, soldierStats.id.toString())
