@@ -79,6 +79,7 @@ app.use(async (req: RequestBFP4F, res: Response, next: NextFunction) => {
       )).id;
     } catch (err) {
       Logger.error("Error during getting main soldier", err);
+      return res.status(401).send("Oh uh, something went wrong");
     }
   }
   next();
