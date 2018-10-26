@@ -5,7 +5,7 @@ import Logger from "./util/logger";
 
 const dbConfig: ConfigType = config.get("mybb");
 
-/* const mybb = new Sequelize({
+const mybb = new Sequelize({
   database: dbConfig.name,
   dialect: dbConfig.engine,
   host: dbConfig.host,
@@ -20,4 +20,4 @@ const dbConfig: ConfigType = config.get("mybb");
   timezone: "+02:00",
   username: dbConfig.user
 });
-export default mybb; */
+export default mybb;

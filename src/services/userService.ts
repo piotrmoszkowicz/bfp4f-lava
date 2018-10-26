@@ -1,4 +1,4 @@
-/* import mybb from "../mybb";
+import mybb from "../mybb";
 
 import Logger from "../util/logger";
 
@@ -10,4 +10,4 @@ const userService = {
   }
 };
 
-export default userService; */
+export default userService;

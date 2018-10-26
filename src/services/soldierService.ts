@@ -1,18 +1,16 @@
 import Soldier from "../models/soldier";
 
-// import userService from "./userService";
+import userService from "./userService";
 
 const SoldierService = {
   getSoldiersBySessionId(sessionId: string) {
-    // return userService.getUserIdFromSessionId(sessionId).then(userId => this.getSoldiersByUserId(userId));
-    return this.getSoldiersByUserId(666)
+    return userService.getUserIdFromSessionId(sessionId).then(userId => this.getSoldiersByUserId(userId));
   },
 
   getMainSoldierIdBySessionId(sessionId: string) {
-    /* return userService.getUserIdFromSessionId(sessionId).then(userId => {
+    return userService.getUserIdFromSessionId(sessionId).then(userId => {
       return this.getMainSoldierIdByUserId(userId);
-    }); */
-    return this.getMainSoldierIdByUserId(666);
+    });
   },
   getSoldiersByUserId(userId: number, attributes?: string[]) {
     const opts = {
