@@ -37025,28 +37025,23 @@ APP.domTask('items', [ 'abilities', 'sidis' ], function initializeItems(done) {
 
 		backend = {
 			weapon: {
-			  url: "http://battlefield.play4free.com:3000/en/game/getWeaponsJson",
-				// url: nsConfig.weaponsJson,
+				url: nsConfig.weaponsJson,
 				key: 'weapons'
 			},
 			appearance: {
-        url: "http://battlefield.play4free.com:3000/en/game/getApparelJson",
-				// url: nsConfig.apparelJson,
+				url: nsConfig.apparelJson,
 				key: 'apparel'
 			},
 			bundle: {
-        url: "http://battlefield.play4free.com:3000/en/game/getBundlesJson",
-				// url: nsConfig.bundleJson,
+				url: nsConfig.bundleJson,
 				key: 'bundles'
 			},
 			booster: {
-        url: "http://battlefield.play4free.com:3000/en/game/getBoostersJson",
-				// url: nsConfig.boosterJson,
+				url: nsConfig.boosterJson,
 				key: 'boosters'
 			},
 			attachment: {
-        url: "http://battlefield.play4free.com:3000/en/game/getAttachmentsJson",
-				// url: nsConfig.attachmentJson,
+				url: nsConfig.attachmentJson,
 				key: 'attachments'
 			}/*,
 			upgrades: {
