@@ -674,7 +674,7 @@
         <script>
             var nsConfig = APP.ns('config');
 
-            nsConfig.debug = true;
+            nsConfig.debug = %debug%;
             nsConfig.soldierLevel = nsConfig.personaLevel = %level%;
             nsConfig.uid = "%soldierId%";
             nsConfig.persona = %personaJson%;
@@ -952,7 +952,6 @@
             } else {
                 classNames.push('is-browser');
             }
-            console.log(this.game);
             document.body.className = classNames.join(' ');
         </script>
         <script>

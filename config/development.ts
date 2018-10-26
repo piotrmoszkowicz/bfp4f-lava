@@ -23,6 +23,7 @@ export default {
   },
   lava: {
     interfaceUrl: "",
-    interfacePort: 3000
+    interfacePort: 3000,
+    debug: true
   }
 };

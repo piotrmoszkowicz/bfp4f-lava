@@ -37132,7 +37132,6 @@ APP.domTask('items', [ 'abilities', 'sidis' ], function initializeItems(done) {
 					fn(err);
 				},
 				success: function onSuccess(res) {
-					console.log("res", res);
 					if (res && res.status === 'success') {
 						fn(null, res.data);
 					} else {

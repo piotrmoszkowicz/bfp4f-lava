@@ -23,6 +23,7 @@ export default {
   },
   lava: {
     interfaceUrl: process.env.INTERFACE_URL,
-    interfacePort: process.env.INTERFACE_PORT
+    interfacePort: process.env.INTERFACE_PORT,
+    debug: process.env.INTERFACE_DEBUG
   }
 };
