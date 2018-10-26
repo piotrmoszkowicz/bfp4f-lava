@@ -9,5 +9,21 @@ export default {
     password: process.env.DATABASE_PASSWORD,
     port: process.env.DATABASE_PORT,
     user: process.env.DATABASE_USER
+  },
+  mybb: {
+    engine: process.env.MYBB_ENGINE || "mysql",
+    host: process.env.MYBB_HOST || "127.0.0.1",
+    maxConnections: process.env.MYBB_MAX_CONN || 25,
+    maxIdleTime: process.env.MYBB_MAX_IDLE_MS || 30000,
+    minConnections: process.env.MYBB_MIN_CONN || 0,
+    name: process.env.MYBB_NAME,
+    password: process.env.MYBB_PASSWORD,
+    port: process.env.MYBB_PORT,
+    user: process.env.MYBB_USER
+  },
+  lava: {
+    interfaceUrl: process.env.INTERFACE_URL,
+    interfacePort: process.env.INTERFACE_PORT,
+    debug: process.env.INTERFACE_DEBUG
   }
 };

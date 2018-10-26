@@ -1,21 +1,21 @@
-import User from "../models/user";
 import Wallet from "../models/wallet";
+
+// import userService from "./userService";
 
 import { WalletBalance } from "WalletBalance";
 
 const WalletService = {
-  getWalletBySessionId(sessionId: string) {
+  getWalletByUserId(userId: number) {
     return Wallet.findAll({
-      include: [
-        {
-          attributes: [],
-          model: User,
-          where: {
-            sessionId
-          }
-        }
-      ]
+      where: {
+        userId
+      }
     });
+  },
+
+  getWalletBySessionId(sessionId: string) {
+    // return userService.getUserIdFromSessionId(sessionId).then(userId => this.getWalletByUserId(userId));
+    return this.getWalletByUserId(666);
   },
 
   parseWallet(wallet: Wallet[]) {

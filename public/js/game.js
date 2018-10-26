@@ -37020,26 +37020,28 @@ APP.domTask('items', [ 'abilities', 'sidis' ], function initializeItems(done) {
 	var win = APP.win,
 		_ = APP._,
 		$ = APP.$,
-		
+
+    nsConfig = APP.ns('config'),
+
 		backend = {
 			weapon: {
-				url: 'http://battlefield.play4free.com:3000/en/game/getWeaponsJson',
+				url: nsConfig.weaponsJson,
 				key: 'weapons'
 			},
 			appearance: {
-				url: 'http://battlefield.play4free.com:3000/en/game/getApparelJson',
+				url: nsConfig.apparelJson,
 				key: 'apparel'
 			},
 			bundle: {
-				url: 'http://battlefield.play4free.com:3000/en/game/getBundlesJson',
+				url: nsConfig.bundleJson,
 				key: 'bundles'
 			},
 			booster: {
-				url: 'http://battlefield.play4free.com:3000/en/game/getBoostersJson',
+				url: nsConfig.boosterJson,
 				key: 'boosters'
 			},
 			attachment: {
-				url: 'http://battlefield.play4free.com:3000/en/game/getAttachmentsJson',
+				url: nsConfig.attachmentJson,
 				key: 'attachments'
 			}/*,
 			upgrades: {
@@ -37049,9 +37051,8 @@ APP.domTask('items', [ 'abilities', 'sidis' ], function initializeItems(done) {
 			}
 			*/
 		},
-		
+
 		nsItems = APP.ns('items'),
-		nsConfig = APP.ns('config'),
 		
 		
 		/**
@@ -37131,7 +37132,6 @@ APP.domTask('items', [ 'abilities', 'sidis' ], function initializeItems(done) {
 					fn(err);
 				},
 				success: function onSuccess(res) {
-					console.log("res", res);
 					if (res && res.status === 'success') {
 						fn(null, res.data);
 					} else {

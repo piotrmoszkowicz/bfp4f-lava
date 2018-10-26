@@ -1,5 +1,4 @@
 import {
-  BelongsTo,
   Column,
   DataType,
   HasMany,
@@ -9,7 +8,6 @@ import {
 } from "sequelize-typescript";
 
 import OwnedItem from "./ownedItem";
-import User from "./user";
 import Wallet from "./wallet";
 
 @Scopes({
@@ -54,8 +52,10 @@ export default class Soldier extends Model<Soldier> {
   })
   public updatedAt: string;
 
-  @BelongsTo(() => User, "user_id")
-  public user: User;
+  @Column({
+    field: "user_id"
+  })
+  public userId: number;
 
   @Column
   public online: number;
