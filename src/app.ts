@@ -1,4 +1,5 @@
 import bodyParser from "body-parser";
+import config from "config";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { NextFunction, Response } from "express";
@@ -23,7 +24,7 @@ const corsOptions = {
 };
 
 // Express configuration
-app.set("port", process.env.PORT || 3000);
+app.set("port", config.get("lava.interfacePort"));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(bodyParser.json());
