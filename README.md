@@ -8,6 +8,8 @@ Following stuff must be installed to make app working properly:
 
 * [Node.js](http://nodejs.org) version 8.11.4
 
+You can also run lava by Docker. More info [here](https://github.com/piotrmoszkowicz/bfp4f-lava/blob/master/DOCKER.md).
+
 ## Testing
 
 App is using Jest test framework. Our goal is to have 70% of code tested.
