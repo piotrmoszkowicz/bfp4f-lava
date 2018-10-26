@@ -12,15 +12,15 @@
 
 
 
-    <link rel="stylesheet" type="text/css" href="http://battlefield.play4free.com:3000/css/game.css"
+    <link rel="stylesheet" type="text/css" href="%interfaceUrl%:%interfacePort%/css/game.css"
     />
 
     <!-- <script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
 
-    <script src="http://battlefield.play4free.com:3000/js/game.js"></script>
-    <!-- <script src="http://battlefield.play4free.com:3000//en/static/game/js"></script> -->
+    <script src="%interfaceUrl%:%interfacePort%/js/game.js"></script>
+    <!-- <script src="%interfaceUrl%:%interfacePort%//en/static/game/js"></script> -->
 
-    <!--[if  IE 6]><link rel="stylesheet" type="text/css" media="screen" href="http://battlefield.play4free.com:3000/en/static/all/css/ie6" />
+    <!--[if  IE 6]><link rel="stylesheet" type="text/css" media="screen" href="%interfaceUrl%:%interfacePort%/en/static/all/css/ie6" />
 <![endif]-->
 </head>
 
@@ -46,31 +46,31 @@
 
                             <li class="selected">
                                 <a href="#panel1">
-                                    <img src="http://battlefield.play4free.com:3000/uploads/1/winter_hat_thumb.png" alt="Red Santa Hat EN"
+                                    <img src="%interfaceUrl%:%interfacePort%/uploads/1/winter_hat_thumb.png" alt="Red Santa Hat EN"
                                     />
                                 </a>
                             </li>
                             <li>
                                 <a href="#panel2">
-                                    <img src="http://battlefield.play4free.com:3000/uploads/1/winter_saintnick_thumb.png" alt="Saint Nick EN"
+                                    <img src="%interfaceUrl%:%interfacePort%/uploads/1/winter_saintnick_thumb.png" alt="Saint Nick EN"
                                     />
                                 </a>
                             </li>
                             <li>
                                 <a href="#panel3">
-                                    <img src="http://battlefield.play4free.com:3000/uploads/1/winter_combathat_thumb.png" alt="Combat Santa Hat EN"
+                                    <img src="%interfaceUrl%:%interfacePort%/uploads/1/winter_combathat_thumb.png" alt="Combat Santa Hat EN"
                                     />
                                 </a>
                             </li>
                             <li>
                                 <a href="#panel4">
-                                    <img src="http://battlefield.play4free.com:3000/uploads/1/KITS-thumb_damage.png" alt="Damage Kits en"
+                                    <img src="%interfaceUrl%:%interfacePort%/uploads/1/KITS-thumb_damage.png" alt="Damage Kits en"
                                     />
                                 </a>
                             </li>
                             <li>
                                 <a href="#panel5">
-                                    <img src="http://battlefield.play4free.com:3000/uploads/1/the_storage_thumb.png" alt="Storage Kits Corps en"
+                                    <img src="%interfaceUrl%:%interfacePort%/uploads/1/the_storage_thumb.png" alt="Storage Kits Corps en"
                                     />
                                 </a>
                             </li>
@@ -80,28 +80,28 @@
                             <div class="h1_scroll_container">
                                 <div class="panel" id="panel1">
                                     <a href="#/buy/342">
-                                        <img src="http://battlefield.play4free.com:3000/uploads/1/BFP4F-2yearCelebration-highlight_en.jpg"
+                                        <img src="%interfaceUrl%:%interfacePort%/uploads/1/BFP4F-2yearCelebration-highlight_en.jpg"
                                         />
                                     </a>
                                 </div>
                                 <div class="panel" id="panel2">
                                     <a href="#/buy/345">
-                                        <img src="http://battlefield.play4free.com:3000/uploads/1/BFP4F-thank-you-highlight_en.jpg" />
+                                        <img src="%interfaceUrl%:%interfacePort%/uploads/1/BFP4F-thank-you-highlight_en.jpg" />
                                     </a>
                                 </div>
                                 <div class="panel" id="panel3">
                                     <a href="#/buy/344">
-                                        <img src="http://battlefield.play4free.com:3000/uploads/1/weapon-acw-r_en.jpg" />
+                                        <img src="%interfaceUrl%:%interfacePort%/uploads/1/weapon-acw-r_en.jpg" />
                                     </a>
                                 </div>
                                 <div class="panel" id="panel4">
                                     <a href="#/bundles">
-                                        <img src="http://battlefield.play4free.com:3000/uploads/1/weapon-JNG-90_en.jpg" />
+                                        <img src="%interfaceUrl%:%interfacePort%/uploads/1/weapon-JNG-90_en.jpg" />
                                     </a>
                                 </div>
                                 <div class="panel" id="panel5">
                                     <a href="#/bundles">
-                                        <img src="http://battlefield.play4free.com:3000/uploads/1/weapon-M5K_en.jpg" />
+                                        <img src="%interfaceUrl%:%interfacePort%/uploads/1/weapon-M5K_en.jpg" />
                                     </a>
                                 </div>
                             </div>
@@ -174,7 +174,7 @@
                             <!-- <div class="summary-area summary-last promo-area">
                                 <div class="summary-content">
                                     <a href="#bundles/drops">
-                                        <img src="http://battlefield.play4free.com:3000/static/images/game/promo/supply-drop_homescreen.png"
+                                        <img src="%interfaceUrl%:%interfacePort%/static/images/game/promo/supply-drop_homescreen.png"
                                         />
                                     </a>
                                 </div>
@@ -203,7 +203,7 @@
                         <i class="glyphs glyphs-reset"></i>
                     </a>
                     <a id="buy_training_points" class="button-view button-view-primary" maxpoints="%maxNumberOfExtraPoints%"
-                        purchasedpoints="%numberOfTrainingPointsPurchased%" name="Extra training points" img="http://battlefield.play4free.com:3000/static/images/item-icons/icon_training-point_max.png">
+                        purchasedpoints="%numberOfTrainingPointsPurchased%" name="Extra training points" img="%interfaceUrl%:%interfacePort%/static/images/item-icons/icon_training-point_max.png">
                         <span class="buy_points">
                             Buy points
                             <div class="msg hidden">{1} You can buy one extra training point|]-Inf,+Inf[
@@ -682,7 +682,7 @@
             $.magma.jsVariables = {};
 
             var persona_name = nsConfig.personaName = "%soldierName%";
-            var home_url = 'http://battlefield.play4free.com:3000/en/game';
+            var home_url = '%interfaceUrl%:%interfacePort%/en/game';
             var icon_url = './static/images/item-icons';
             var loading_icon_url =
                 './static/modules/game/loading-newer.gif'; // TODO: Set lang prefix
@@ -700,68 +700,68 @@
             $.magma.jsVariables.loggedIn = false;
             $.magma.jsVariables.imagesLeftToLoad = 0;
             $.magma.jsVariables.imageFolder = nsConfig.imageFolder =
-                'http://battlefield.play4free.com:3000/static/images/';
+                '%interfaceUrl%:%interfacePort%/static/images/';
             $.magma.jsVariables.preloadImages = [];
-            nsConfig.staticFolder = 'http://battlefield.play4free.com:3000/static/';
+            nsConfig.staticFolder = '%interfaceUrl%:%interfacePort%/static/';
             nsConfig.soundFolder =
-                'http://battlefield.play4free.com:3000/static/sounds/';
+                '%interfaceUrl%:%interfacePort%/static/sounds/';
 
             // Get personas URL
             nsConfig.personasUrl =
-                'http://battlefield.play4free.com:3000/en/game/getSoldiers';
-            nsConfig.vipUrl = 'http://battlefield.play4free.com:3000/en/game/getVip';
+                '%interfaceUrl%:%interfacePort%/en/game/getSoldiers';
+            nsConfig.vipUrl = '%interfaceUrl%:%interfacePort%/en/game/getVip';
 
             nsConfig.updateAbilitiesUrl =
-                'http://battlefield.play4free.com:3000/en/game/abilities'; //TODO HTML as response
+                '%interfaceUrl%:%interfacePort%/en/game/abilities'; //TODO HTML as response
 
 
             var personaUrl = nsConfig.personaUrl =
-                'http://battlefield.play4free.com:3000/en/game?personaId=';
+                '%interfaceUrl%:%interfacePort%/en/game?personaId=';
             var purchase_url = nsConfig.purchaseUrl =
-                'http://battlefield.play4free.com:3000/en/game/store/buy/609452444/OFFERID';
+                '%interfaceUrl%:%interfacePort%/en/game/store/buy/609452444/OFFERID';
             var purchase_training_point_url = nsConfig.purchaseTrainingPointUrl =
-                'http://battlefield.play4free.com:3000/en/game/purchaseTrainingPoints/personaId/609452444/offerId/OFFERID';
+                '%interfaceUrl%:%interfacePort%/en/game/purchaseTrainingPoints/personaId/609452444/offerId/OFFERID';
             var purchase_ability_url = nsConfig.purchaseAbilityUrl =
-                'http://battlefield.play4free.com:3000/en/game/abilities/buy/609452444/ABILITYID'; //TODO HTML as response
+                '%interfaceUrl%:%interfacePort%/en/game/abilities/buy/609452444/ABILITYID'; //TODO HTML as response
             var reset_abilities_url = nsConfig.resetAbilitiesUrl =
-                'http://battlefield.play4free.com:3000/en/game/abilities/reset/609452444'; //TODO HTML as response
+                '%interfaceUrl%:%interfacePort%/en/game/abilities/reset/609452444'; //TODO HTML as response
             var save_equipment_url = nsConfig.saveEquipmentUrl =
-                'http://battlefield.play4free.com:3000/en/game/saveEquipmentBar/609452444';
+                '%interfaceUrl%:%interfacePort%/en/game/saveEquipmentBar/609452444';
             var save_appearance_url = nsConfig.saveAppearanceUrl =
-                'http://battlefield.play4free.com:3000/en/game/saveAppearance/609452444';
+                '%interfaceUrl%:%interfacePort%/en/game/saveAppearance/609452444';
             var save_customization_url = nsConfig.saveCustomizationUrl =
-                'http://battlefield.play4free.com:3000/en/game/saveCustomization/609452444';
+                '%interfaceUrl%:%interfacePort%/en/game/saveCustomization/609452444';
             var save_emotes_url =
-                'http://battlefield.play4free.com:3000/en/game/saveEmotes/609452444';
+                '%interfaceUrl%:%interfacePort%/en/game/saveEmotes/609452444';
             var check_wallet_url = nsConfig.walletUrl =
-                'http://battlefield.play4free.com:3000/en/game/getWalletBalance';
+                '%interfaceUrl%:%interfacePort%/en/game/getWalletBalance';
             var eor_updated_data_url = nsConfig.eorUrl =
-                'http://battlefield.play4free.com:3000/en/game/checkeorreport/609452444/';
+                '%interfaceUrl%:%interfacePort%/en/game/checkeorreport/609452444/';
             var remove_server_url = nsConfig.serverRemoveUrl =
-                'http://battlefield.play4free.com:3000/en/game/removeServerBookmark';
+                '%interfaceUrl%:%interfacePort%/en/game/removeServerBookmark';
             var add_server_url = nsConfig.serverAddUrl =
-                'http://battlefield.play4free.com:3000/en/game/addServerBookmark';
+                '%interfaceUrl%:%interfacePort%/en/game/addServerBookmark';
             var vip_updated_url = nsConfig.vipUpdatedURL =
-                'http://battlefield.play4free.com:3000/en/game/allServerVIPSeen';
+                '%interfaceUrl%:%interfacePort%/en/game/allServerVIPSeen';
             var remove_friend_url = '';
             var change_server_page_url =
-                'http://battlefield.play4free.com:3000/en/ajax/serversPage'; // not used
+                '%interfaceUrl%:%interfacePort%/en/ajax/serversPage'; // not used
             var change_friend_page_url =
-                'http://battlefield.play4free.com:3000/en/ajax/friendsPage'; //HTML as response
+                '%interfaceUrl%:%interfacePort%/en/ajax/friendsPage'; //HTML as response
             var lockbox_url = nsConfig.lockboxUrl =
-                'http://battlefield.play4free.com:3000/en/game/generateLockboxUrl';
+                '%interfaceUrl%:%interfacePort%/en/game/generateLockboxUrl';
             var buying_bundle = false;
             var bundle_items = [];
             var get_server_list_url = nsConfig.serverListUrl =
-                'http://battlefield.play4free.com:3000/en/game/getGameList';
+                '%interfaceUrl%:%interfacePort%/en/game/getGameList';
             var get_server_info_url = nsConfig.serverInfoUrl =
-                'http://battlefield.play4free.com:3000/en/game/getGameDetails';
+                '%interfaceUrl%:%interfacePort%/en/game/getGameDetails';
 
             nsConfig.getItemUrl =
-                'http://battlefield.play4free.com:3000/en/game/getItemJson/itemId/';
+                '%interfaceUrl%:%interfacePort%/en/game/getItemJson/itemId/';
 
             nsConfig.getItemByOfferUrl =
-                'http://battlefield.play4free.com:3000/en/game/getItemByOfferId/offerId/';
+                '%interfaceUrl%:%interfacePort%/en/game/getItemByOfferId/offerId/';
 
             nsConfig.gameVersion = (window.game) ? window.game.version :
                 '0.01.217848.3';
@@ -770,7 +770,17 @@
                 'http://forum.phoenixnetwork.net:88/p4f/rest/gameevents';
 
             nsConfig.insertsForumUrl =
-                'http://battlefield.play4free.com/forum/showthread.php?tid=77063';
+                '%interfaceUrl%/forum/showthread.php?tid=77063';
+
+            /* nsConfig.weaponsJson = "%interfaceUrl%:%interfacePort%/en/game/getWeaponsJson";
+
+            nsConfig.apparelJson = "%interfaceUrl%:%interfacePort%/en/game/getApparelJson";
+
+            nsConfig.bundleJson = "%interfaceUrl%:%interfacePort%/en/game/getBundlesJson";
+
+            nsConfig.boosterJson = "%interfaceUrl%:%interfacePort%/en/game/getBoostersJson";
+
+            nsConfig.attachmentJson = "%interfaceUrl%:%interfacePort%/en/game/getAttachmentsJson"; */
 
 
             /**
@@ -918,8 +928,8 @@
 
             // Pockets
             nsConfig.pockets = {
-                purchaseAndAttachUrl: 'http://battlefield.play4free.com/en/game/purchaseAndAttachPocket/ITEM_ID/POCKET/OFFER_ID/609452444', //NOT USED FOR US
-                attachUrl: 'http://battlefield.play4free.com/en/game/attachOwnedPocket/ITEM_ID/POCKET/609452444',
+                purchaseAndAttachUrl: '%interfaceUrl%/en/game/purchaseAndAttachPocket/ITEM_ID/POCKET/OFFER_ID/609452444', //NOT USED FOR US
+                attachUrl: '%interfaceUrl%/en/game/attachOwnedPocket/ITEM_ID/POCKET/609452444',
                 unlockLevels: {
                     "helmet": [0],
                     "face": [0],
@@ -1879,8 +1889,8 @@
                 <div>
                     <h2>Please Wait</h2>
                     <p>Refreshing your stats &nbsp;&nbsp;&nbsp;
-                        <img class="deferred_image" src="http://battlefield.play4free.com:3000/static/modules/game/loading-newer.gif"
-                            data-src="http://battlefield.play4free.com:3000/static/modules/game/loading-newer.gif"
+                        <img class="deferred_image" src="%interfaceUrl%:%interfacePort%/static/modules/game/loading-newer.gif"
+                            data-src="%interfaceUrl%:%interfacePort%/static/modules/game/loading-newer.gif"
                         />
                     </p>
                 </div>
