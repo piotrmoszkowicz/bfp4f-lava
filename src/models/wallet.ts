@@ -15,7 +15,7 @@ import User from "./user";
   tableName: "game_wallets"
 })
 export default class Wallet extends Model<Wallet> {
-  @BelongsTo(() => User, "userID")
+  @BelongsTo(() => User, "user_id")
   public user: User;
 
   @Column({
