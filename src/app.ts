@@ -12,6 +12,7 @@ import soldierService from "./services/soldierService";
 import Logger from "./util/logger";
 
 // Controllers (route handlers)
+import { CssRouter } from "./controllers/css";
 import { GameRouter } from "./controllers/game";
 import { HtmlRouter } from "./controllers/html";
 
@@ -31,11 +32,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 
-app.use(
-  "/css",
-  express.static(path.join(__dirname, "../", "public", "css")),
-  cors(corsOptions)
-);
+app.use("/css", CssRouter, cors(corsOptions));
 app.use(
   "/js",
   express.static(path.join(__dirname, "../", "public", "js")),
