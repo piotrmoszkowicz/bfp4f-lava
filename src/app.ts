@@ -60,14 +60,14 @@ app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
     });
     return;
   }
-  req.sessionId = req.cookies.magma;
+  req.sessionId = req.cookies.magma.substring(0, req.cookies.magma.length - 16);
 
   return next();
 });
 
 app.use(
   expressSession({
-    genid: req => req.cookies.magma,
+    genid: req => req.cookies.magma.substring(0, req.cookies.magma.length - 16),
     secret: "zjskhdfg*&^%6521ya"
   })
 );
