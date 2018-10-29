@@ -35,8 +35,8 @@ const ServerService = {
             bookmarked: false, // TODO: Add bookmark functionality
             currentMap: maplist[server.currentMap].split(":")[0],
             currentGameMode: maplist[server.currentMap].split(":")[1],
-            nextMap: maplist[server.currentMap + 1].split(":")[0], // TODO: Fix when array length exceeds
-            nextGameMode: maplist[server.currentMap + 1].split(":")[1] // TODO: Same as above
+            nextMap: (server.currentMap + 1) > maplist.length ? maplist[server.currentMap + 1].split(":")[0] : maplist[0].split(":")[0], // TODO: Fix when array length exceeds
+            nextGameMode: (server.currentMap + 1) > maplist.length ? maplist[server.currentMap + 1].split(":")[1] : maplist[0].split(":")[1] // TODO: Same as above
           }
         };
         return {
