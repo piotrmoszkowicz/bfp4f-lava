@@ -11,7 +11,6 @@ export const getGameList = async (
 ): Promise<Response> => {
   try {
     const serverlist = await ServerService.getAllServers();
-    Logger.info(serverlist);
     return res.json({
       result: "success",
       status: "success",
