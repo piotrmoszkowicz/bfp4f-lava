@@ -2,7 +2,7 @@ FROM node:8
 WORKDIR /bfp4f-lava
 COPY . /bfp4f-lava
 
-RUN npm install
+RUN npm install --unsafe-perm
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
