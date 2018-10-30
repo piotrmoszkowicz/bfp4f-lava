@@ -1,11 +1,11 @@
-type WalletBalance = {
+interface WalletBalance {
   _PF: number;
   _AC: number;
-};
+}
 
-type WalletBalanceResponse = {
+interface WalletBalanceResponse {
   data?: WalletBalance;
   status: string;
-};
+}
 
 export { WalletBalance, WalletBalanceResponse };

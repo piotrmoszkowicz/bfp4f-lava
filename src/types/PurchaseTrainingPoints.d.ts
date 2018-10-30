@@ -1,4 +1,4 @@
-type PurchaseTrainingPoints = {
+interface PurchaseTrainingPoints {
   result: string;
   status: string;
   data: {
@@ -6,6 +6,8 @@ type PurchaseTrainingPoints = {
     funds: number;
     purchasedPoints: number;
     trainingPoints: number;
-    offers: any;
+    offers: any[];
   };
-};
+}
+
+export { PurchaseTrainingPoints }

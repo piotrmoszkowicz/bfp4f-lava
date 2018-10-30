@@ -1,4 +1,4 @@
-type ConfigType = {
+interface ConfigType {
   engine: string;
   host: string;
   maxIdleTime: number;
@@ -8,6 +8,6 @@ type ConfigType = {
   password: string;
   port: number;
   user: string;
-};
+}
 
 export default ConfigType;

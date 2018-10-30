@@ -1,4 +1,4 @@
-type GameListJson = {
+interface GameListJson {
   gameId: string;
   persistentId: string;
   name: string;
@@ -22,14 +22,14 @@ type GameListJson = {
   currentGameMode: string;
   nextMap: string;
   nextGameMode: string;
-};
+}
 
-type GameListJsonResponse = {
+interface GameListJsonResponse {
   result: string;
   status: string;
   data: {
     [key: string]: GameListJson;
   };
-};
+}
 
 export { GameListJson, GameListJsonResponse };
