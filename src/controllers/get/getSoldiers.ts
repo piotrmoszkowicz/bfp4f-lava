@@ -1,5 +1,6 @@
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
+import { SoldierJson, SoldiersJsonResponse } from "SoldiersJson";
 
 import SoldierService from "../../services/soldierService";
 
@@ -27,9 +28,9 @@ export const getSoldiers = async (
           level: soldier.level,
           levelUpProgression: 0, // TODO: Add level progression
           levelDescription: "Asdf" // TODO: Add level descriptions
-        }))
+        }) as SoldierJson)
       }
-    });
+    } as SoldiersJsonResponse);
   } catch (err) {
     Logger.error("Error in /getSoldiers", err);
     return res.json({

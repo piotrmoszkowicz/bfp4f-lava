@@ -1,3 +1,4 @@
+import { AttachmentJsonResponse } from "AttachmentJson";
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
 
@@ -15,7 +16,7 @@ export const getAttachmentsJson = async (
         status: "SUCCESS",
         attachments: []
       }
-    });
+    } as AttachmentJsonResponse);
   } catch (err) {
     Logger.error("Error in /getAttachmentsJson", err);
     return res.json({

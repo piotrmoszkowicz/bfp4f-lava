@@ -1,5 +1,6 @@
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
+import { GameEventsJsonResponse } from "GameEventsJson";
 
 import Logger from "../../util/logger";
 
@@ -15,7 +16,7 @@ export const getGameEvents = async (
         status: "SUCCESS",
         unlockInfo: []
       }
-    });
+    } as GameEventsJsonResponse);
   } catch (err) {
     Logger.error("Error in /getGameEvents", err);
     return res.json({

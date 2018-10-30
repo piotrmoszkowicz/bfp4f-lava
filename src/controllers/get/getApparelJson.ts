@@ -42,8 +42,6 @@ export const getApparelJson = async (
 
           const isLocked = apparel.lockCriteria > hero.level;
 
-          Logger.info(apparel.offers);
-
           return {
             id: apparel.id,
             type: apparel.type,

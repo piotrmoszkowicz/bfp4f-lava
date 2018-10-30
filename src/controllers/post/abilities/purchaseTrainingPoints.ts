@@ -1,5 +1,6 @@
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
+import { PurchaseTrainingPoints } from "PurchaseTrainingPoints";
 import Wallet from "wallet";
 import WalletService from "../../../services/walletService";
 
@@ -39,7 +40,7 @@ export const purchaseTrainingPoints = async (
         trainingPoints: 0,
         offers: []
       }
-    });
+    } as PurchaseTrainingPoints);
   } catch (err) {
     Logger.error("Error in /abilities/purchaseTrainingPoints", err);
     return res.json({

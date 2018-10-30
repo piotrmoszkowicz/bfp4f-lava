@@ -1,5 +1,6 @@
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
+import { GameListJsonResponse } from "GameListJson";
 
 import ServerService from "../../services/serverService";
 
@@ -15,7 +16,7 @@ export const getGameList = async (
       result: "success",
       status: "success",
       data: ServerService.parseServersForResponse(serverlist)
-    });
+    } as GameListJsonResponse);
   } catch (err) {
     Logger.error("Error in /getGameList", err);
     return res.json({
