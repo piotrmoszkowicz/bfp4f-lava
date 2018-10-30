@@ -1,4 +1,4 @@
-type WeaponsJson = {
+interface WeaponsJson {
   id: number;
   type: ItemType;
   name: string;
@@ -22,15 +22,15 @@ type WeaponsJson = {
   lockCriteria: number;
   stats: any;
   attachments: any[];
-};
+}
 
-type WeaponsJsonResponse = {
+interface WeaponsJsonResponse {
   result: string;
   status: string;
   data: {
     status: string;
     weapons: WeaponsJson[];
   };
-};
+}
 
 export { WeaponsJson, WeaponsJsonResponse };

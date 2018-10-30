@@ -1,3 +1,4 @@
+import { BundlesJsonResponse } from "BundlesJson";
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
 
@@ -15,7 +16,7 @@ export const getBundlesJson = async (
         status: "SUCCESS",
         bundles: []
       }
-    });
+    } as BundlesJsonResponse);
   } catch (err) {
     Logger.error("Error in /getBundlesJson", err);
     return res.json({

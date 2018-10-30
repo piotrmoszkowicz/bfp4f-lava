@@ -1,3 +1,4 @@
+import { BuyJsonResponse } from "BuyJson";
 import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
 import Wallet from "wallet";
@@ -37,7 +38,7 @@ export const postStoreBuy = async (
         funds: finalWallet._PF,
         items: []
       }
-    });
+    } as BuyJsonResponse);
   } catch (err) {
     Logger.error("Error in /store/buy", err);
     return res.json({

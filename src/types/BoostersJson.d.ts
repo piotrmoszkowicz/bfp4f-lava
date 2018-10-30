@@ -1,4 +1,4 @@
-type BoostersJson = {
+interface BoostersJson {
   id: number;
   type: ItemType;
   name: string;
@@ -18,15 +18,15 @@ type BoostersJson = {
   prices: any[];
   promotionType: string | null;
   isLocked: boolean;
-};
+}
 
-type BoostersJsonResponse = {
+interface BoostersJsonResponse {
   result: string;
   status: string;
   data: {
     status: string;
     boosters: BoostersJson[];
   };
-};
+}
 
 export { BoostersJson, BoostersJsonResponse };

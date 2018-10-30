@@ -5,7 +5,6 @@
   ],
   "rules": {
     "no-implicit-dependencies": false,
-    "interface-over-type-literal": false,
     "interface-name": [false],
     "object-literal-sort-keys": false,
     "no-object-literal-type-assertion": false

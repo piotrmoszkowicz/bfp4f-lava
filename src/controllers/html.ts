@@ -81,7 +81,9 @@ router.get(
         levelDescription: "Warrant Officer Silver" // TODO: Add level titles
       };
 
-      const firebugLink = debug ? "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" : "";
+      const firebugLink = debug
+        ? "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>"
+        : "";
 
       const html = (await readFileAsync(
         path.join(__dirname + "../../../html/index.html")

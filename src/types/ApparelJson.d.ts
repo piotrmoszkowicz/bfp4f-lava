@@ -1,4 +1,4 @@
-type ApparelJson = {
+interface ApparelJson {
   id: number;
   type: ItemType;
   name: string;
@@ -24,15 +24,15 @@ type ApparelJson = {
   minNumPockets: number;
   maxNumPockets: number;
   upgrades: any[];
-};
+}
 
-type ApparelJsonResponse = {
+interface ApparelJsonResponse {
   result: string;
   status: string;
   data: {
     status: string;
     apparel: ApparelJson[];
   };
-};
+}
 
 export { ApparelJson, ApparelJsonResponse };
