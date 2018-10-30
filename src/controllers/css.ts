@@ -12,21 +12,24 @@ import { RequestBFP4F } from "ExpressOverride";
 
 const router: Router = Router();
 
-router.get("/game.css", async (req: RequestBFP4F, res: Response): Promise<any> => {
-  try {
-    const { interfaceUrl, interfacePort } = config.get("lava");
+router.get(
+  "/game.css",
+  async (req: RequestBFP4F, res: Response): Promise<any> => {
+    try {
+      const { interfaceUrl, interfacePort } = config.get("lava");
 
-    const css = (await readFileAsync(
-      path.join(__dirname + "../../../css/game.css")
-    ))
-      .toString()
-      .replace(/%interfaceUrl%/g, interfaceUrl)
-      .replace(/%interfacePort%/g, interfacePort.toString());
+      const css = (await readFileAsync(
+        path.join(__dirname + "../../../css/game.css")
+      ))
+        .toString()
+        .replace(/%interfaceUrl%/g, interfaceUrl)
+        .replace(/%interfacePort%/g, interfacePort.toString());
 
-    return res.type("css").send(css);
-  } catch (err) {
-    Logger.error(err);
+      return res.type("css").send(css);
+    } catch (err) {
+      Logger.error(err);
+    }
   }
-});
+);
 
 export const CssRouter: Router = router;

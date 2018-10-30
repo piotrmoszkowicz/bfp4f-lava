@@ -16,7 +16,7 @@ interface SoldiersJsonResponse {
   result: string;
   status: string;
   data: {
-    personas: SoldierJson[]
+    personas: SoldierJson[];
   };
 }
 

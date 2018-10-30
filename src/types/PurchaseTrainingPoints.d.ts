@@ -10,4 +10,4 @@ interface PurchaseTrainingPoints {
   };
 }
 
-export { PurchaseTrainingPoints }
+export { PurchaseTrainingPoints };
