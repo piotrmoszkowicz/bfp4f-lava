@@ -1,3 +1,4 @@
+import { ServerJson } from "Server";
 import Server from "../models/server";
 
 const ServerService = {
@@ -38,11 +39,11 @@ const ServerService = {
             nextMap:
               server.currentMap + 1 > maplist.length
                 ? maplist[server.currentMap + 1].split(":")[0]
-                : maplist[0].split(":")[0], // TODO: Fix when array length exceeds
+                : maplist[0].split(":")[0],
             nextGameMode:
               server.currentMap + 1 > maplist.length
                 ? maplist[server.currentMap + 1].split(":")[1]
-                : maplist[0].split(":")[1] // TODO: Same as above
+                : maplist[0].split(":")[1]
           }
         };
         return {
