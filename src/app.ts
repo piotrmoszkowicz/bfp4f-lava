@@ -1,5 +1,6 @@
 import bodyParser from "body-parser";
 import config from "config";
+import connectSessionSequelize from "connect-session-sequelize";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { NextFunction, Response } from "express";
@@ -8,6 +9,7 @@ import expressValidator from "express-validator";
 import { RequestBFP4F } from "ExpressOverride";
 import path from "path";
 
+import database from "./database";
 import soldierService from "./services/soldierService";
 import Logger from "./util/logger";
 
@@ -23,6 +25,8 @@ const corsOptions = {
   credentials: true,
   origin: true
 };
+
+const SequelizeStore = connectSessionSequelize(expressSession.Store);
 
 // Express configuration
 app.set("port", config.get("lava.interfacePort"));
@@ -65,7 +69,10 @@ app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
 app.use(
   expressSession({
     genid: req => req.cookies.magma.substring(0, req.cookies.magma.length - 16),
-    secret: "zjskhdfg*&^%6521ya"
+    secret: "zjskhdfg*&^%6521ya",
+    store: new SequelizeStore({
+      db: database
+    })
   })
 );
 
