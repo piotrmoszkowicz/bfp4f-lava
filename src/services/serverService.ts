@@ -31,6 +31,7 @@ const ServerService = {
             ip: server.ip,
             levelAvg: 0,
             levelSdv: 0,
+            wtf: true,
             online: server.online,
             isVIP: false, // TODO: Add VIP functionality
             bookmarked: false, // TODO: Add bookmark functionality
