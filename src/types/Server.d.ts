@@ -22,7 +22,7 @@ interface ServerJson {
     currentGameMode: string;
     nextMap: string;
     nextGameMode: string;
-  }
+  };
 }
 
 export { ServerJson };
