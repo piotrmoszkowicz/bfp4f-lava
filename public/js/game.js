@@ -23648,7 +23648,7 @@ APP.task('config', function taskConfig(done) {
 	
 	// Do we have the game dependency?
 	// ERROR NOMMO
-  isScaled = APP.$main.width() === 800;
+  isScaled = window.innerWidth === 800;
 	// isScaled = parseInt(JSON.parse(APP.api.general.getWindowSize()).width, 10) === 800;
 	
 	nsConfig.isScaled = isScaled;
@@ -46240,7 +46240,7 @@ function isGameRunningIn800() {
 		windowSize = (generalAPI && JSON.parse(generalAPI.getWindowSize()));
     
 		return windowSize && (parseInt(windowSize.width, 10) === 800);*/
-		return win.APP.$main.width() === 800;
+		return window.innerWidth === 800;
 }
 
 /**
