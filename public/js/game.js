@@ -23648,8 +23648,7 @@ APP.task('config', function taskConfig(done) {
 	
 	// Do we have the game dependency?
 	// ERROR NOMMO
-	//isScaled = parseInt(JSON.parse(APP.api.general.getWindowSize()).width, 10) === 800;
-	isScaled = false;
+	isScaled = parseInt(JSON.parse(APP.api.general.getWindowSize()).width, 10) === 800;
 	
 	nsConfig.isScaled = isScaled;
 	nsConfig.maxWidth = APP.$main.width();
@@ -46236,7 +46235,6 @@ function fixTooltipBackgroundIn800() {
 function isGameRunningIn800() {
 		//EDITED BY NOMMO
 		// Get window size
-		return false;
     var generalAPI = (window.APP && window.APP.api && window.APP.api.general) || window.general,
 		windowSize = (generalAPI && JSON.parse(generalAPI.getWindowSize()));
     
