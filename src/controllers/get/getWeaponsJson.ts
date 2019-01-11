@@ -12,8 +12,8 @@ export const getWeaponsJson = async (
   res: Response
 ): Promise<Response> => {
   try {
-    const weapons = await ItemService.getOwnedItemsBySessionId(
-      req.sessionId,
+    const weapons = await ItemService.getOwnedItemsBySoldierId(
+      req.session.soldierId,
       "weapons"
     );
 
