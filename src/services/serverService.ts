@@ -2,6 +2,9 @@ import { ServerJson } from "Server";
 import Server from "../models/server";
 
 const ServerService = {
+  /**
+   * Function which grabs all online server from DB
+   */
   getAllServers() {
     return Server.findAll({
       where: {
@@ -10,6 +13,10 @@ const ServerService = {
     });
   },
 
+  /**
+   * Function, which parses server for interface
+   * @param servers     - JSON of servers
+   */
   parseServersForResponse(servers) {
     return servers.reduce(
       (serverlist, server) => {
