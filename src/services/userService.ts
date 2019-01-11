@@ -3,6 +3,10 @@ import mybbDatabase from "../mybb";
 import Logger from "../util/logger";
 
 const userService = {
+  /**
+   * Gets MyBB UserID by sessionId
+   * @param sessionId       - SessionID
+   */
   getUserIdFromSessionId(sessionId: string) {
     return mybbDatabase
       .query(

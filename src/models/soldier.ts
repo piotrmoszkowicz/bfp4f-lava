@@ -77,6 +77,6 @@ export default class Soldier extends Model<Soldier> {
   @Column
   public isMain: boolean;
 
-  @HasMany(() => OwnedItem)
+  @HasMany(() => OwnedItem, "ownerId")
   public items: OwnedItem[];
 }

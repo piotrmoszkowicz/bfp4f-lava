@@ -12,8 +12,8 @@ export const getBoostersJson = async (
   res: Response
 ): Promise<Response> => {
   try {
-    const boosters = await ItemService.getOwnedItemsBySessionId(
-      req.sessionId,
+    const boosters = await ItemService.getOwnedItemsBySoldierId(
+      req.session.soldierId,
       "boosters"
     );
 

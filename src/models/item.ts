@@ -74,9 +74,9 @@ export default class Item extends Model<Item> {
   })
   public lockCriteria: number;
 
-  @HasOne(() => OwnedItem)
+  @HasOne(() => OwnedItem, "itemId")
   public ownerData: OwnedItem;
 
-  @HasMany(() => Offer)
+  @HasMany(() => Offer, "id")
   public offers: Offer[];
 }
