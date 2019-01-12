@@ -9,7 +9,7 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: "debug.log", level: "debug" }),
     new Sentry({
       level: "warn",
-      dns: "https://20ceb3e80a8e493285dd44def5376748@sentry.io/1366619",
+      dsn: "https://20ceb3e80a8e493285dd44def5376748@sentry.io/1366619",
       patchGlobal: true
     })
   ]
