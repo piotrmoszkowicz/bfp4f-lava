@@ -72,7 +72,9 @@ app.use(
     secret: "zjskhdfg*&^%6521ya",
     store: new SequelizeStore({
       db: database
-    })
+    }),
+    resave: true,
+    saveUninitialized: true
   })
 );
 
