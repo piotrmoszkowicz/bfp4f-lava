@@ -1,6 +1,6 @@
 ## Contribution guide
 
-All tasks MUST be first placed into Pivotaltracker - if you don't have access there contact NommoPL.
+All tasks MUST be first placed into JIRA - if you don't have access there contact NommoPL.
 
 ## Main rules
 * No committing into master
@@ -9,11 +9,11 @@ All tasks MUST be first placed into Pivotaltracker - if you don't have access th
 ## Naming rules
 Branch should be named in following pattern:
 
-``PIVOTAL-NR_Short_Desc``
+``JIRA-NR_Short_Desc``
 
 Pull request should be named:
 
-``[PIVOTAL-NR] Human readable name``
+``[JIRA-NR] Human readable name``
 
 Every pull request needs to pass check by Travis!
 
