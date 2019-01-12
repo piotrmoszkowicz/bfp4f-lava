@@ -26021,28 +26021,26 @@ APP.task('preload', [ 'config', 'weapons' ], function taskPreload(done) {
 	APP.log.time('pre-compose weapon images: ' + weapons.length);
 	weapons.invoke('composeImage', 'med', compostedWeaponImages);
 	weapons.invoke('composeImage', 'min', compostedWeaponImages);
+
+  images.push(basePath + 'game/bg.jpg');
+  images.push(basePath + 'game/containers/column_box.jpg');
+  images.push(basePath + 'game/containers/column_box_large.jpg');
+  images.push(basePath + 'game/progress_bar-dark.png');
+  images.push(basePath + 'game/progress_bar-empty.png');
+  images.push(basePath + 'game/soldierlist-bg.jpg');
+  images.push(basePath + 'game/checkbox-icon.png');
+  images.push(basePath + 'game/maps/karkand.jpg');
+  images.push(basePath + 'game/maps/oman.jpg');
+  images.push(basePath + 'game/maps/sharqi.jpg');
+  images.push(basePath + 'game/maps/basra.jpg');
+  images.push(basePath + 'game/maps/dragonvalley.jpg');
+  images.push(basePath + 'game/maps/dalianplant.jpg');
 	
-	// MISSING FILES
-	//images.push(basePath + 'game/bg.jpg');
-  //  images.push(basePath + 'game/containers/column_box.jpg');
-  //  images.push(basePath + 'game/containers/column_box_large.jpg');
-  //  images.push(basePath + 'game/progress_bar-dark.png');
-  //  images.push(basePath + 'game/progress_bar-empty.png');
-  //  images.push(basePath + 'game/soldierlist-bg.jpg');
-	//images.push(basePath + 'game/checkbox-icon.png');
-	
-    images.push(basePath + 'game/maps/karkand.jpg');
-    images.push(basePath + 'game/maps/oman.jpg');
-    images.push(basePath + 'game/maps/sharqi.jpg');
-    images.push(basePath + 'game/maps/basra.jpg');
-    images.push(basePath + 'game/maps/dragonvalley.jpg');
-    images.push(basePath + 'game/maps/dalianplant.jpg');
-	
-    //images.push(basePath + 'game/table-header.gif');
-    //images.push(basePath + 'game/sort-arrows.png');
-    //images.push(basePath + 'game/headers-selected.jpg');
-    //images.push(basePath + 'game/headers-selected_grey.png');
-    //images.push(basePath + 'game/serverbrowser-icons.png');
+  images.push(basePath + 'game/table-header.gif');
+  images.push(basePath + 'game/sort-arrows.png');
+  images.push(basePath + 'game/headers-selected.jpg');
+  images.push(basePath + 'game/headers-selected_grey.png');
+  images.push(basePath + 'game/serverbrowser-icons.png');
 	
 	images.push(basePath + 'game/bg-noise-620px.jpg');
 	images.push(basePath + 'game/bg-noise-darker-620px.jpg');
@@ -26051,9 +26049,9 @@ APP.task('preload', [ 'config', 'weapons' ], function taskPreload(done) {
 	images.push(basePath + 'game/attachment-label-sprite.png');
 	
 	images.push(basePath + 'item-icons/items-ability.png');
-	//images.push(basePath + 'item-icons/items-min.png');
-	//images.push(basePath + 'item-icons/items-upgrade-min.png');
-	//images.push(basePath + 'item-icons/items-upgrade-med.png');
+	images.push(basePath + 'item-icons/items-min.png');
+	images.push(basePath + 'item-icons/items-upgrade-min.png');
+	images.push(basePath + 'item-icons/items-upgrade-med.png');
     
     images.push(basePath + 'game/credits-25.png');
     images.push(basePath + 'game/funds-25.png');
@@ -26063,18 +26061,18 @@ APP.task('preload', [ 'config', 'weapons' ], function taskPreload(done) {
     images.push(basePath + 'class-icons/assault.png');
     images.push(basePath + 'class-icons/recon.png');
 	
-    //images.push(basePath + 'game/abilities-bg.jpg');
-    //images.push(basePath + 'game/buy-mock.png');
+    images.push(basePath + 'game/abilities-bg.jpg');
+    images.push(basePath + 'game/buy-mock.png');
     
-	//images.push(basePath + 'game/game-menu.jpg');
-    //images.push(basePath + 'game/menu-arrow.png');    
-    //images.push(basePath + 'game/play-arrow.png');
-    //images.push(basePath + 'game/header-arrow.png');
-    //images.push(basePath + 'game/icon-bg.png');    
-    //images.push(basePath + 'game/item-hover.jpg');
-    //images.push(basePath + 'game/headers.jpg');
-    //images.push(basePath + 'game/headers-selected.jpg');
-    //images.push(basePath + 'game/tiled-background-large.jpg');
+	images.push(basePath + 'game/game-menu.jpg');
+	images.push(basePath + 'game/menu-arrow.png');
+	images.push(basePath + 'game/play-arrow.png');
+	images.push(basePath + 'game/header-arrow.png');
+	images.push(basePath + 'game/icon-bg.png');
+	images.push(basePath + 'game/item-hover.jpg');
+	images.push(basePath + 'game/headers.jpg');
+	images.push(basePath + 'game/headers-selected.jpg');
+	images.push(basePath + 'game/tiled-background-large.jpg');
     
     // EOR
 	images.push(basePath + 'game/map-default.jpg');
@@ -26087,7 +26085,7 @@ APP.task('preload', [ 'config', 'weapons' ], function taskPreload(done) {
     images.push(basePath + 'game/map-sharqi-defeat.jpg');
 	*/
 	images.push(basePath + 'game/store_sprites.png'); 
-    //images.push(basePath + 'game/store_warnings.png');
+    images.push(basePath + 'game/store_warnings.png');
 	
     images.push(basePath + 'game/customization-case.png');
     images.push(basePath + 'game/customization-icon-sprite.png');
@@ -26102,7 +26100,7 @@ APP.task('preload', [ 'config', 'weapons' ], function taskPreload(done) {
 	images.push(basePath + 'game/dialog-icons/reset.jpg');
 	
 	
-	//images.push(basePath + 'game/pockets-sprite.png');
+	images.push(basePath + 'game/pockets-sprite.png');
 	
 	if (!win.doll) {
 		images.push(basePath + 'game/bf-doll.png');
