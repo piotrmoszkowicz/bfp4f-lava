@@ -3,7 +3,6 @@ import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
 
 import ItemService from "../../services/itemService";
-import SoldierService from "../../services/soldierService";
 
 import Logger from "../../util/logger";
 
@@ -13,13 +12,9 @@ export const getBoostersJson = async (
 ): Promise<Response> => {
   try {
     const boosters = await ItemService.getOwnedItemsBySoldierId(
-      req.session.soldierId,
-      "boosters"
+      req.session.soldier.id,
+      ["boosters"]
     );
-
-    const hero = await SoldierService.getSoldierByID(req.session.soldierId, [
-      "level"
-    ]);
 
     return res.json({
       result: "success",
@@ -40,7 +35,7 @@ export const getBoostersJson = async (
             buyable = booster.buyable && expired;
           }
 
-          const isLocked = booster.lockCriteria > hero.level;
+          const isLocked = booster.lockCriteria > req.session.soldier.level;
 
           Logger.info(booster.offers);
 

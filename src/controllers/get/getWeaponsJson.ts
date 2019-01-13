@@ -3,7 +3,6 @@ import { RequestBFP4F } from "ExpressOverride";
 import { WeaponsJson, WeaponsJsonResponse } from "WeaponsJson";
 
 import ItemService from "../../services/itemService";
-import SoldierService from "../../services/soldierService";
 
 import Logger from "../../util/logger";
 
@@ -13,13 +12,9 @@ export const getWeaponsJson = async (
 ): Promise<Response> => {
   try {
     const weapons = await ItemService.getOwnedItemsBySoldierId(
-      req.session.soldierId,
-      "weapons"
+      req.session.soldier.id,
+      ["abilities", "weapons"]
     );
-
-    const hero = await SoldierService.getSoldierByID(req.session.soldierId, [
-      "level"
-    ]);
 
     return res.json({
       result: "success",
@@ -40,7 +35,7 @@ export const getWeaponsJson = async (
             buyable = weapon.buyable && expired;
           }
 
-          const isLocked = expired ? weapon.lockCriteria > hero.level : false;
+          const isLocked = expired ? weapon.lockCriteria > req.session.soldier.level : false;
 
           return {
             id: weapon.id,
