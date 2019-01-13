@@ -6,7 +6,6 @@ import path from "path";
 
 const readFileAsync = Bluebird.promisify(readFile);
 
-import SoldierService from "../services/soldierService";
 import WalletService from "../services/walletService";
 import Logger from "../util/logger";
 
@@ -18,10 +17,6 @@ router.get(
   "/",
   async (req: RequestBFP4F, res: Response): Promise<any> => {
     try {
-      const soldierStats = await SoldierService.getSoldierByID(
-        req.session.soldierId,
-        ["id", "kit", "level", "soldierName", "xp"]
-      );
       const wallet = WalletService.parseWallet(
         await WalletService.getWalletBySessionId(req.sessionId)
       );
@@ -67,16 +62,16 @@ router.get(
       ];
 
       const personaJson = {
-        id: soldierStats.id,
-        name: soldierStats.soldierName,
-        kit: soldierStats.kit,
-        xp: soldierStats.xp,
+        id: req.session.soldier.id,
+        name: req.session.soldier.soldierName,
+        kit: req.session.soldier.kit,
+        xp: req.session.soldier.xp,
         xpForNextLevel: 800, // TODO: Add xpForNextLevel
         lastAuthenticated: lastAuthed.toString(), // TODO: Fix lastAuthed
         mugShot:
           "http://battlefield.play4free.com:3000/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
-        isMaxLevel: soldierStats.level === 30,
-        level: soldierStats.level,
+        isMaxLevel: req.session.soldier.level === 30,
+        level: req.session.soldier.level,
         levelUpProgression: 0, // TODO: Add level progression
         levelDescription: "Warrant Officer Silver" // TODO: Add level titles
       };
@@ -93,9 +88,9 @@ router.get(
         .replace(/%firebug%/g, firebugLink)
         .replace(/%interfaceUrl%/g, interfaceUrl)
         .replace(/%interfacePort%/g, interfacePort.toString())
-        .replace(/%soldierId%/g, soldierStats.id.toString())
-        .replace(/%soldierName%/g, soldierStats.soldierName)
-        .replace(/%level%/g, soldierStats.level.toString())
+        .replace(/%soldierId%/g, req.session.soldier.id.toString())
+        .replace(/%soldierName%/g, req.session.soldier.soldierName)
+        .replace(/%level%/g, req.session.soldier.level.toString())
         .replace(/%funds%/g, wallet._PF.toString())
         .replace(/%credits%/g, wallet._AC.toString())
         .replace(/%lastAuthed%/g, lastAuthed.toString())
