@@ -18,7 +18,7 @@ export const saveEquipment = async (
   const newEquipmentBar = JSON.parse(req.body.equipment) || [];
 
   try {
-    await ItemService.equipWholeBar(req.session.soldierId, newEquipmentBar);
+    await ItemService.equipWholeBar(req.session.soldier.id, newEquipmentBar);
     return res.json({
       status: "success"
     });
