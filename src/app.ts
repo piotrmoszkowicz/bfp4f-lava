@@ -79,11 +79,12 @@ app.use(
 );
 
 app.use(async (req: RequestBFP4F, res: Response, next: NextFunction) => {
-  if (!req.session.soldierId) {
+  if (!req.session.soldier) {
+    // TODO: Think about re-getting soldier session (level may change)
     try {
-      req.session.soldierId = (await soldierService.getMainSoldierIdBySessionId(
+      req.session.soldier = await soldierService.getMainSoldierIdBySessionId(
         req.sessionId
-      )).id;
+      );
     } catch (err) {
       Logger.error("Error during getting main soldier", err);
       return res.status(401).send("Oh uh, something went wrong");

@@ -8,23 +8,26 @@ const ItemService = {
   /**
    * Functions which grabs all items that certain soldier owns
    * @param soldierId     - ID of Soldier
-   * @param type          - Type of items
+   * @param types          - Type of items
    */
-  getOwnedItemsBySoldierId(soldierId: number, type: string) {
+  getOwnedItemsBySoldierId(soldierId: number, types: string[]) {
     return Item.findAll({
       include: [
         {
           model: OwnedItem,
           where: {
             ownerId: soldierId
-          }
+          },
+          required: false
         },
         {
           model: Offer
         }
       ],
       where: {
-        type
+        [Sequelize.Op.or]: types.map(tp => ({
+          type: tp
+        }))
       }
     });
   },

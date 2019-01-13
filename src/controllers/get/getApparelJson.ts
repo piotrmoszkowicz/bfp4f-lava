@@ -3,7 +3,6 @@ import { Response } from "express";
 import { RequestBFP4F } from "ExpressOverride";
 
 import ItemService from "../../services/itemService";
-import SoldierService from "../../services/soldierService";
 
 import Logger from "../../util/logger";
 
@@ -13,13 +12,9 @@ export const getApparelJson = async (
 ): Promise<Response> => {
   try {
     const apparels = await ItemService.getOwnedItemsBySoldierId(
-      req.session.soldierId,
-      "appearance"
+      req.session.soldier.id,
+      ["appearance"]
     );
-
-    const hero = await SoldierService.getSoldierByID(req.session.soldierId, [
-      "level"
-    ]);
 
     return res.json({
       result: "success",
@@ -40,7 +35,7 @@ export const getApparelJson = async (
             buyable = apparel.buyable && expired;
           }
 
-          const isLocked = apparel.lockCriteria > hero.level;
+          const isLocked = apparel.lockCriteria > req.session.soldier.level;
 
           return {
             id: apparel.id,
