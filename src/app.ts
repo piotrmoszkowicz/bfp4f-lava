@@ -80,6 +80,7 @@ app.use(
 
 app.use(async (req: RequestBFP4F, res: Response, next: NextFunction) => {
   if (!req.session.soldier) {
+    // TODO: Think about re-getting soldier session (level may change)
     try {
       req.session.soldier = await soldierService.getMainSoldierIdBySessionId(
         req.sessionId
