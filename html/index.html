@@ -959,7 +959,7 @@
                     nsGame = APP.ns('game'),
                     nsConfig = APP.ns('config');
 
-                nsGame.personas = new APP.Collection.Personas([%personaJson%]);
+                nsGame.personas = new APP.Collection.Personas(%personasJson%);
                 nsGame.personas.current = nsGame.personas.get(nsConfig.persona
                     .id);
             }(this));
