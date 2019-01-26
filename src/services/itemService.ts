@@ -8,9 +8,14 @@ const ItemService = {
   /**
    * Functions which grabs all items that certain soldier owns
    * @param soldierId     - ID of Soldier
-   * @param types          - Type of items
+   * @param types         - Type of items
+   * @param kitId         - Kit of Soldier
    */
-  getOwnedItemsBySoldierId(soldierId: number, types: string[]) {
+  getOwnedItemsBySoldierId(soldierId: number, types: string[], kitId?: number) {
+    const kitParams = [-1];
+    if (kitId) {
+      kitParams.push(kitId);
+    }
     return Item.findAll({
       include: [
         {
@@ -25,9 +30,12 @@ const ItemService = {
         }
       ],
       where: {
-        [Sequelize.Op.or]: types.map(tp => ({
-          type: tp
-        }))
+        type: {
+          [Sequelize.Op.or]: types
+        },
+        kit: {
+          [Sequelize.Op.or]: kitParams
+        }
       }
     });
   },
