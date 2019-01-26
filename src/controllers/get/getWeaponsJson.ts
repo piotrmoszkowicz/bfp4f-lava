@@ -13,7 +13,8 @@ export const getWeaponsJson = async (
   try {
     const weapons = await ItemService.getOwnedItemsBySoldierId(
       req.session.soldier.id,
-      ["abilities", "weapons"]
+      ["abilities", "weapons"],
+      req.session.soldier.kit
     );
 
     return res.json({
@@ -36,6 +37,10 @@ export const getWeaponsJson = async (
           }
 
           const isLocked = expired ? weapon.lockCriteria > req.session.soldier.level : false;
+
+          if (weapon.type.valueOf() === "abilities" && expired) {
+            return null;
+          }
 
           return {
             id: weapon.id,
@@ -76,7 +81,7 @@ export const getWeaponsJson = async (
             stats: weapon.stats,
             attachments: []
           };
-        })
+        }).filter(responseItem => responseItem !== null)
       }
     } as WeaponsJsonResponse);
   } catch (err) {

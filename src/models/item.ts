@@ -61,6 +61,9 @@ export default class Item extends Model<Item> {
   public stats: string;
 
   @Column
+  public kit: number;
+
+  @Column
   public buyable: boolean;
 
   @Column({
