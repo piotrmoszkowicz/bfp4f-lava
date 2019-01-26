@@ -10,6 +10,7 @@ import WalletService from "../services/walletService";
 import Logger from "../util/logger";
 
 import { RequestBFP4F } from "ExpressOverride";
+import SoldierService from "../services/soldierService";
 
 const router: Router = Router();
 
@@ -20,6 +21,22 @@ router.get(
       const wallet = WalletService.parseWallet(
         await WalletService.getWalletBySessionId(req.sessionId)
       );
+
+      const soldiers = await SoldierService.getSoldiersBySessionId(req.sessionId);
+
+      const newPersonId = parseInt(req.query.personaId, 10);
+
+      if (newPersonId > 0) {
+        const newSoldier = soldiers.find(soldier => soldier.id === newPersonId);
+        if (newSoldier !== null) {
+          req.session.soldier = newSoldier;
+          req.session.save(err => {
+            if (err) {
+              Logger.error(err);
+            }
+          });
+        }
+      }
 
       const currentTrainingPoints = "0";
       const numberOfTrainingPointsPurchased = "0";
@@ -76,6 +93,22 @@ router.get(
         levelDescription: "Warrant Officer Silver" // TODO: Add level titles
       };
 
+      const personasJson = soldiers.map(soldier => ({
+        id: soldier.id,
+        name: soldier.soldierName,
+        kit: soldier.kit,
+        xp: soldier.xp,
+        xpForNextLevel: 800, // TODO: Add xpForNextLevel
+        lastAuthenticated: lastAuthed.toString(), // TODO: Fix lastAuthed
+        mugShot:
+          "http://battlefield.play4free.com:3000/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
+        isMaxLevel: soldier.level === 30,
+        level: soldier.level,
+        levelUpProgression: 0, // TODO: Add level progression
+        levelDescription: "Warrant Officer Silver" // TODO: Add level titles
+      }));
+
+
       const firebugLink = debug
         ? "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>"
         : "";
@@ -98,7 +131,8 @@ router.get(
         .replace(/%numberOfTrainingPointsPurchased%/g, maxNumberOfExtraPoints)
         .replace(/%maxNumberOfExtraPoints%/g, numberOfTrainingPointsPurchased)
         .replace(/%trainingPointsOffers%/g, JSON.stringify(offersJson))
-        .replace(/%personaJson%/g, JSON.stringify(personaJson));
+        .replace(/%personaJson%/g, JSON.stringify(personaJson))
+        .replace(/%personasJson%/g, JSON.stringify(personasJson));
 
       return res.type("html").send(html);
     } catch (err) {

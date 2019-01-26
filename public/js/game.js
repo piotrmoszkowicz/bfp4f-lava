@@ -38039,7 +38039,7 @@ APP.task('home', [ 'abilities', 'sidis', 'items' ], function taskHome(done) {
 
         getDailyDealForKit = nsConfig.getDailyDealForKit = function (kitId, fn) {
 
-            $.ajax({
+            /*$.ajax({
                 url: nsConfig.dailyDealUrl + "?kit=" + kitId,
                 //url: '/static/dailydeal.json' + "?kit=" + kitId,
                 cache: false,
@@ -38052,11 +38052,11 @@ APP.task('home', [ 'abilities', 'sidis', 'items' ], function taskHome(done) {
 
                         var kitDeal = response.data[kitId];
 
-                        /*var item = response.data.item,
+                        var item = response.data.item,
                             itemId = item.id,
                             model = collection.get(itemId),
                             offers = new APP.Collection.Offers(item.prices);
-                        */
+
                         if (kitDeal) {
                             fn(null, kitDeal);
                         } else {
@@ -38069,7 +38069,7 @@ APP.task('home', [ 'abilities', 'sidis', 'items' ], function taskHome(done) {
                 error: function onError() {
                     fn(new Error('Unable to get daily deal for kit: ' + kitId));
                 }
-            });
+            });*/
         },
 
         setupDailyDeal = function (err, kitDeal) {
