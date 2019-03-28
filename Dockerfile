@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:10.15.3-alpine
 WORKDIR /bfp4f-lava
 COPY . /bfp4f-lava
 
