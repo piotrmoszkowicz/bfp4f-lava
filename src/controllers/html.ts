@@ -22,7 +22,9 @@ router.get(
         await WalletService.getWalletBySessionId(req.sessionId)
       );
 
-      const soldiers = await SoldierService.getSoldiersBySessionId(req.sessionId);
+      const soldiers = await SoldierService.getSoldiersBySessionId(
+        req.sessionId
+      );
 
       const newPersonId = parseInt(req.query.personaId, 10);
 
@@ -107,7 +109,6 @@ router.get(
         levelUpProgression: 0, // TODO: Add level progression
         levelDescription: "Warrant Officer Silver" // TODO: Add level titles
       }));
-
 
       const firebugLink = debug
         ? "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>"
