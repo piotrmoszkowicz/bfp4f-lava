@@ -13,7 +13,7 @@ const ItemService = {
    */
   getOwnedItemsBySoldierId(soldierId: number, types: string[], kitId?: number) {
     const kitParams = [-1];
-    if (kitId) {
+    if (kitId !== undefined) {
       kitParams.push(kitId);
     }
     return Item.findAll({
