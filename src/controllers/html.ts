@@ -88,7 +88,7 @@ router.get(
         xpForNextLevel: 800, // TODO: Add xpForNextLevel
         lastAuthenticated: lastAuthed.toString(), // TODO: Fix lastAuthed
         mugShot:
-          "http://battlefield.play4free.com:3000/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
+          "https://cdn.phoenixnetwork.net/p4f/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
         isMaxLevel: req.session.soldier.level === 30,
         level: req.session.soldier.level,
         levelUpProgression: 0, // TODO: Add level progression
@@ -103,7 +103,7 @@ router.get(
         xpForNextLevel: 800, // TODO: Add xpForNextLevel
         lastAuthenticated: lastAuthed.toString(), // TODO: Fix lastAuthed
         mugShot:
-          "http://battlefield.play4free.com:3000/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
+          "https://cdn.phoenixnetwork.net/p4f/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
         isMaxLevel: soldier.level === 30,
         level: soldier.level,
         levelUpProgression: 0, // TODO: Add level progression
@@ -111,7 +111,7 @@ router.get(
       }));
 
       const firebugLink = debug
-        ? "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>"
+        ? "<script type='text/javascript' src='https://cdn.phoenixnetwork.net/p4f/js/firebug-lite.js'></script>"
         : "";
 
       const html = (await readFileAsync(
