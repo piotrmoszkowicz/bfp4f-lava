@@ -115,7 +115,7 @@ router.get(
         : "";
 
       const html = (await readFileAsync(
-        path.join(__dirname + "../../../html/index.html")
+        path.join(__dirname + "../../../dependencies/html/index.html")
       ))
         .toString()
         .replace(/%debug%/g, debug)
