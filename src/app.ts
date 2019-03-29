@@ -7,14 +7,12 @@ import express, { NextFunction, Response } from "express";
 import expressSession from "express-session";
 import expressValidator from "express-validator";
 import { RequestBFP4F } from "ExpressOverride";
-import path from "path";
 
 import database from "./database";
 import soldierService from "./services/soldierService";
 import Logger from "./util/logger";
 
 // Controllers (route handlers)
-import { CssRouter } from "./controllers/css";
 import { GameRouter } from "./controllers/game";
 import { HtmlRouter } from "./controllers/html";
 
@@ -35,23 +33,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-
-app.use("/css", CssRouter, cors(corsOptions));
-app.use(
-  "/js",
-  express.static(path.join(__dirname, "../", "public", "js")),
-  cors(corsOptions)
-);
-app.use(
-  "/static",
-  express.static(path.join(__dirname, "../", "public", "static")),
-  cors(corsOptions)
-);
-app.use(
-  "/uploads",
-  express.static(path.join(__dirname, "../", "public", "uploads")),
-  cors(corsOptions)
-);
 
 app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
   if (!req.cookies || !req.cookies.magma) {
