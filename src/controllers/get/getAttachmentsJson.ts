@@ -1,25 +1,21 @@
+import Logger from "@util/logger";
+
 import { AttachmentJsonResponse } from "AttachmentJson";
-import { Response } from "express";
-import { RequestBFP4F } from "ExpressOverride";
 
-import Logger from "../../util/logger";
-
-export const getAttachmentsJson = async (
-  req: RequestBFP4F,
-  res: Response
-): Promise<Response> => {
+export const getAttachmentsJson = async (req, res): Promise<any> => {
   try {
-    return res.json({
+    return {
       result: "success",
       status: "success",
       data: {
         status: "SUCCESS",
         attachments: []
       }
-    } as AttachmentJsonResponse);
+    } as AttachmentJsonResponse;
   } catch (err) {
-    Logger.error("Error in /getAttachmentsJson", err);
-    return res.json({
+    Logger.log("error", "Error in /getAttachmentsJson", { message: err });
+    return res.code(406).send({
+      result: "error",
       status: "error"
     });
   }

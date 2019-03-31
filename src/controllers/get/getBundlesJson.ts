@@ -1,25 +1,21 @@
 import { BundlesJsonResponse } from "BundlesJson";
-import { Response } from "express";
-import { RequestBFP4F } from "ExpressOverride";
 
-import Logger from "../../util/logger";
+import Logger from "@util/logger";
 
-export const getBundlesJson = async (
-  req: RequestBFP4F,
-  res: Response
-): Promise<Response> => {
+export const getBundlesJson = async (req, res): Promise<any> => {
   try {
-    return res.json({
+    return {
       result: "success",
       status: "success",
       data: {
         status: "SUCCESS",
         bundles: []
       }
-    } as BundlesJsonResponse);
+    } as BundlesJsonResponse;
   } catch (err) {
-    Logger.error("Error in /getBundlesJson", err);
-    return res.json({
+    Logger.log("error", "Error in /getBundlesJson", { message: err });
+    return res.code(406).send({
+      result: "error",
       status: "error"
     });
   }

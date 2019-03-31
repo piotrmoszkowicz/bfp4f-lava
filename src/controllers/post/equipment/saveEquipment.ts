@@ -1,30 +1,18 @@
-import { Response } from "express";
-import { RequestBFP4F } from "ExpressOverride";
+import Logger from "@util/logger";
 
-import Logger from "../../../util/logger";
+import ItemService from "@services/itemService";
 
-import ItemService from "../../../services/itemService";
-
-export const saveEquipment = async (
-  req: RequestBFP4F,
-  res: Response
-): Promise<Response> => {
-  if (!req.body || !req.body.equipment) {
-    return res.json({
-      status: "error"
-    });
-  }
-
+export const saveEquipment = async (req, res): Promise<any> => {
   const newEquipmentBar = JSON.parse(req.body.equipment) || [];
 
   try {
     await ItemService.equipWholeBar(req.session.soldier.id, newEquipmentBar);
-    return res.json({
+    return {
       status: "success"
-    });
+    };
   } catch (err) {
-    Logger.error("Error in /saveEquipment", err);
-    return res.json({
+    Logger.log("error", "Error in /equipment/saveEquipment", { message: err });
+    return res.code(406).send({
       status: "error"
     });
   }
