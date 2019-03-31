@@ -14,6 +14,24 @@
         "node_modules/*",
         "src/types/*",
         "src/models/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+      "@controllers/*": [
+        "src/controllers/*"
+      ],
+      "@models/*": [
+        "src/models/*"
+      ],
+      "@schemas/*": [
+        "src/schemas/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@util/*": [
+        "src/util/*"
       ]
     },
     "experimentalDecorators": true,
