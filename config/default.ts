@@ -24,6 +24,14 @@ export default {
   lava: {
     interfaceUrl: process.env.INTERFACE_URL,
     interfacePort: process.env.INTERFACE_PORT,
-    debug: process.env.INTERFACE_DEBUG
+    debug: process.env.INTERFACE_DEBUG,
+    sessionSecret: process.env.INTERFACE_SESSION_SECRET,
+    cookieConfig: {
+      domain: process.env.INTERFACE_DOMAIN,
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    }
+  },
+  redis: {
+    host: process.env.REDIS_HOST
   }
 };
