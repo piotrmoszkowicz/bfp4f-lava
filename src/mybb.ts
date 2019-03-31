@@ -1,7 +1,9 @@
 import config from "config";
-import ConfigType from "ConfigType";
 import Sequelize from "sequelize";
-import Logger from "./util/logger";
+
+import Logger from "@util/logger";
+
+import ConfigType from "ConfigType";
 
 const dbConfig: ConfigType = config.get("mybb");
 
@@ -12,7 +14,7 @@ try {
     database: dbConfig.name,
     dialect: dbConfig.engine,
     host: dbConfig.host,
-    logging: msg => Logger.info("[MYBB]", msg),
+    logging: msg => Logger.log("debug", "[MYBB]", { message: msg }),
     password: dbConfig.password,
     pool: {
       idle: dbConfig.maxIdleTime,
@@ -24,7 +26,7 @@ try {
     username: dbConfig.user
   });
 } catch (err) {
-  Logger.error("Error during creating MyBB DB Instance", err);
+  Logger.log("error", "Error during creating MyBB DB Instance", { message: err });
 }
 
 export default mybbDatabase;
