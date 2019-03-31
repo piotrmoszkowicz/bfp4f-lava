@@ -1,6 +1,7 @@
-import Soldier from "../models/soldier";
+import Soldier from "@models/soldier";
+import userService from "@services/userService";
 
-import userService from "./userService";
+import { SoldierJson } from "SoldiersJson";
 
 const SoldierService = {
   /**
@@ -11,6 +12,14 @@ const SoldierService = {
     return userService
       .getUserIdFromSessionId(sessionId)
       .then(userId => this.getSoldiersByUserId(userId));
+  },
+
+  /**
+   * Returns all soldiers, who belong to user by sessionId formatted into JSON response
+   * @param sessionId       - SessionID of user
+   */
+  getFormattedSoldiersBySessionId(sessionId: string): Promise<SoldierJson[]> {
+    return this.getSoldiersBySessionId(sessionId).then(this.formatSoldiersJson);
   },
 
   /**
@@ -69,6 +78,29 @@ const SoldierService = {
       }
     };
     return Soldier.findOne(opts);
+  },
+
+  /**
+   * Function, which formats soldiers into valid JSON response
+   * @param soldiersData     -  Array of soldiers data from database
+   */
+  formatSoldiersJson(soldiersData: any[]): SoldierJson[] {
+    return soldiersData.map(
+      soldier =>
+        ({
+          id: soldier.id,
+          name: soldier.soldierName,
+          kit: soldier.kit,
+          xp: 0, // TODO: Add XP
+          xpForNextLevel: 0, // TODO: Add XP for nextLevel
+          lastAuthenticated: 0, // TODO: Add lastAuthed
+          mugShot: "", // TODO: Add mugshots
+          isMaxLevel: !!(soldier.level === 30),
+          level: soldier.level,
+          levelUpProgression: 0, // TODO: Add level progression
+          levelDescription: "Asdf" // TODO: Add level descriptions
+        } as SoldierJson)
+    );
   }
 };
 

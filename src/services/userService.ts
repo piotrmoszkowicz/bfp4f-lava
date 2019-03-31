@@ -1,6 +1,6 @@
-import mybbDatabase from "../mybb";
+import mybbDatabase from "@/mybb";
 
-import Logger from "../util/logger";
+import Logger from "@util/logger";
 
 const userService = {
   /**
@@ -14,9 +14,13 @@ const userService = {
         { type: mybbDatabase.QueryTypes.SELECT }
       )
       .then(user => {
+        if (!user || user.length === 0) {
+          throw new Error("No user data");
+        }
+        Logger.log("debug", "User info", { message: user });
         return user[0].uid;
       })
-      .catch(err => Logger.error(err));
+      .catch(err => Logger.log("error", "MyBB ERROR", { message: err }));
   }
 };
 

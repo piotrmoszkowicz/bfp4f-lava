@@ -1,5 +1,4 @@
-import { ServerJson } from "Server";
-import Server from "../models/server";
+import Server from "@models/server";
 
 const ServerService = {
   /**
@@ -11,6 +10,13 @@ const ServerService = {
         online: true
       }
     });
+  },
+
+  /**
+   * Function which retrives formatted servers JSON response
+   */
+  getServersJson() {
+    return this.getAllServers().then(this.parseServersForResponse);
   },
 
   /**
