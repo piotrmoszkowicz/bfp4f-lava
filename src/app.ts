@@ -1,7 +1,7 @@
 import "module-alias/register";
 
 import config from "config";
-import connectRedis from "connect-redis"
+import connectRedis from "connect-redis";
 import cors from "cors";
 import fastify from "fastify";
 import fastifyCookie from "fastify-cookie";
@@ -70,7 +70,9 @@ app.addHook("preHandler", async (req: FastifyRequestSession, res, next) => {
         req.session.sid
       );
     } catch (err) {
-      Logger.log("error", "Error during getting main soldier", { message: err });
+      Logger.log("error", "Error during getting main soldier", {
+        message: err
+      });
       return res.status(401).send("Oh uh, something went wrong");
     }
   }
@@ -85,9 +87,9 @@ app.register(gameController, {
   prefix: "/en/game"
 });
 
-app.listen(interfacePort, async (err) => {
+app.listen(interfacePort, async err => {
   if (err) {
-    Logger.log("error", "App error", { message: err});
+    Logger.log("error", "App error", { message: err });
     return;
   }
   await await database.sync({ force: false });

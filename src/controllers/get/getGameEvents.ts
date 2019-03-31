@@ -2,7 +2,10 @@ import { GameEventsJsonResponse } from "GameEventsJson";
 
 import Logger from "@util/logger";
 
-export const getGameEvents = async (req, res): Promise<GameEventsJsonResponse> => {
+export const getGameEvents = async (
+  req,
+  res
+): Promise<GameEventsJsonResponse> => {
   try {
     return {
       result: "success",

@@ -28,7 +28,7 @@ import * as postBuySchema from "@schemas/postBuySchema";
 import * as postPurchaseTrainingPointsSchema from "@schemas/postPurchaseTrainingPointsSchema";
 import * as postSaveEquipmentSchema from "@schemas/postSaveEquipmentSchema";
 
-export default async (fastify) => {
+export default async fastify => {
   /* Get routes */
 
   fastify.route({

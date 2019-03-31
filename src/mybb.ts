@@ -26,7 +26,9 @@ try {
     username: dbConfig.user
   });
 } catch (err) {
-  Logger.log("error", "Error during creating MyBB DB Instance", { message: err });
+  Logger.log("error", "Error during creating MyBB DB Instance", {
+    message: err
+  });
 }
 
 export default mybbDatabase;

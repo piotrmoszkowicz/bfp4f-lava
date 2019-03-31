@@ -135,7 +135,7 @@ const htmlHandler = async (req, res) => {
   }
 };
 
-export default async (fastify) => {
+export default async fastify => {
   fastify.route({
     method: "GET",
     url: "/",

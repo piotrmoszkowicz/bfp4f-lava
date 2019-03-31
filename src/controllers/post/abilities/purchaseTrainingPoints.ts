@@ -40,7 +40,9 @@ export const purchaseTrainingPoints = async (
       }
     };
   } catch (err) {
-    Logger.log("error", "Error in /abilities/purchaseTrainingPoint", { message: err });
+    Logger.log("error", "Error in /abilities/purchaseTrainingPoint", {
+      message: err
+    });
     return res.code(406).send({
       status: "error"
     });
