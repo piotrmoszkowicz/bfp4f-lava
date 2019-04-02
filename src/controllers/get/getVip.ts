@@ -1,24 +1,20 @@
-import { Response } from "express";
-import { RequestBFP4F } from "ExpressOverride";
+import Logger from "@util/logger";
+
 import { VipJsonResponse } from "VipJson";
 
-import Logger from "../../util/logger";
-
-export const getVip = async (
-  req: RequestBFP4F,
-  res: Response
-): Promise<Response> => {
+export const getVip = async (req, res): Promise<VipJsonResponse> => {
   try {
-    return res.json({
+    return {
       result: "success",
       status: "success",
       data: {
         vip: []
       }
-    } as VipJsonResponse);
+    };
   } catch (err) {
-    Logger.error("Error in /getVip", err);
-    return res.json({
+    Logger.log("error", "Error in /getVip", { message: err });
+    return res.code(406).send({
+      result: "error",
       status: "error"
     });
   }

@@ -24,6 +24,14 @@ export default {
   lava: {
     interfaceUrl: "",
     interfacePort: 3000,
-    debug: true
+    debug: true,
+    sessionSecret: "",
+    cookieConfig: {
+      domain: "",
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    }
+  },
+  redis: {
+    host: ""
   }
 };

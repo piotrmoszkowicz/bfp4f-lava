@@ -3,3 +3,4 @@ debug.log
 config/local-*
 .idea
 .git
+coverage

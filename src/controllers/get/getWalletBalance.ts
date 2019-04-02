@@ -1,27 +1,21 @@
-import { Response } from "express";
-import { RequestBFP4F } from "ExpressOverride";
-import Wallet from "wallet";
-import WalletService from "../../services/walletService";
+import WalletService from "@services/walletService";
+import Logger from "@util/logger";
 
-import { WalletBalance, WalletBalanceResponse } from "WalletBalance";
-
-import Logger from "../../util/logger";
+import { WalletBalanceResponse } from "WalletBalance";
 
 export const getWalletBalance = async (
-  req: RequestBFP4F,
-  res: Response
-): Promise<Response> => {
+  req,
+  res
+): Promise<WalletBalanceResponse> => {
   try {
-    const wallet: Wallet[] = await WalletService.getWalletBySessionId(
-      req.sessionId
-    );
-    return res.json({
-      data: WalletService.parseWallet(wallet),
-      status: "success"
-    } as WalletBalanceResponse);
+    return {
+      status: "success",
+      data: WalletService.getWalletJsonBySessionId(req.sessionId)
+    };
   } catch (err) {
-    Logger.error("Error in /getWalletBalance", err);
-    return res.json({
+    Logger.log("error", "Error in /getWalletBalance", { message: err });
+    return res.code(406).send({
+      result: "error",
       status: "error"
     });
   }

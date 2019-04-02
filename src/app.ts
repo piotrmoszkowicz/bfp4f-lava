@@ -1,83 +1,99 @@
-import bodyParser from "body-parser";
+import "module-alias/register";
+
 import config from "config";
-import connectSessionSequelize from "connect-session-sequelize";
-import cookieParser from "cookie-parser";
+import connectRedis from "connect-redis";
 import cors from "cors";
-import express, { NextFunction, Response } from "express";
-import expressSession from "express-session";
-import expressValidator from "express-validator";
-import { RequestBFP4F } from "ExpressOverride";
+import fastify from "fastify";
+import fastifyCookie from "fastify-cookie";
+import fastifySession from "fastify-session";
 
-import database from "./database";
-import soldierService from "./services/soldierService";
-import Logger from "./util/logger";
+import database from "@/database";
+import redisClient from "@/redis";
+import gameController from "@controllers/game";
+import htmlController from "@controllers/html";
+import soldierService from "@services/soldierService";
+import Logger from "@util/logger";
 
-// Controllers (route handlers)
-import { GameRouter } from "./controllers/game";
-import { HtmlRouter } from "./controllers/html";
+import { FastifyRequestSession } from "FastifyOverride";
 
-// Create Express server
-const app = express();
+const app = fastify();
+
+const RedisStore = connectRedis(fastifySession);
+
+const { cookieConfig, interfacePort, sessionSecret } = config.get("lava");
 
 const corsOptions = {
   credentials: true,
   origin: true
 };
 
-const SequelizeStore = connectSessionSequelize(expressSession.Store);
+const sessionOptions = {
+  secret: sessionSecret,
+  saveUninitialized: true,
+  store: new RedisStore({
+    host: config.get("redis.host"),
+    port: 6379,
+    client: redisClient,
+    ttl: 260
+  }),
+  cookie: {
+    httpOnly: false,
+    maxAge: cookieConfig.maxAge,
+    domain: cookieConfig.domain
+  }
+};
 
-// Express configuration
-app.set("port", config.get("lava.interfacePort"));
 app.use(cors(corsOptions));
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressValidator());
+app.register(fastifyCookie);
+app.register(fastifySession, sessionOptions);
 
-app.use((req: RequestBFP4F, res: Response, next: NextFunction) => {
+app.addHook("preHandler", (req: FastifyRequestSession, res, next) => {
   if (!req.cookies || !req.cookies.magma) {
-    res.status(401);
-    res.json({
+    return res.status(401).send({
       error: "No magma cookie! What are you looking here for?"
     });
-    return;
   }
-  req.sessionId = req.cookies.magma.substring(0, req.cookies.magma.length - 16);
 
-  return next();
+  req.session.sid = req.cookies.magma.substring(
+    0,
+    req.cookies.magma.length - 16
+  );
+
+  next();
 });
 
-app.use(
-  expressSession({
-    genid: req => req.cookies.magma.substring(0, req.cookies.magma.length - 16),
-    secret: "zjskhdfg*&^%6521ya",
-    store: new SequelizeStore({
-      db: database
-    }),
-    resave: true,
-    saveUninitialized: true
-  })
-);
-
-app.use(async (req: RequestBFP4F, res: Response, next: NextFunction) => {
+app.addHook("preHandler", async (req: FastifyRequestSession, res, next) => {
   if (!req.session.soldier) {
     // TODO: Think about re-getting soldier session (level may change)
     try {
       req.session.soldier = await soldierService.getMainSoldierIdBySessionId(
-        req.sessionId
+        req.session.sid
       );
     } catch (err) {
-      Logger.error("Error during getting main soldier", err);
+      Logger.log("error", "Error during getting main soldier", {
+        message: err
+      });
       return res.status(401).send("Oh uh, something went wrong");
     }
   }
   next();
 });
 
-/**
- * API examples routes.
- */
-app.use("/en/game", HtmlRouter);
-app.use("/en/game", GameRouter);
+app.register(htmlController, {
+  prefix: "/en/game"
+});
+
+app.register(gameController, {
+  prefix: "/en/game"
+});
+
+app.listen(interfacePort, async err => {
+  if (err) {
+    Logger.log("error", "App error", { message: err });
+    return;
+  }
+  await await database.sync({ force: false });
+  Logger.log("info", `App is running at localhost:${interfacePort}`);
+});
 
 export default app;

@@ -1,19 +1,13 @@
-import { BuyJsonResponse } from "BuyJson";
-import { Response } from "express";
-import { RequestBFP4F } from "ExpressOverride";
-import Wallet from "wallet";
-import WalletService from "../../../services/walletService";
+import WalletService from "@services/walletService";
+import Logger from "@util/logger";
 
+import { BuyJsonResponse } from "BuyJson";
+import Wallet from "wallet";
 import { WalletBalance } from "WalletBalance";
 
-import Logger from "../../../util/logger";
-
-export const postStoreBuy = async (
-  req: RequestBFP4F,
-  res: Response
-): Promise<Response> => {
+export const postStoreBuy = async (req, res): Promise<BuyJsonResponse> => {
   const wallet: Wallet[] = await WalletService.getWalletBySessionId(
-    req.sessionId
+    req.session.sid
   );
   // TODO: Make buy
   // TODO: Save wallets
@@ -30,7 +24,7 @@ export const postStoreBuy = async (
   );
 
   try {
-    return res.json({
+    return {
       result: "success",
       status: "success",
       data: {
@@ -38,10 +32,11 @@ export const postStoreBuy = async (
         funds: finalWallet._PF,
         items: []
       }
-    } as BuyJsonResponse);
+    };
   } catch (err) {
-    Logger.error("Error in /store/buy", err);
-    return res.json({
+    Logger.log("error", "Error in /store/buy", { message: err });
+    return res.code(406).send({
+      result: "error",
       status: "error"
     });
   }

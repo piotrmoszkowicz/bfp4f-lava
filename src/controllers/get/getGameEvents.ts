@@ -1,25 +1,24 @@
-import { Response } from "express";
-import { RequestBFP4F } from "ExpressOverride";
 import { GameEventsJsonResponse } from "GameEventsJson";
 
-import Logger from "../../util/logger";
+import Logger from "@util/logger";
 
 export const getGameEvents = async (
-  req: RequestBFP4F,
-  res: Response
-): Promise<Response> => {
+  req,
+  res
+): Promise<GameEventsJsonResponse> => {
   try {
-    return res.json({
+    return {
       result: "success",
       status: "success",
       data: {
         status: "SUCCESS",
         unlockInfo: []
       }
-    } as GameEventsJsonResponse);
+    };
   } catch (err) {
-    Logger.error("Error in /getGameEvents", err);
-    return res.json({
+    Logger.log("error", "Error in /getGameEvents", { message: err });
+    return res.code(406).send({
+      result: "error",
       status: "error"
     });
   }

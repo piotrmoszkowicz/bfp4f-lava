@@ -1,6 +1,4 @@
-import Wallet from "../models/wallet";
-
-// import userService from "./userService";
+import Wallet from "@models/wallet";
 
 import { WalletBalance } from "WalletBalance";
 
@@ -15,6 +13,22 @@ const WalletService = {
         userId
       }
     });
+  },
+
+  /**
+   * Gets wallet JSON response for certain user by UserID
+   * @param userId          - UserID
+   */
+  getWalletJsonByUserId(userId: number): WalletBalance {
+    return this.getWalletByUserId(userId).then(this.parseWallet);
+  },
+
+  /**
+   * Gets wallet JSON response by sessionID
+   * @param sessionId     - SessionID
+   */
+  getWalletJsonBySessionId(sessionId: string): WalletBalance {
+    return this.getWalletBySessionId(sessionId).then(this.parseWallet);
   },
 
   /**
