@@ -32,6 +32,10 @@ export default {
     }
   },
   redis: {
-    host: ""
+    host: "",
+    port: 6379
+  },
+  cdn: {
+    url: "http://localhost"
   }
 };

@@ -38,6 +38,7 @@ const htmlHandler = async (req, res) => {
     const maxNumberOfExtraPoints = "10";
 
     const { debug, interfaceUrl, interfacePort } = config.get("lava");
+    const cdnUrl = config.get("cdn.url");
 
     const lastAuthed = +new Date();
     const timeNow = +new Date();
@@ -80,8 +81,7 @@ const htmlHandler = async (req, res) => {
       xp: req.session.soldier.xp,
       xpForNextLevel: 800, // TODO: Add xpForNextLevel
       lastAuthenticated: lastAuthed.toString(), // TODO: Fix lastAuthed
-      mugShot:
-        "https://cdn.phoenixnetwork.net/p4f/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
+      mugShot: `${cdnUrl}/static/20140225100054/bulk-images/mugshots-64/6-7-9.png`, // TODO: Add mugshots
       isMaxLevel: req.session.soldier.level === 30,
       level: req.session.soldier.level,
       levelUpProgression: 0, // TODO: Add level progression
@@ -95,8 +95,7 @@ const htmlHandler = async (req, res) => {
       xp: soldier.xp,
       xpForNextLevel: 800, // TODO: Add xpForNextLevel
       lastAuthenticated: lastAuthed.toString(), // TODO: Fix lastAuthed
-      mugShot:
-        "https://cdn.phoenixnetwork.net/p4f/static/20140225100054/bulk-images/mugshots-64/6-7-9.png", // TODO: Add mugshots
+      mugShot: `${cdnUrl}/static/20140225100054/bulk-images/mugshots-64/6-7-9.png`, // TODO: Add mugshots
       isMaxLevel: soldier.level === 30,
       level: soldier.level,
       levelUpProgression: 0, // TODO: Add level progression
@@ -104,13 +103,14 @@ const htmlHandler = async (req, res) => {
     }));
 
     const firebugLink = debug
-      ? "<script type='text/javascript' src='https://cdn.phoenixnetwork.net/p4f/js/firebug-lite.js'></script>"
+      ? `<script type='text/javascript' src='${cdnUrl}/js/firebug-lite.js'></script>`
       : "";
 
     const html = (await readFileAsync(
       path.join(__dirname + "../../../dependencies/html/index.html")
     ))
       .toString()
+      .replace(/%cdnUrl%/g, cdnUrl.toString())
       .replace(/%debug%/g, debug)
       .replace(/%firebug%/g, firebugLink)
       .replace(/%interfaceUrl%/g, interfaceUrl)

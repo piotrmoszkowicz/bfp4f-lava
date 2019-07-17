@@ -40,6 +40,12 @@ Variable                | Description
 `MYBB_USER`             | `MyBB Database` database user
 
 ## ENV LIST bfp4f-lava configuration
+Variable                | Description
+-----                   | -----------
+`REDIS_HOST`            | Redis host
+`REDIS_PORT`            | Redis port
+
+## ENV LIST bfp4f-lava configuration
 
 Variable                | Description
 -----                   | -----------
@@ -47,6 +53,7 @@ Variable                | Description
 `INTERFACE_URL`         | `bfp4f-lava` interface URL
 `INTERFACE_PORT`        | `bfp4f-lava` interface port
 `INTERFACE_DEBUG`       | Start game interface in DEBUG more (`true` / `false`)
+`CDN_URL`               | URL to the CDN, where static files are stored
 
 ## How to run?
 ```$ docker run --network="host" -p 3000:3000 --env-file ./config.env nommopl/bfp4f-lava:latest```

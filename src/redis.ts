@@ -7,11 +7,11 @@ import Logger from "@util/logger";
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
-const host: string = config.get("redis.host");
+const redisConfig: any = config.get("redis");
 
 const client = redis.createClient({
-  host,
-  port: 6379
+  host: redisConfig.host,
+  port: redisConfig.port
 });
 
 client.on("debug", message => {

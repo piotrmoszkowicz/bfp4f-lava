@@ -32,6 +32,10 @@ export default {
     }
   },
   redis: {
-    host: process.env.REDIS_HOST
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT
+  },
+  cdn: {
+    url: process.env.CDN_URL
   }
 };
