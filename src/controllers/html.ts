@@ -128,7 +128,7 @@ const htmlHandler = async (req, res) => {
       .replace(/%personaJson%/g, JSON.stringify(personaJson))
       .replace(/%personasJson%/g, JSON.stringify(personasJson));
 
-    return res.type("html").send(html);
+    return res.type("text/html").send(html);
   } catch (err) {
     Logger.log("error", "HtmlControllerError", { message: err });
     return res.code(401).send("Uh oh, something went wrong!");
