@@ -11,7 +11,8 @@ import Offer from "./offer";
 import OwnedItem from "./ownedItem";
 
 @Table({
-  tableName: "game_items"
+  tableName: "game_items",
+  timestamps: false
 })
 export default class Item extends Model<Item> {
   @Column({

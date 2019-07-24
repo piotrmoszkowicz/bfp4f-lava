@@ -54,6 +54,7 @@ Variable                | Description
 `INTERFACE_PORT`        | `bfp4f-lava` interface port
 `INTERFACE_DEBUG`       | Start game interface in DEBUG more (`true` / `false`)
 `CDN_URL`               | URL to the CDN, where static files are stored
+`DSN`                   | sentry.io DSN link
 
 ## How to run?
 ```$ docker run --network="host" -p 3000:3000 --env-file ./config.env nommopl/bfp4f-lava:latest```

@@ -9,7 +9,8 @@ import {
 import Item from "./item";
 
 @Table({
-  tableName: "game_offers"
+  tableName: "game_offers",
+  timestamps: false
 })
 export default class Offer extends Model<Offer> {
   @Column({

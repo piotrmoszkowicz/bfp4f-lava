@@ -29,7 +29,8 @@ export default {
     cookieConfig: {
       domain: "",
       maxAge: 7 * 24 * 60 * 60 * 1000
-    }
+    },
+    dsn: ""
   },
   redis: {
     host: "",

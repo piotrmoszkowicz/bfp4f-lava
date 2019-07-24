@@ -29,7 +29,8 @@ export default {
     cookieConfig: {
       domain: process.env.INTERFACE_DOMAIN,
       maxAge: 7 * 24 * 60 * 60 * 1000
-    }
+    },
+    dsn: process.env.DSN
   },
   redis: {
     host: process.env.REDIS_HOST,
