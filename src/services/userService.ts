@@ -17,10 +17,10 @@ const userService = {
         if (!user || user.length === 0) {
           throw new Error("No user data");
         }
-        Logger.log("debug", "User info", { message: user });
+        Logger.log("debug", "User info", { user });
         return user[0].uid;
       })
-      .catch(err => Logger.log("error", "MyBB ERROR", { message: err }));
+      .catch(err => Logger.log("error", "MyBB ERROR", { err }));
   }
 };
 

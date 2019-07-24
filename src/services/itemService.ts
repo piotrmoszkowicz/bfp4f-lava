@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize-typescript";
+import { Op } from "sequelize";
 
 import Item from "@models/item";
 import Offer from "@models/offer";
@@ -35,10 +35,10 @@ const ItemService = {
       ],
       where: {
         type: {
-          [Sequelize.Op.or]: types
+          [Op.or]: types
         },
         kit: {
-          [Sequelize.Op.or]: kitParams
+          [Op.or]: kitParams
         }
       }
     });
@@ -114,7 +114,7 @@ const ItemService = {
         where: {
           ownerId,
           barPosition: {
-            [Sequelize.Op.ne]: -1
+            [Op.ne]: -1
           }
         }
       })
