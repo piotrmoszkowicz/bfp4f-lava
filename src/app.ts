@@ -87,13 +87,13 @@ app.register(gameController, {
   prefix: "/en/game"
 });
 
-app.listen(interfacePort, async err => {
+app.listen(interfacePort, "0.0.0.0", async err => {
   if (err) {
     Logger.log("error", "App error", { message: err });
     return;
   }
   await await database.sync({ force: false });
-  Logger.log("info", `App is running at localhost:${interfacePort}`);
+  Logger.log("info", `App is running at 0.0.0.0:${interfacePort}`);
 });
 
 export default app;
