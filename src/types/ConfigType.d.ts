@@ -1,5 +1,7 @@
+import { Dialect } from "Sequelize";
+
 interface ConfigType {
-  engine: string;
+  engine: Dialect;
   host: string;
   maxIdleTime: number;
   maxConnections: number;
