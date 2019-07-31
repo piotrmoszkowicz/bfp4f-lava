@@ -43,7 +43,7 @@
     "fastify-cookie": "^3.0.2",
     "fastify-session": "^3.0.0",
     "lodash": "^4.17.15",
-    "module-alias": "^2.2.0",
+    "module-alias": "^2.2.1",
     "mysql2": "^1.6.5",
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.13",
