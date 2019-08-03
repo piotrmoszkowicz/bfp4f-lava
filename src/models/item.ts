@@ -45,8 +45,12 @@ export default class Item extends Model<Item> {
       "face",
       "gadget",
       "head",
+      "lmg",
       "melee",
+      "pistol",
       "shotgun",
+      "smg",
+      "sniper_rifle",
       "uniform"
     )
   })
