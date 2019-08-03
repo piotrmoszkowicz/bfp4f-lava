@@ -4,6 +4,7 @@ import {
   HasMany,
   HasOne,
   Model,
+  PrimaryKey,
   Table
 } from "sequelize-typescript";
 
@@ -12,12 +13,12 @@ import OwnedItem from "./ownedItem";
 
 @Table({
   tableName: "game_items",
-  timestamps: false
+  timestamps: false,
+  underscored: true
 })
 export default class Item extends Model<Item> {
-  @Column({
-    primaryKey: true
-  })
+  @PrimaryKey
+  @Column
   public id: number;
 
   @Column({
@@ -44,8 +45,12 @@ export default class Item extends Model<Item> {
       "face",
       "gadget",
       "head",
+      "lmg",
       "melee",
+      "pistol",
       "shotgun",
+      "smg",
+      "sniper_rifle",
       "uniform"
     )
   })
@@ -68,14 +73,11 @@ export default class Item extends Model<Item> {
   public buyable: boolean;
 
   @Column({
-    field: "validation_group",
     type: DataType.ENUM("primary", "secondary", "melee", "gadget")
   })
   public validationGroup?: ValidationGroup;
 
-  @Column({
-    field: "lock_criteria"
-  })
+  @Column
   public lockCriteria: number;
 
   @HasOne(() => OwnedItem, "itemId")

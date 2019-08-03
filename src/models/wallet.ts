@@ -1,21 +1,30 @@
 import {
+  AutoIncrement,
   Column,
+  CreatedAt,
   DataType,
   DefaultScope,
+  DeletedAt,
   Model,
-  Table
+  PrimaryKey,
+  Table,
+  UpdatedAt
 } from "sequelize-typescript";
 
 @DefaultScope({
   attributes: ["currency", "value"]
 })
 @Table({
-  tableName: "game_wallets"
+  tableName: "game_wallets",
+  underscored: true
 })
 export default class Wallet extends Model<Wallet> {
-  @Column({
-    field: "user_id"
-  })
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+  public id: number;
+
+  @Column
   public userId: number;
 
   @Column({
@@ -25,4 +34,13 @@ export default class Wallet extends Model<Wallet> {
 
   @Column
   public value: number;
+
+  @CreatedAt
+  public createdAt: Date;
+
+  @DeletedAt
+  public deletedAt: Date;
+
+  @UpdatedAt
+  public updatedAt: Date;
 }

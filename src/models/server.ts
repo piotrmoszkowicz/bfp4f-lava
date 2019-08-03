@@ -1,9 +1,25 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import {
+  AutoIncrement,
+  Column,
+  CreatedAt,
+  DataType,
+  DeletedAt,
+  Model,
+  PrimaryKey,
+  Table,
+  UpdatedAt
+} from "sequelize-typescript";
 
 @Table({
-  tableName: "game_servers"
+  tableName: "game_servers",
+  underscored: true
 })
 export default class Server extends Model<Server> {
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+  public id: number;
+
   @Column
   public name: string;
 
@@ -18,9 +34,7 @@ export default class Server extends Model<Server> {
   })
   public region: ServerRegion;
 
-  @Column({
-    field: "current_players"
-  })
+  @Column
   public currentPlayers: string;
 
   @Column({
@@ -40,23 +54,24 @@ export default class Server extends Model<Server> {
   @Column
   public ranked: boolean;
 
-  @Column({
-    field: "map_list"
-  })
+  @Column
   public mapList: string;
 
-  @Column({
-    field: "rounds_per_map"
-  })
+  @Column
   public roundsPerMap: string;
 
-  @Column({
-    field: "current_round"
-  })
+  @Column
   public currentRound: string;
 
-  @Column({
-    field: "current_map"
-  })
+  @Column
   public currentMap: number;
+
+  @CreatedAt
+  public createdAt: Date;
+
+  @DeletedAt
+  public deletedAt: Date;
+
+  @UpdatedAt
+  public updatedAt: Date;
 }

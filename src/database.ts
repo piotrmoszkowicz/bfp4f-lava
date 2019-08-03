@@ -27,7 +27,7 @@ try {
     username: dbConfig.user
   });
 } catch (err) {
-  Logger.log("error", "Error during creating MyBB DB Instance", {
+  Logger.log("error", "Error during creating Lava DB Instance", {
     message: err
   });
 }

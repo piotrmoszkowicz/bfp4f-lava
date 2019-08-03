@@ -5,6 +5,7 @@ import connectRedis from "connect-redis";
 import cors from "cors";
 import fastify from "fastify";
 import fastifyCookie from "fastify-cookie";
+import fastifyFormBody from "fastify-formbody";
 import fastifySession from "fastify-session";
 
 import database from "@/database";
@@ -44,6 +45,7 @@ const sessionOptions = {
 };
 
 app.use(cors(corsOptions));
+app.register(fastifyFormBody);
 app.register(fastifyCookie);
 app.register(fastifySession, sessionOptions);
 
@@ -92,7 +94,7 @@ app.listen(interfacePort, "0.0.0.0", async err => {
     Logger.log("error", "App error", { message: err });
     return;
   }
-  await await database.sync({ force: false });
+  await database.sync({ force: false });
   Logger.log("info", `App is running at 0.0.0.0:${interfacePort}`);
 });
 

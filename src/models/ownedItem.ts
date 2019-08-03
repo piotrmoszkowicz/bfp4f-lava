@@ -1,10 +1,14 @@
 import {
+  AutoIncrement,
   Column,
-  DataType,
+  CreatedAt,
   DefaultScope,
+  DeletedAt,
   ForeignKey,
   Model,
-  Table
+  PrimaryKey,
+  Table,
+  UpdatedAt
 } from "sequelize-typescript";
 
 import Item from "./item";
@@ -14,9 +18,15 @@ import Soldier from "./soldier";
   attributes: ["availableTill", "barPosition", "createdAt", "useCount"]
 })
 @Table({
-  tableName: "game_owned_items"
+  tableName: "game_owned_items",
+  underscored: true
 })
 export default class OwnedItem extends Model<OwnedItem> {
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+  public id: number;
+
   @ForeignKey(() => Soldier)
   @Column
   public ownerId: number;
@@ -31,11 +41,14 @@ export default class OwnedItem extends Model<OwnedItem> {
   @Column
   public barPosition: number;
 
-  @Column({
-    field: "created_at",
-    type: DataType.DATE
-  })
-  public createdAt: string;
+  @CreatedAt
+  public createdAt: Date;
+
+  @DeletedAt
+  public deletedAt: Date;
+
+  @UpdatedAt
+  public updatedAt: Date;
 
   @Column({
     field: "available_till"
