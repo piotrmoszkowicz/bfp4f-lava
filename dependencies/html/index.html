@@ -172,7 +172,7 @@
                             <!-- <div class="summary-area summary-last promo-area">
                                 <div class="summary-content">
                                     <a href="#bundles/drops">
-                                        <img src="%interfaceUrl%:%interfacePort%/static/images/game/promo/supply-drop_homescreen.png"
+                                        <img src="%interfaceUrl%/static/images/game/promo/supply-drop_homescreen.png"
                                         />
                                     </a>
                                 </div>
@@ -680,7 +680,7 @@
             $.magma.jsVariables = {};
 
             var persona_name = nsConfig.personaName = "%soldierName%";
-            var home_url = '%interfaceUrl%:%interfacePort%/en/game';
+            var home_url = '%interfaceUrl%/en/game';
             var icon_url = './static/images/item-icons';
             var loading_icon_url =
                 './static/modules/game/loading-newer.gif'; // TODO: Set lang prefix
@@ -706,79 +706,79 @@
 
             // Get personas URL
             nsConfig.personasUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/getSoldiers';
-            nsConfig.vipUrl = '%interfaceUrl%:%interfacePort%/en/game/getVip';
+                '%interfaceUrl%/en/game/getSoldiers';
+            nsConfig.vipUrl = '%interfaceUrl%/en/game/getVip';
 
             nsConfig.updateAbilitiesUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/abilities'; //TODO HTML as response
+                '%interfaceUrl%/en/game/abilities'; //TODO HTML as response
 
 
             var personaUrl = nsConfig.personaUrl =
-                '%interfaceUrl%:%interfacePort%/en/game?personaId=';
+                '%interfaceUrl%/en/game?personaId=';
             var purchase_url = nsConfig.purchaseUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/store/buy/609452444/OFFERID';
+                '%interfaceUrl%/en/game/store/buy/609452444/OFFERID';
             var purchase_training_point_url = nsConfig.purchaseTrainingPointUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/purchaseTrainingPoints/personaId/609452444/offerId/OFFERID';
+                '%interfaceUrl%/en/game/purchaseTrainingPoints/personaId/609452444/offerId/OFFERID';
             var purchase_ability_url = nsConfig.purchaseAbilityUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/abilities/buy/609452444/ABILITYID'; //TODO HTML as response
+                '%interfaceUrl%/en/game/abilities/buy/609452444/ABILITYID'; //TODO HTML as response
             var reset_abilities_url = nsConfig.resetAbilitiesUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/abilities/reset/609452444'; //TODO HTML as response
+                '%interfaceUrl%/en/game/abilities/reset/609452444'; //TODO HTML as response
             var save_equipment_url = nsConfig.saveEquipmentUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/saveEquipmentBar/609452444';
+                '%interfaceUrl%/en/game/saveEquipmentBar/609452444';
             var save_appearance_url = nsConfig.saveAppearanceUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/saveAppearance/609452444';
+                '%interfaceUrl%/en/game/saveAppearance/609452444';
             var save_customization_url = nsConfig.saveCustomizationUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/saveCustomization/609452444';
+                '%interfaceUrl%/en/game/saveCustomization/609452444';
             var save_emotes_url =
-                '%interfaceUrl%:%interfacePort%/en/game/saveEmotes/609452444';
+                '%interfaceUrl%/en/game/saveEmotes/609452444';
             var check_wallet_url = nsConfig.walletUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/getWalletBalance';
+                '%interfaceUrl%/en/game/getWalletBalance';
             var eor_updated_data_url = nsConfig.eorUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/checkeorreport/609452444/';
+                '%interfaceUrl%/en/game/checkeorreport/609452444/';
             var remove_server_url = nsConfig.serverRemoveUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/removeServerBookmark';
+                '%interfaceUrl%/en/game/removeServerBookmark';
             var add_server_url = nsConfig.serverAddUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/addServerBookmark';
+                '%interfaceUrl%/en/game/addServerBookmark';
             var vip_updated_url = nsConfig.vipUpdatedURL =
-                '%interfaceUrl%:%interfacePort%/en/game/allServerVIPSeen';
+                '%interfaceUrl%/en/game/allServerVIPSeen';
             var remove_friend_url = '';
             var change_server_page_url =
-                '%interfaceUrl%:%interfacePort%/en/ajax/serversPage'; // not used
+                '%interfaceUrl%/en/ajax/serversPage'; // not used
             var change_friend_page_url =
-                '%interfaceUrl%:%interfacePort%/en/ajax/friendsPage'; //HTML as response
+                '%interfaceUrl%/en/ajax/friendsPage'; //HTML as response
             var lockbox_url = nsConfig.lockboxUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/generateLockboxUrl';
+                '%interfaceUrl%/en/game/generateLockboxUrl';
             var buying_bundle = false;
             var bundle_items = [];
             var get_server_list_url = nsConfig.serverListUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/getGameList';
+                '%interfaceUrl%/en/game/getGameList';
             var get_server_info_url = nsConfig.serverInfoUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/getGameDetails';
+                '%interfaceUrl%/en/game/getGameDetails';
 
             nsConfig.getItemUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/getItemJson/itemId/';
+                '%interfaceUrl%/en/game/getItemJson/itemId/';
 
             nsConfig.getItemByOfferUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/getItemByOfferId/offerId/';
+                '%interfaceUrl%/en/game/getItemByOfferId/offerId/';
 
             nsConfig.gameVersion = (window.game) ? window.game.version :
                 '0.01.217848.3';
 
             nsConfig.gameEventsUrl =
-                '%interfaceUrl%:%interfacePort%/en/game/getGameEvents';
+                '%interfaceUrl%/en/game/getGameEvents';
 
             nsConfig.insertsForumUrl =
                 '%interfaceUrl%/forum/showthread.php?tid=77063';
 
-            nsConfig.weaponsJson = "%interfaceUrl%:%interfacePort%/en/game/getWeaponsJson";
+            nsConfig.weaponsJson = "%interfaceUrl%/en/game/getWeaponsJson";
 
-            nsConfig.apparelJson = "%interfaceUrl%:%interfacePort%/en/game/getApparelJson";
+            nsConfig.apparelJson = "%interfaceUrl%/en/game/getApparelJson";
 
-            nsConfig.bundleJson = "%interfaceUrl%:%interfacePort%/en/game/getBundlesJson";
+            nsConfig.bundleJson = "%interfaceUrl%/en/game/getBundlesJson";
 
-            nsConfig.boosterJson = "%interfaceUrl%:%interfacePort%/en/game/getBoostersJson";
+            nsConfig.boosterJson = "%interfaceUrl%/en/game/getBoostersJson";
 
-            nsConfig.attachmentJson = "%interfaceUrl%:%interfacePort%/en/game/getAttachmentsJson";
+            nsConfig.attachmentJson = "%interfaceUrl%/en/game/getAttachmentsJson";
 
 
             /**

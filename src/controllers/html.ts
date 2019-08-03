@@ -37,7 +37,7 @@ const htmlHandler = async (req, res) => {
     const numberOfTrainingPointsPurchased = "0";
     const maxNumberOfExtraPoints = "10";
 
-    const { debug, interfaceUrl, interfacePort } = config.get("lava");
+    const { debug, interfaceUrl } = config.get("lava");
     const cdnUrl = config.get("cdn.url");
 
     const lastAuthed = +new Date();
@@ -114,7 +114,6 @@ const htmlHandler = async (req, res) => {
       .replace(/%debug%/g, debug)
       .replace(/%firebug%/g, firebugLink)
       .replace(/%interfaceUrl%/g, interfaceUrl)
-      .replace(/%interfacePort%/g, interfacePort.toString())
       .replace(/%soldierId%/g, req.session.soldier.id.toString())
       .replace(/%soldierName%/g, req.session.soldier.soldierName)
       .replace(/%level%/g, req.session.soldier.level.toString())
