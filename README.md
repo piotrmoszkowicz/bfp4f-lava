@@ -6,7 +6,7 @@ Implementation of Battlefield Play4free's SHOP API in TypeScript/Node.JS.
 
 Following stuff must be installed to make app working properly:
 
-* [Node.js](http://nodejs.org) version 10.16.0
+* [Node.js](http://nodejs.org) version 10.16.1
 
 You can also run lava by Docker. More info [here](https://github.com/piotrmoszkowicz/bfp4f-lava/blob/master/DOCKER.md).
 
