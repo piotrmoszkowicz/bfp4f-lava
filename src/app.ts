@@ -94,7 +94,7 @@ app.listen(interfacePort, "0.0.0.0", async err => {
     Logger.log("error", "App error", { message: err });
     return;
   }
-  await await database.sync({ force: false });
+  await database.sync({ force: false });
   Logger.log("info", `App is running at 0.0.0.0:${interfacePort}`);
 });
 
