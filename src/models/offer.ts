@@ -1,21 +1,26 @@
 import {
+  AutoIncrement,
   Column,
+  CreatedAt,
   DataType,
+  DeletedAt,
   ForeignKey,
   Model,
-  Table
+  PrimaryKey,
+  Table,
+  UpdatedAt
 } from "sequelize-typescript";
 
 import Item from "./item";
 
 @Table({
   tableName: "game_offers",
-  timestamps: false
+  underscored: true
 })
 export default class Offer extends Model<Offer> {
-  @Column({
-    primaryKey: true
-  })
+  @PrimaryKey
+  @AutoIncrement
+  @Column
   public id: number;
 
   @Column
@@ -38,4 +43,13 @@ export default class Offer extends Model<Offer> {
   @ForeignKey(() => Item)
   @Column
   public itemId: number;
+
+  @CreatedAt
+  public createdAt: Date;
+
+  @DeletedAt
+  public deletedAt: Date;
+
+  @UpdatedAt
+  public updatedAt: Date;
 }

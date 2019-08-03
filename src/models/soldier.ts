@@ -1,10 +1,13 @@
 import {
   Column,
-  DataType,
+  CreatedAt,
+  DeletedAt,
   HasMany,
   Model,
   Scopes,
-  Table
+  Table,
+  Unique,
+  UpdatedAt
 } from "sequelize-typescript";
 
 import OwnedItem from "./ownedItem";
@@ -28,41 +31,21 @@ import Wallet from "./wallet";
   }
 })
 @Table({
-  tableName: "game_soldiers"
+  tableName: "game_soldiers",
+  underscored: true
 })
 export default class Soldier extends Model<Soldier> {
+  @Unique
   @Column
   public soldierName: string;
 
-  @Column({
-    field: "created_at",
-    type: DataType.DATE
-  })
-  public createdAt: string;
-
-  @Column({
-    field: "deleted_at",
-    type: DataType.DATE
-  })
-  public deletedAt: string;
-
-  @Column({
-    field: "updated_at",
-    type: DataType.DATE
-  })
-  public updatedAt: string;
-
-  @Column({
-    field: "user_id"
-  })
+  @Column
   public userId: number;
 
   @Column
   public online: number;
 
-  @Column({
-    field: "ip_address"
-  })
+  @Column
   public ipAddress: string;
 
   @Column
@@ -76,6 +59,15 @@ export default class Soldier extends Model<Soldier> {
 
   @Column
   public isMain: boolean;
+
+  @CreatedAt
+  public createdAt: Date;
+
+  @DeletedAt
+  public deletedAt: Date;
+
+  @UpdatedAt
+  public updatedAt: Date;
 
   @HasMany(() => OwnedItem, "ownerId")
   public items: OwnedItem[];
