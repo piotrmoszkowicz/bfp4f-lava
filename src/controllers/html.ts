@@ -25,11 +25,6 @@ const htmlHandler = async (req, res) => {
       const newSoldier = soldiers.find(soldier => soldier.id === newPersonId);
       if (newSoldier !== null) {
         req.session.soldier = newSoldier;
-        req.session.save(err => {
-          if (err) {
-            Logger.error(err);
-          }
-        });
       }
     }
 
