@@ -34,8 +34,7 @@ const sessionOptions = {
   store: new RedisStore({
     host: config.get("redis.host"),
     port: 6379,
-    client: redisClient,
-    ttl: 260
+    client: redisClient
   }),
   cookie: {
     httpOnly: false,
