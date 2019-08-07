@@ -38,6 +38,7 @@ const sessionOptions = {
   }),
   cookie: {
     httpOnly: false,
+    secure: false,
     maxAge: cookieConfig.maxAge,
     domain: cookieConfig.domain
   }
