@@ -10,12 +10,12 @@ import { WeaponsJson } from "WeaponsJson";
 
 const ItemService = {
   /**
-   * Functions which grabs all items that certain soldier owns
+   * Functions which grabs all items with information whether certain soldier owns them
    * @param soldierId     - ID of Soldier
    * @param types         - Type of items
-   * @param kitId         - Kit of Soldier
+   * @param kitId?         - Kit of Soldier
    */
-  getOwnedItemsBySoldierId(soldierId: number, types: string[], kitId?: number) {
+  getAllItemsWithOwnerBySoldierId(soldierId: number, types: string[], kitId?: number) {
     const kitParams = [-1];
     if (kitId !== undefined) {
       kitParams.push(kitId);
@@ -45,12 +45,44 @@ const ItemService = {
   },
 
   /**
+   * Functions which grabs all items that certain soldier owns
+   * @param soldierId     - ID of Soldier
+   * @param types         - Type of items
+   * @param kitId?         - Kit of Soldier
+   */
+  getOwnedItemsBySolderId(soldierId: number, types: string[], kitId?: number) {
+    const kitParams = [-1];
+    if (kitId !== undefined) {
+      kitParams.push(kitId);
+    }
+    return Item.findAll({
+      include: [
+        {
+          model: OwnedItem,
+          where: {
+            ownerId: soldierId
+          },
+          required: true
+        }
+      ],
+      where: {
+        type: {
+          [Op.or]: types
+        },
+        kit: {
+          [Op.or]: kitParams
+        }
+      }
+    });
+  },
+
+  /**
    * Function which returns all apparel data formatted for JSON response
    * @param soldierId      -  ID of Soldier
    * @param soldierLevel   -  Level of soldier
    */
   getApparelJson(soldierId: number, soldierLevel: number) {
-    return this.getOwnedItemsBySoldierId(soldierId, ["appearance"]).then(data =>
+    return this.getAllItemsWithOwnerBySoldierId(soldierId, ["appearance"]).then(data =>
       this.formatApparelJson(data, soldierLevel)
     );
   },
@@ -61,23 +93,19 @@ const ItemService = {
    * @param soldierLevel   -  Level of soldier
    */
   getBoostersJson(soldierId: number, soldierLevel: number) {
-    return this.getOwnedItemsBySoldierId(soldierId, ["boosters"]).then(data =>
+    return this.getAllItemsWithOwnerBySoldierId(soldierId, ["boosters"]).then(data =>
       this.formatBoostersJson(data, soldierLevel)
     );
   },
 
   /**
-   * Function which returns all boosters data formatted for JSON response
+   * Function which returns all weapons data formatted for JSON response
    * @param soldierId      -  ID of Soldier
    * @param soldierLevel   -  Level of soldier
    * @param kitId          -  ID of Soldier's kit
    */
   getWeaponsJson(soldierId: number, soldierLevel: number, kitId: number) {
-    return this.getOwnedItemsBySoldierId(
-      soldierId,
-      ["abilities", "weapons"],
-      kitId
-    ).then(data => this.formatWeaponsJson(data, soldierLevel));
+    return this.getAllItemsWithOwnerBySoldierId(soldierId, ["abilities", "weapons"], kitId).then(data => this.formatWeaponsJson(data, soldierLevel));
   },
 
   /**
