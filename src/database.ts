@@ -15,7 +15,7 @@ try {
     dialect: dbConfig.engine,
     host: dbConfig.host,
     logging: msg => Logger.log("debug", "[MYSQL]", { message: msg }),
-    modelPaths: [__dirname + "/models/*"],
+    models: [__dirname + "/models/*"],
     password: dbConfig.password,
     pool: {
       idle: dbConfig.maxIdleTime,

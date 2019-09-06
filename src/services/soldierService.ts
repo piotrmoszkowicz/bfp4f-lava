@@ -58,11 +58,15 @@ const SoldierService = {
    */
   getSoldierByID(id: number, attributes?: string[]) {
     const opts = {
-      attributes: attributes ? attributes : ["*"],
       where: {
         id
       }
+    } as {
+      attributes?: string[];
     };
+    if (attributes) {
+      opts.attributes = attributes;
+    }
     return Soldier.findOne(opts);
   },
 

@@ -11,9 +11,9 @@ import {
   UpdatedAt
 } from "sequelize-typescript";
 
-@DefaultScope({
+@DefaultScope(() => ({
   attributes: ["currency", "value"]
-})
+}))
 @Table({
   tableName: "game_wallets",
   underscored: true

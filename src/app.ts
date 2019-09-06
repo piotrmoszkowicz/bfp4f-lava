@@ -32,8 +32,6 @@ const sessionOptions = {
   secret: sessionSecret,
   saveUninitialized: true,
   store: new RedisStore({
-    host: config.get("redis.host"),
-    port: 6379,
     client: redisClient
   }),
   cookie: {
