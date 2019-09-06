@@ -58,7 +58,7 @@ const ItemService = {
     return Item.findAll({
       include: [
         {
-          model: OwnedItem,
+          model: OwnedItem.scope(null),
           where: {
             ownerId: soldierId
           },
