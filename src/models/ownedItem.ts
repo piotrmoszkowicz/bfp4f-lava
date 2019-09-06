@@ -14,9 +14,9 @@ import {
 import Item from "./item";
 import Soldier from "./soldier";
 
-@DefaultScope({
+@DefaultScope(() => ({
   attributes: ["availableTill", "barPosition", "createdAt", "useCount"]
-})
+}))
 @Table({
   tableName: "game_owned_items",
   underscored: true

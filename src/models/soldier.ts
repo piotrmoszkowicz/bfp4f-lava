@@ -1,9 +1,10 @@
 import {
+  AutoIncrement,
   Column,
   CreatedAt,
   DeletedAt,
   HasMany,
-  Model,
+  Model, PrimaryKey,
   Scopes,
   Table,
   Unique,
@@ -13,28 +14,25 @@ import {
 import OwnedItem from "./ownedItem";
 import Wallet from "./wallet";
 
-@Scopes({
+@Scopes(() => ({
   full: {
-    include: [
-      {
-        model: () => Wallet
-      }
-    ]
+    include: [Wallet]
   },
   wallet: {
     attributes: [],
-    include: [
-      {
-        model: () => Wallet
-      }
-    ]
+    include: [Wallet]
   }
-})
+}))
 @Table({
   tableName: "game_soldiers",
   underscored: true
 })
 export default class Soldier extends Model<Soldier> {
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+  public id: number;
+
   @Unique
   @Column
   public soldierName: string;
