@@ -15,7 +15,6 @@
     "watch": "nodemon dist/app.js",
     "test": "jest --coverage --passWithNoTests",
     "reformat": "npm run prettier && npm run tslint",
-    "postinstall": "npm run build-ts",
     "prettier": "prettier --write '**/*.ts'",
     "watch-test": "npm run test -- --watchAll",
     "build-ts": "tsc",
