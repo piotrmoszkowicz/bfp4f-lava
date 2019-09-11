@@ -1,4 +1,5 @@
 import Wallet from "@models/wallet";
+import userService from "@services/userService";
 
 import { WalletBalance } from "WalletBalance";
 
@@ -36,8 +37,7 @@ const WalletService = {
    * @param sessionId     - SessionID
    */
   getWalletBySessionId(sessionId: string) {
-    // return userService.getUserIdFromSessionId(sessionId).then(userId => this.getWalletByUserId(userId));
-    return this.getWalletByUserId(666);
+    return userService.getUserIdFromSessionId(sessionId).then(userId => this.getWalletByUserId(userId));
   },
 
   /**
