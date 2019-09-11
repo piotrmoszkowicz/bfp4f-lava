@@ -6,7 +6,7 @@ const { combine, timestamp, prettyPrint } = winston.format;
 
 const transports: any = [
   new winston.transports.Console({
-    level: config.get("lava.debug") ? "debug" : "warn"
+    level: config.get("lava.debug") ? "debug" : "info"
   })
 ];
 
