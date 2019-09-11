@@ -1,8 +1,0 @@
-stages:
-  - build
-build:
-  tags:
-    - specific
-  stage: build
-  script:
-    - "npm run build"
