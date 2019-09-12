@@ -1,10 +1,10 @@
 ## Docker guide
 
-Our lava server can be run by docker. Before you simply need to install docker itself.
+Lava server can be run by docker. Before you simply need to install docker itself.
 
-You can either compose the image by yourself or use the one hosted by NommoPL on dockerhub. Before you can use the one
-hosted you need to get access to the dockerhub. 
-Ask NommoPL for it!
+Easiest way is simply to use `docker-compose up` after you fill missing things inside .env file - ENV list is below.
+
+You can also run only lava itself, than you should configure all of variables (all from this guide, not only the ones in .env).
 
 ## Configuration
 
@@ -47,14 +47,15 @@ Variable                | Description
 
 ## ENV LIST bfp4f-lava configuration
 
-Variable                | Description
------                   | -----------
-`NODE_ENV`              | Start mode (`development` / `test` / `stage` / `production`) - use production when you don't know what to do
-`INTERFACE_URL`         | `bfp4f-lava` interface URL
-`INTERFACE_PORT`        | `bfp4f-lava` interface port
-`INTERFACE_DEBUG`       | Start game interface in DEBUG more (`true` / `false`)
-`CDN_URL`               | URL to the CDN, where static files are stored
-`DSN`                   | sentry.io DSN link
+Variable                    | Description
+-----                       | -----------
+`NODE_ENV`                  | Start mode (`development` / `test` / `stage` / `production`) - use production when you don't know what to do
+`INTERFACE_URL`             | `bfp4f-lava` interface URL
+`INTERFACE_PORT`            | `bfp4f-lava` interface port
+`INTERFACE_DEBUG`           | Start game interface in DEBUG more (`true` / `false`)
+`INTERFACE_SESSION_SECRET`  | Secret for sessions
+`CDN_URL`                   | URL to the CDN, where static files are stored
+`DSN`                       | sentry.io DSN link
 
 ## How to run?
 ```$ docker run --network="host" -p 3000:3000 --env-file ./config.env nommopl/bfp4f-lava:latest```
