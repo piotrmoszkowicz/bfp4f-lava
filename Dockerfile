@@ -31,8 +31,17 @@ WORKDIR /app
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
-## We just need the build and package to execute the command
+## Copy config files
+COPY config ./config
+
+## Copy package jsons from installer
+COPY --from=installer /usr/src/app/package*.json ./
+
+## Copy built files from builder
 COPY --from=builder /usr/src/app/dist dist
 
+## Install only production dependencies
+RUN npm install --quiet
+
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD [ "node", "dist/app.js" ]
