@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   database: {
     engine: process.env.DATABASE_ENGINE || "mysql",
     host: process.env.DATABASE_HOST || "127.0.0.1",

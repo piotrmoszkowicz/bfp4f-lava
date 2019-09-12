@@ -1,6 +1,8 @@
 ## Contribution guide
 
-All tasks MUST be first placed into JIRA - if you don't have access there contact NommoPL.
+If you want to collaborate - fork and do it on your branch. This repo will be contributed only by rules below!
+
+All tasks MUST be first placed into JIRA - if you don't have access you may try to contact me, but I guess I won't give it anyways.
 
 ## Main rules
 * No committing into master
