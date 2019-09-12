@@ -2,6 +2,8 @@
 
 Implementation of Battlefield Play4free's SHOP API in TypeScript/Node.JS.
 
+Everything is done for educational purpose only. Lava is licensed by MIT license, besides parts which are intelectuall property of Electronic Arts / DICE.
+
 ## Requirements
 
 Following stuff must be installed to make app working properly:
