@@ -1,8 +1,33 @@
+version: '3'
 services:
+  mysql:
+    container_name: mysql_bfp4f-lava
+    image: "mysql:5.7"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=uDZnB6EaBhB4mxZz
+      - MYSQL_DATABASE=bfp4f-lava
+  redis:
+    container_name: redis_bfp4f-lava
+    image: "redis"
   bfp4f-lava:
     build: .
-    command: npm run debug
-    volumes:
-      - ./dist:/server/dist
     ports:
-      - "3000:3000"
+      - "${INTERFACE_PORT}:3000"
+    links:
+      - redis
+      - mysql
+    environment:
+      - DATABASE_HOST=mysql
+      - DATABASE_NAME=bfp4f-lava
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=uDZnB6EaBhB4mxZz
+      - DATABASE_PORT=3306
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    env_file:
+      - .env
+volumes:
+  mysql-data:
+    driver: local
