@@ -4,3 +4,6 @@ config/local-*
 .idea
 .git
 coverage
+*.md
+*.yml
+*.env
