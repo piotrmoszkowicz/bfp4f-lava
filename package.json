@@ -57,7 +57,7 @@
     "@types/config": "^0.0.34",
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.141",
-    "@types/node": "^12.7.11",
+    "@types/node": "^12.7.12",
     "@types/redis": "^2.8.14",
     "@types/supertest": "^2.0.8",
     "chai": "^4.2.0",
