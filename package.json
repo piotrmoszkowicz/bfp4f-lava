@@ -33,7 +33,7 @@
     "@util": "dist/util"
   },
   "dependencies": {
-    "bluebird": "^3.7.0",
+    "bluebird": "^3.7.1",
     "concurrently": "^5.0.0",
     "config": "^3.2.3",
     "connect-redis": "^4.0.3",
