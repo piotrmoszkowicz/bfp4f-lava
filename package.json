@@ -53,7 +53,7 @@
     "winston-sentry-raven-transport": "^1.1.0"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.28",
+    "@types/bluebird": "^3.5.29",
     "@types/config": "^0.0.36",
     "@types/jest": "^24.0.19",
     "@types/lodash": "^4.14.144",
