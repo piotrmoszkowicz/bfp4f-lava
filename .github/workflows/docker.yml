@@ -1,4 +1,8 @@
 name: Publish Docker
+on:
+  pull_request:
+    branches:
+      - master
 #on:
 #  push:
 #    branches:
