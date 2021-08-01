@@ -22,7 +22,7 @@ const htmlHandler = async (req, res) => {
     const newPersonId = parseInt(req.query.personaId, 10);
 
     if (newPersonId > 0) {
-      const newSoldier = soldiers.find(soldier => soldier.id === newPersonId);
+      const newSoldier = soldiers.find((soldier) => soldier.id === newPersonId);
       if (newSoldier !== null) {
         req.session.soldier = newSoldier;
       }
@@ -44,29 +44,29 @@ const htmlHandler = async (req, res) => {
         cost: 75000,
         currency: "_AC",
         limit: "1 Training Point",
-        isUnlimited: true
+        isUnlimited: true,
       },
       {
         offer: "OFB-BP4F:43015",
         cost: 7999,
         currency: "_PF",
         limit: "1 Training Point",
-        isUnlimited: true
+        isUnlimited: true,
       },
       {
         offer: "OFB-BP4F:43016",
         cost: 27299,
         currency: "_PF",
         limit: "5 Training Points",
-        isUnlimited: true
+        isUnlimited: true,
       },
       {
         offer: "OFB-BP4F:43017",
         cost: 52499,
         currency: "_PF",
         limit: "10 Training Points",
-        isUnlimited: true
-      }
+        isUnlimited: true,
+      },
     ];
 
     const personaJson = {
@@ -80,10 +80,10 @@ const htmlHandler = async (req, res) => {
       isMaxLevel: req.session.soldier.level === 30,
       level: req.session.soldier.level,
       levelUpProgression: 0, // TODO: Add level progression
-      levelDescription: "Warrant Officer Silver" // TODO: Add level titles
+      levelDescription: "Warrant Officer Silver", // TODO: Add level titles
     };
 
-    const personasJson = soldiers.map(soldier => ({
+    const personasJson = soldiers.map((soldier) => ({
       id: soldier.id,
       name: soldier.soldierName,
       kit: soldier.kit,
@@ -94,16 +94,18 @@ const htmlHandler = async (req, res) => {
       isMaxLevel: soldier.level === 30,
       level: soldier.level,
       levelUpProgression: 0, // TODO: Add level progression
-      levelDescription: "Warrant Officer Silver" // TODO: Add level titles
+      levelDescription: "Warrant Officer Silver", // TODO: Add level titles
     }));
 
     const firebugLink = debug
       ? `<script type='text/javascript' src='${cdnUrl}/js/firebug-lite.js'></script>`
       : "";
 
-    const html = (await readFileAsync(
-      path.join(__dirname + "../../../dependencies/html/index.html")
-    ))
+    const html = (
+      await readFileAsync(
+        path.join(__dirname + "../../../dependencies/html/index.html")
+      )
+    )
       .toString()
       .replace(/%cdnUrl%/g, cdnUrl.toString())
       .replace(/%debug%/g, debug)
@@ -129,10 +131,10 @@ const htmlHandler = async (req, res) => {
   }
 };
 
-export default async fastify => {
+export default async (fastify) => {
   fastify.route({
     method: "GET",
     url: "/",
-    handler: htmlHandler
+    handler: htmlHandler,
   });
 };

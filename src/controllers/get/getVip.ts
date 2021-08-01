@@ -8,14 +8,14 @@ export const getVip = async (req, res): Promise<VipJsonResponse> => {
       result: "success",
       status: "success",
       data: {
-        vip: []
-      }
+        vip: [],
+      },
     };
   } catch (err) {
     Logger.log("error", "Error in /getVip", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

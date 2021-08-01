@@ -9,14 +9,14 @@ export const getBundlesJson = async (req, res): Promise<any> => {
       status: "success",
       data: {
         status: "SUCCESS",
-        bundles: []
-      }
+        bundles: [],
+      },
     } as BundlesJsonResponse;
   } catch (err) {
     Logger.log("error", "Error in /getBundlesJson", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

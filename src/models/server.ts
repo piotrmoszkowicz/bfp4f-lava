@@ -7,12 +7,12 @@ import {
   Model,
   PrimaryKey,
   Table,
-  UpdatedAt
+  UpdatedAt,
 } from "sequelize-typescript";
 
 @Table({
   tableName: "game_servers",
-  underscored: true
+  underscored: true,
 })
 export default class Server extends Model<Server> {
   @PrimaryKey
@@ -30,7 +30,7 @@ export default class Server extends Model<Server> {
   public guid: string;
 
   @Column({
-    type: DataType.ENUM("gva", "sjc", "iad", "nrt", "syd")
+    type: DataType.ENUM("gva", "sjc", "iad", "nrt", "syd"),
   })
   public region: ServerRegion;
 
@@ -38,7 +38,7 @@ export default class Server extends Model<Server> {
   public currentPlayers: string;
 
   @Column({
-    field: "num_current_players"
+    field: "num_current_players",
   })
   public numberOfCurrentPlayers: number;
 

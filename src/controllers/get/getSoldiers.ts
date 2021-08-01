@@ -12,14 +12,14 @@ export const getSoldiers = async (req, res): Promise<SoldiersJsonResponse> => {
       data: {
         personas: await SoldierService.getFormattedSoldiersBySessionId(
           req.sessionId
-        )
-      }
+        ),
+      },
     };
   } catch (err) {
     Logger.log("error", "Error in /getSoldiers", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

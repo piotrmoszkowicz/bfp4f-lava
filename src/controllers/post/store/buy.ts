@@ -19,7 +19,7 @@ export const postStoreBuy = async (req, res): Promise<BuyJsonResponse> => {
     },
     {
       _PF: 0,
-      _AC: 0
+      _AC: 0,
     }
   );
 
@@ -30,14 +30,14 @@ export const postStoreBuy = async (req, res): Promise<BuyJsonResponse> => {
       data: {
         credits: finalWallet._AC,
         funds: finalWallet._PF,
-        items: []
-      }
+        items: [],
+      },
     };
   } catch (err) {
     Logger.log("error", "Error in /store/buy", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

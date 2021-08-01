@@ -11,7 +11,7 @@ const SoldierService = {
   getSoldiersBySessionId(sessionId: string) {
     return userService
       .getUserIdFromSessionId(sessionId)
-      .then(userId => this.getSoldiersByUserId(userId));
+      .then((userId) => this.getSoldiersByUserId(userId));
   },
 
   /**
@@ -27,7 +27,7 @@ const SoldierService = {
    * @param sessionId       - SessionID of user
    */
   getMainSoldierIdBySessionId(sessionId: string) {
-    return userService.getUserIdFromSessionId(sessionId).then(userId => {
+    return userService.getUserIdFromSessionId(sessionId).then((userId) => {
       return this.getMainSoldierIdByUserId(userId);
     });
   },
@@ -40,8 +40,8 @@ const SoldierService = {
   getSoldiersByUserId(userId: number, attributes?: string[]) {
     const opts = {
       where: {
-        userId
-      }
+        userId,
+      },
     } as {
       attributes?: string[];
     };
@@ -59,8 +59,8 @@ const SoldierService = {
   getSoldierByID(id: number, attributes?: string[]) {
     const opts = {
       where: {
-        id
-      }
+        id,
+      },
     } as {
       attributes?: string[];
     };
@@ -78,8 +78,8 @@ const SoldierService = {
     const opts = {
       where: {
         isMain: true,
-        userId
-      }
+        userId,
+      },
     };
     return Soldier.findOne(opts);
   },
@@ -90,7 +90,7 @@ const SoldierService = {
    */
   formatSoldiersJson(soldiersData: any[]): SoldierJson[] {
     return soldiersData.map(
-      soldier =>
+      (soldier) =>
         ({
           id: soldier.id,
           name: soldier.soldierName,
@@ -102,10 +102,10 @@ const SoldierService = {
           isMaxLevel: !!(soldier.level === 30),
           level: soldier.level,
           levelUpProgression: 0, // TODO: Add level progression
-          levelDescription: "Asdf" // TODO: Add level descriptions
+          levelDescription: "Asdf", // TODO: Add level descriptions
         } as SoldierJson)
     );
-  }
+  },
 };
 
 export default SoldierService;

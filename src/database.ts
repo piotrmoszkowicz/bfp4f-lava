@@ -14,21 +14,21 @@ try {
     database: dbConfig.name,
     dialect: dbConfig.engine,
     host: dbConfig.host,
-    logging: msg => Logger.log("debug", "[MYSQL]", { message: msg }),
+    logging: (msg) => Logger.log("debug", "[MYSQL]", { message: msg }),
     models: [__dirname + "/models/*"],
     password: dbConfig.password,
     pool: {
       idle: dbConfig.maxIdleTime,
       max: dbConfig.maxConnections,
-      min: dbConfig.minConnections
+      min: dbConfig.minConnections,
     },
     port: dbConfig.port,
     timezone: "+02:00",
-    username: dbConfig.user
+    username: dbConfig.user,
   });
 } catch (err) {
   Logger.log("error", "Error during creating Lava DB Instance", {
-    message: err
+    message: err,
   });
 }
 

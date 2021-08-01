@@ -15,7 +15,11 @@ const ItemService = {
    * @param types         - Type of items
    * @param kitId?         - Kit of Soldier
    */
-  getAllItemsWithOwnerBySoldierId(soldierId: number, types: string[], kitId?: number) {
+  getAllItemsWithOwnerBySoldierId(
+    soldierId: number,
+    types: string[],
+    kitId?: number
+  ) {
     const kitParams = [-1];
     if (kitId !== undefined) {
       kitParams.push(kitId);
@@ -25,22 +29,22 @@ const ItemService = {
         {
           model: OwnedItem,
           where: {
-            ownerId: soldierId
+            ownerId: soldierId,
           },
-          required: false
+          required: false,
         },
         {
-          model: Offer
-        }
+          model: Offer,
+        },
       ],
       where: {
         type: {
-          [Op.or]: types
+          [Op.or]: types,
         },
         kit: {
-          [Op.or]: kitParams
-        }
-      }
+          [Op.or]: kitParams,
+        },
+      },
     });
   },
 
@@ -60,19 +64,19 @@ const ItemService = {
         {
           model: OwnedItem.scope(null),
           where: {
-            ownerId: soldierId
+            ownerId: soldierId,
           },
-          required: true
-        }
+          required: true,
+        },
       ],
       where: {
         type: {
-          [Op.or]: types
+          [Op.or]: types,
         },
         kit: {
-          [Op.or]: kitParams
-        }
-      }
+          [Op.or]: kitParams,
+        },
+      },
     });
   },
 
@@ -82,8 +86,8 @@ const ItemService = {
    * @param soldierLevel   -  Level of soldier
    */
   getApparelJson(soldierId: number, soldierLevel: number) {
-    return this.getAllItemsWithOwnerBySoldierId(soldierId, ["appearance"]).then(data =>
-      this.formatApparelJson(data, soldierLevel)
+    return this.getAllItemsWithOwnerBySoldierId(soldierId, ["appearance"]).then(
+      (data) => this.formatApparelJson(data, soldierLevel)
     );
   },
 
@@ -93,8 +97,8 @@ const ItemService = {
    * @param soldierLevel   -  Level of soldier
    */
   getBoostersJson(soldierId: number, soldierLevel: number) {
-    return this.getAllItemsWithOwnerBySoldierId(soldierId, ["boosters"]).then(data =>
-      this.formatBoostersJson(data, soldierLevel)
+    return this.getAllItemsWithOwnerBySoldierId(soldierId, ["boosters"]).then(
+      (data) => this.formatBoostersJson(data, soldierLevel)
     );
   },
 
@@ -105,7 +109,11 @@ const ItemService = {
    * @param kitId          -  ID of Soldier's kit
    */
   getWeaponsJson(soldierId: number, soldierLevel: number, kitId: number) {
-    return this.getAllItemsWithOwnerBySoldierId(soldierId, ["abilities", "weapons"], kitId).then(data => this.formatWeaponsJson(data, soldierLevel));
+    return this.getAllItemsWithOwnerBySoldierId(
+      soldierId,
+      ["abilities", "weapons"],
+      kitId
+    ).then((data) => this.formatWeaponsJson(data, soldierLevel));
   },
 
   /**
@@ -119,10 +127,10 @@ const ItemService = {
       .findOne({
         where: {
           ownerId,
-          itemId
-        }
+          itemId,
+        },
       })
-      .then(item => {
+      .then((item) => {
         if (!item) {
           return;
         }
@@ -142,12 +150,12 @@ const ItemService = {
         where: {
           ownerId,
           barPosition: {
-            [Op.ne]: -1
-          }
-        }
+            [Op.ne]: -1,
+          },
+        },
       })
-      .then(items => {
-        return items.forEach(item => {
+      .then((items) => {
+        return items.forEach((item) => {
           if (itemsToEquip.includes(item.itemId)) {
             return;
           }
@@ -179,7 +187,7 @@ const ItemService = {
    * @param soldierLevel     -  Level of current soldier
    */
   formatApparelJson(apparelData: any[], soldierLevel: number) {
-    return apparelData.map<ApparelJson>(apparel => {
+    return apparelData.map<ApparelJson>((apparel) => {
       let expireTS: boolean | number = false;
       let expired = true;
       let buyable = true;
@@ -216,13 +224,13 @@ const ItemService = {
         equippedSlot: null, // TODO: Add EQ from DB
         validationGroup: apparel.category,
         prices: buyable
-          ? apparel.offers.map(offer => ({
+          ? apparel.offers.map((offer) => ({
               offer: offer.id,
               limit: offer.limit,
               isUnlimited: offer.isUnlimited,
               currency: offer.currency,
               cost: offer.cost,
-              isUnlockOffer: offer.isUnlockOffer
+              isUnlockOffer: offer.isUnlockOffer,
             }))
           : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
         promotionType: null,
@@ -232,7 +240,7 @@ const ItemService = {
         numberOfPockets: 0,
         minNumPockets: 0,
         maxNumPockets: 0,
-        upgrades: []
+        upgrades: [],
       };
     });
   },
@@ -280,17 +288,17 @@ const ItemService = {
         equippedSlot: key,
         validationGroup: booster.category,
         prices: buyable
-          ? booster.offers.map(offer => ({
+          ? booster.offers.map((offer) => ({
               offer: offer.id,
               limit: offer.limit,
               isUnlimited: offer.isUnlimited,
               currency: offer.currency,
               cost: offer.cost,
-              isUnlockOffer: offer.isUnlockOffer
+              isUnlockOffer: offer.isUnlockOffer,
             }))
           : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
         promotionType: null,
-        isLocked
+        isLocked,
       };
     });
   },
@@ -302,7 +310,7 @@ const ItemService = {
    */
   formatWeaponsJson(weaponsData: any[], soldierLevel: number) {
     return weaponsData
-      .map<WeaponsJson>(weapon => {
+      .map<WeaponsJson>((weapon) => {
         let expireTS: boolean | number = false;
         let expired = true;
         let buyable = true;
@@ -346,13 +354,13 @@ const ItemService = {
               : weapon.ownerData.barPosition,
           validationGroup: weapon.validationGroup, // TODO: Not that one - it has to be primary/secondary/melee/gadget
           prices: buyable
-            ? weapon.offers.map(offer => ({
+            ? weapon.offers.map((offer) => ({
                 offer: offer.id,
                 limit: offer.limit,
                 isUnlimited: offer.isUnlimited,
                 currency: offer.currency,
                 cost: offer.cost,
-                isUnlockOffer: offer.isUnlockOffer
+                isUnlockOffer: offer.isUnlockOffer,
               }))
             : [], // TODO: check what offers make sense - isUnlockOffer / isLocked stuff
           promotionType: null,
@@ -360,11 +368,11 @@ const ItemService = {
           lockType: "level",
           lockCriteria: weapon.lockCriteria,
           stats: weapon.stats,
-          attachments: []
+          attachments: [],
         };
       })
-      .filter(responseItem => responseItem !== null);
-  }
+      .filter((responseItem) => responseItem !== null);
+  },
 };
 
 export default ItemService;

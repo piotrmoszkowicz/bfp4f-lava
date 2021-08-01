@@ -9,5 +9,5 @@ enum ItemCategory {
   Head = "head",
   Melee = "melee",
   Shotgun = "shotgun",
-  Uniform = "uniform"
+  Uniform = "uniform",
 }

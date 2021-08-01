@@ -15,14 +15,14 @@ export const getWeaponsJson = async (
       status: "success",
       data: {
         status: "SUCCESS",
-        weapons: await ItemService.getWeaponsJson(id, level, kit)
-      }
+        weapons: await ItemService.getWeaponsJson(id, level, kit),
+      },
     };
   } catch (err) {
     Logger.log("error", "Error in /getWeaponsJson", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

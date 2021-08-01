@@ -11,14 +11,14 @@ const redisConfig: any = config.get("redis");
 
 const client = redis.createClient({
   host: redisConfig.host,
-  port: redisConfig.port
+  port: redisConfig.port,
 });
 
-client.on("debug", message => {
+client.on("debug", (message) => {
   Logger.log("debug", "[REDIS]", { message });
 });
 
-client.on("error", err => {
+client.on("error", (err) => {
   Logger.log("error", "[REDIS]", { message: err });
 });
 
