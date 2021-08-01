@@ -14,20 +14,20 @@ try {
     database: dbConfig.name,
     dialect: dbConfig.engine,
     host: dbConfig.host,
-    logging: msg => Logger.log("debug", "[MYBB]", { message: msg }),
+    logging: (msg) => Logger.log("debug", "[MYBB]", { message: msg }),
     password: dbConfig.password,
     pool: {
       idle: dbConfig.maxIdleTime,
       max: dbConfig.maxConnections,
-      min: dbConfig.minConnections
+      min: dbConfig.minConnections,
     },
     port: dbConfig.port,
     timezone: "+02:00",
-    username: dbConfig.user
+    username: dbConfig.user,
   });
 } catch (err) {
   Logger.log("error", "Error during creating MyBB DB Instance", {
-    message: err
+    message: err,
   });
 }
 

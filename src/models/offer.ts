@@ -8,14 +8,14 @@ import {
   Model,
   PrimaryKey,
   Table,
-  UpdatedAt
+  UpdatedAt,
 } from "sequelize-typescript";
 
 import Item from "./item";
 
 @Table({
   tableName: "game_offers",
-  underscored: true
+  underscored: true,
 })
 export default class Offer extends Model<Offer> {
   @PrimaryKey
@@ -27,7 +27,7 @@ export default class Offer extends Model<Offer> {
   public limit: string;
 
   @Column({
-    type: DataType.ENUM("_PF", "_AC")
+    type: DataType.ENUM("_PF", "_AC"),
   })
   public currency: Currency;
 

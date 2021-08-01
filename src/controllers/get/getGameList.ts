@@ -9,13 +9,13 @@ export const getGameList = async (req, res): Promise<GameListJsonResponse> => {
     return {
       result: "success",
       status: "success",
-      data: await ServerService.getServersJson()
+      data: await ServerService.getServersJson(),
     };
   } catch (err) {
     Logger.log("error", "Error in /getGameList", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

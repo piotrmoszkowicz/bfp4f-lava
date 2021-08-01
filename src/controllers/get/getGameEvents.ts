@@ -12,14 +12,14 @@ export const getGameEvents = async (
       status: "success",
       data: {
         status: "SUCCESS",
-        unlockInfo: []
-      }
+        unlockInfo: [],
+      },
     };
   } catch (err) {
     Logger.log("error", "Error in /getGameEvents", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

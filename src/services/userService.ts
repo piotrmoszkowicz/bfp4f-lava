@@ -13,15 +13,15 @@ const userService = {
         `SELECT uid FROM mybb_users WHERE game_token_p4f = '${sessionId}' LIMIT 1`,
         { type: mybbDatabase.QueryTypes.SELECT }
       )
-      .then(user => {
+      .then((user) => {
         if (!user || user.length === 0) {
           throw new Error("No user data");
         }
         Logger.log("debug", "User info", { user });
         return user[0].uid;
       })
-      .catch(err => Logger.log("error", "MyBB ERROR", { err }));
-  }
+      .catch((err) => Logger.log("error", "MyBB ERROR", { err }));
+  },
 };
 
 export default userService;

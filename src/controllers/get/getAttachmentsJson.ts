@@ -9,14 +9,14 @@ export const getAttachmentsJson = async (req, res): Promise<any> => {
       status: "success",
       data: {
         status: "SUCCESS",
-        attachments: []
-      }
+        attachments: [],
+      },
     } as AttachmentJsonResponse;
   } catch (err) {
     Logger.log("error", "Error in /getAttachmentsJson", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

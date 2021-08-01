@@ -1,3 +1,5 @@
+import { FastifyInstance } from "fastify";
+
 import { getApparelJson } from "@controllers/get/getApparelJson";
 import { getAttachmentsJson } from "@controllers/get/getAttachmentsJson";
 import { getBoostersJson } from "@controllers/get/getBoostersJson";
@@ -13,92 +15,92 @@ import { purchaseTrainingPoints } from "@controllers/post/abilities/purchaseTrai
 import { saveEquipment } from "@controllers/post/equipment/saveEquipment";
 import { postStoreBuy } from "@controllers/post/store/buy";
 
-import * as getApparelJsonSchema from "@schemas/getApparelJsonSchema";
-import * as getAttachmentsJsonSchema from "@schemas/getAttachmentsJsonSchema";
-import * as getBoostersJsonSchema from "@schemas/getBoostersJsonSchema";
-import * as getBundlesJsonSchema from "@schemas/getBundlesJsonSchema";
-import * as getGameEventsSchema from "@schemas/getGameEventsSchema";
-import * as getGameListSchema from "@schemas/getGameListSchema";
-import * as getSoldiersSchema from "@schemas/getSoldiersSchema";
-import * as getVipSchema from "@schemas/getVipSchema";
-import * as getWalletBalanceSchema from "@schemas/getWalletBalanceSchema";
-import * as getWeaponsJsonSchema from "@schemas/getWeaponsJsonSchema";
+import getApparelJsonSchema from "@schemas/getApparelJsonSchema";
+import getAttachmentsJsonSchema from "@schemas/getAttachmentsJsonSchema";
+import getBoostersJsonSchema from "@schemas/getBoostersJsonSchema";
+import getBundlesJsonSchema from "@schemas/getBundlesJsonSchema";
+import getGameEventsSchema from "@schemas/getGameEventsSchema";
+import getGameListSchema from "@schemas/getGameListSchema";
+import getSoldiersSchema from "@schemas/getSoldiersSchema";
+import getVipSchema from "@schemas/getVipSchema";
+import getWalletBalanceSchema from "@schemas/getWalletBalanceSchema";
+import getWeaponsJsonSchema from "@schemas/getWeaponsJsonSchema";
 
-import * as postBuySchema from "@schemas/postBuySchema";
-import * as postPurchaseTrainingPointsSchema from "@schemas/postPurchaseTrainingPointsSchema";
-import * as postSaveEquipmentSchema from "@schemas/postSaveEquipmentSchema";
+import postBuySchema from "@schemas/postBuySchema";
+import postPurchaseTrainingPointsSchema from "@schemas/postPurchaseTrainingPointsSchema";
+import postSaveEquipmentSchema from "@schemas/postSaveEquipmentSchema";
 
-export default async fastify => {
+export default async (fastify: FastifyInstance): Promise<void> => {
   /* Get routes */
 
   fastify.route({
     method: "GET",
     url: "/getApparelJson",
     handler: getApparelJson,
-    schema: getApparelJsonSchema
+    schema: getApparelJsonSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getAttachmentsJson",
     handler: getAttachmentsJson,
-    schema: getAttachmentsJsonSchema
+    schema: getAttachmentsJsonSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getBoostersJson",
     handler: getBoostersJson,
-    schema: getBoostersJsonSchema
+    schema: getBoostersJsonSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getBundlesJson",
     handler: getBundlesJson,
-    schema: getBundlesJsonSchema
+    schema: getBundlesJsonSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getGameEvents",
     handler: getGameEvents,
-    schema: getGameEventsSchema
+    schema: getGameEventsSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getGameList",
     handler: getGameList,
-    schema: getGameListSchema
+    schema: getGameListSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getSoldiers",
     handler: getSoldiers,
-    schema: getSoldiersSchema
+    schema: getSoldiersSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getVip",
     handler: getVip,
-    schema: getVipSchema
+    schema: getVipSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getWalletBalance",
     handler: getWalletBalance,
-    schema: getWalletBalanceSchema
+    schema: getWalletBalanceSchema,
   });
 
   fastify.route({
     method: "GET",
     url: "/getWeaponsJson",
     handler: getWeaponsJson,
-    schema: getWeaponsJsonSchema
+    schema: getWeaponsJsonSchema,
   });
 
   /* POST routes */
@@ -107,20 +109,20 @@ export default async fastify => {
     method: "POST",
     url: "/purchaseTrainingPoints/personaId/:personaId/offerId/:offerId",
     handler: purchaseTrainingPoints,
-    schema: postPurchaseTrainingPointsSchema
+    schema: postPurchaseTrainingPointsSchema,
   });
 
   fastify.route({
     method: "POST",
     url: "/saveEquipmentBar/:soldierId",
     handler: saveEquipment,
-    schema: postSaveEquipmentSchema
+    schema: postSaveEquipmentSchema,
   });
 
   fastify.route({
     method: "POST",
     url: "/store/buy/:soldierId/:offerId",
     handler: postStoreBuy,
-    schema: postBuySchema
+    schema: postBuySchema,
   });
 };

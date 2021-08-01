@@ -1,43 +1,41 @@
-import * as fastify from "fastify";
+import { FastifySchema } from "fastify";
 
-const getAll: fastify.RouteShorthandOptions = {
-  schema: {
-    response: {
-      200: {
-        type: "object",
-        properties: {
-          result: {
-            type: "string"
+const getAll: FastifySchema = {
+  response: {
+    200: {
+      type: "object",
+      properties: {
+        result: {
+          type: "string",
+        },
+        status: {
+          type: "string",
+        },
+        data: {
+          type: "object",
+          properties: {
+            status: {
+              type: "string",
+            },
+            unlockInfo: {
+              type: "array",
+            },
           },
-          status: {
-            type: "string"
-          },
-          data: {
-            type: "object",
-            properties: {
-              status: {
-                type: "string"
-              },
-              unlockInfo: {
-                type: "array"
-              }
-            }
-          }
-        }
+        },
       },
-      406: {
-        type: "object",
-        properties: {
-          result: {
-            type: "string"
-          },
-          status: {
-            type: "string"
-          }
-        }
-      }
-    }
-  }
+    },
+    406: {
+      type: "object",
+      properties: {
+        result: {
+          type: "string",
+        },
+        status: {
+          type: "string",
+        },
+      },
+    },
+  },
 };
 
 export default getAll;

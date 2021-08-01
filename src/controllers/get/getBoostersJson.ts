@@ -13,14 +13,14 @@ export const getBoostersJson = async (req, res): Promise<any> => {
         boosters: await ItemService.getBoostersJson(
           req.session.soldier.id,
           req.session.soldier.level
-        )
-      }
+        ),
+      },
     } as BoostersJsonResponse;
   } catch (err) {
     Logger.log("error", "Error in /getBoostersJson", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };

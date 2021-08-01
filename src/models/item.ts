@@ -5,16 +5,21 @@ import {
   HasOne,
   Model,
   PrimaryKey,
-  Table
+  Table,
 } from "sequelize-typescript";
 
 import Offer from "./offer";
 import OwnedItem from "./ownedItem";
 
 @Table({
+  indexes: [
+    {
+      fields: ["kit", "type"],
+    },
+  ],
   tableName: "game_items",
   timestamps: false,
-  underscored: true
+  underscored: true,
 })
 export default class Item extends Model<Item> {
   @PrimaryKey
@@ -28,7 +33,7 @@ export default class Item extends Model<Item> {
       "boosters",
       "gadget",
       "weapons"
-    )
+    ),
   })
   public type: ItemType;
 
@@ -52,17 +57,17 @@ export default class Item extends Model<Item> {
       "smg",
       "sniper_rifle",
       "uniform"
-    )
+    ),
   })
   public category: ItemCategory;
 
   @Column({
-    type: DataType.TEXT
+    type: DataType.TEXT,
   })
   public description: string;
 
   @Column({
-    type: DataType.TEXT
+    type: DataType.TEXT,
   })
   public stats: string;
 
@@ -73,7 +78,7 @@ export default class Item extends Model<Item> {
   public buyable: boolean;
 
   @Column({
-    type: DataType.ENUM("primary", "secondary", "melee", "gadget")
+    type: DataType.ENUM("primary", "secondary", "melee", "gadget"),
   })
   public validationGroup?: ValidationGroup;
 

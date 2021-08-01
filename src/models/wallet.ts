@@ -8,15 +8,15 @@ import {
   Model,
   PrimaryKey,
   Table,
-  UpdatedAt
+  UpdatedAt,
 } from "sequelize-typescript";
 
 @DefaultScope(() => ({
-  attributes: ["currency", "value"]
+  attributes: ["currency", "value"],
 }))
 @Table({
   tableName: "game_wallets",
-  underscored: true
+  underscored: true,
 })
 export default class Wallet extends Model<Wallet> {
   @PrimaryKey
@@ -28,7 +28,7 @@ export default class Wallet extends Model<Wallet> {
   public userId: number;
 
   @Column({
-    type: DataType.ENUM("_PF", "_AC")
+    type: DataType.ENUM("_PF", "_AC"),
   })
   public currency: Currency;
 

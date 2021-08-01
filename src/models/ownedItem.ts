@@ -8,18 +8,23 @@ import {
   Model,
   PrimaryKey,
   Table,
-  UpdatedAt
+  UpdatedAt,
 } from "sequelize-typescript";
 
 import Item from "./item";
 import Soldier from "./soldier";
 
 @DefaultScope(() => ({
-  attributes: ["availableTill", "barPosition", "createdAt", "useCount"]
+  attributes: ["availableTill", "barPosition", "createdAt", "useCount"],
 }))
 @Table({
+  indexes: [
+    {
+      fields: ["owner_id"],
+    },
+  ],
   tableName: "game_owned_items",
-  underscored: true
+  underscored: true,
 })
 export default class OwnedItem extends Model<OwnedItem> {
   @PrimaryKey
@@ -51,7 +56,7 @@ export default class OwnedItem extends Model<OwnedItem> {
   public updatedAt: Date;
 
   @Column({
-    field: "available_till"
+    field: "available_till",
   })
   public availableTill: string;
 }

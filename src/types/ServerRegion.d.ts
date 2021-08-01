@@ -3,5 +3,5 @@ enum ServerRegion {
   Australia = "syd",
   Europe = "gva",
   UsWest = "sjc",
-  UsEast = "iad"
+  UsEast = "iad",
 }

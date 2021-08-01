@@ -11,8 +11,8 @@ const WalletService = {
   getWalletByUserId(userId: number) {
     return Wallet.findAll({
       where: {
-        userId
-      }
+        userId,
+      },
     });
   },
 
@@ -37,7 +37,9 @@ const WalletService = {
    * @param sessionId     - SessionID
    */
   getWalletBySessionId(sessionId: string) {
-    return userService.getUserIdFromSessionId(sessionId).then(userId => this.getWalletByUserId(userId));
+    return userService
+      .getUserIdFromSessionId(sessionId)
+      .then((userId) => this.getWalletByUserId(userId));
   },
 
   /**
@@ -52,10 +54,10 @@ const WalletService = {
       },
       {
         _PF: 0,
-        _AC: 0
+        _AC: 0,
       }
     );
-  }
+  },
 };
 
 export default WalletService;

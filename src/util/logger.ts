@@ -6,8 +6,8 @@ const { combine, timestamp, prettyPrint } = winston.format;
 
 const transports: any = [
   new winston.transports.Console({
-    level: config.get("lava.debug") ? "debug" : "info"
-  })
+    level: config.get("lava.debug") ? "debug" : "info",
+  }),
 ];
 
 if (config.get("lava.debug")) {
@@ -19,14 +19,14 @@ if (config.get("lava.debug")) {
     new Sentry({
       level: "warn",
       dsn: config.get("lava.dsn"),
-      patchGlobal: true
+      patchGlobal: true,
     })
   );
 }
 
 const logger = winston.createLogger({
   format: combine(timestamp(), prettyPrint()),
-  transports
+  transports,
 });
 
 if (config.get("lava.debug")) {

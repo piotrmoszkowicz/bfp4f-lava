@@ -4,11 +4,13 @@ import {
   CreatedAt,
   DeletedAt,
   HasMany,
-  Model, PrimaryKey,
+  Index,
+  Model,
+  PrimaryKey,
   Scopes,
   Table,
   Unique,
-  UpdatedAt
+  UpdatedAt,
 } from "sequelize-typescript";
 
 import OwnedItem from "./ownedItem";
@@ -16,16 +18,21 @@ import Wallet from "./wallet";
 
 @Scopes(() => ({
   full: {
-    include: [Wallet]
+    include: [Wallet],
   },
   wallet: {
     attributes: [],
-    include: [Wallet]
-  }
+    include: [Wallet],
+  },
 }))
 @Table({
+  indexes: [
+    {
+      fields: ["user_id", "is_main"],
+    },
+  ],
   tableName: "game_soldiers",
-  underscored: true
+  underscored: true,
 })
 export default class Soldier extends Model<Soldier> {
   @PrimaryKey

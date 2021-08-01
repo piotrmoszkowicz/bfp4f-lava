@@ -23,7 +23,7 @@ export const purchaseTrainingPoints = async (
     },
     {
       _PF: 0,
-      _AC: 0
+      _AC: 0,
     }
   );
 
@@ -36,15 +36,15 @@ export const purchaseTrainingPoints = async (
         funds: finalWallet._PF,
         purchasedPoints: 0,
         trainingPoints: 0,
-        offers: []
-      }
+        offers: [],
+      },
     };
   } catch (err) {
     Logger.log("error", "Error in /abilities/purchaseTrainingPoint", {
-      message: err
+      message: err,
     });
     return res.code(406).send({
-      status: "error"
+      status: "error",
     });
   }
 };

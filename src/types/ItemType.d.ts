@@ -3,5 +3,5 @@ enum ItemType {
   Appearance = "appearance",
   Booster = "boosters",
   Gadget = "gadget",
-  Weapon = "weapons"
+  Weapon = "weapons",
 }

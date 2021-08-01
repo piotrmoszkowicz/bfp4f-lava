@@ -10,13 +10,13 @@ export const getWalletBalance = async (
   try {
     return {
       status: "success",
-      data: WalletService.getWalletJsonBySessionId(req.sessionId)
+      data: WalletService.getWalletJsonBySessionId(req.sessionId),
     };
   } catch (err) {
     Logger.log("error", "Error in /getWalletBalance", { message: err });
     return res.code(406).send({
       result: "error",
-      status: "error"
+      status: "error",
     });
   }
 };
