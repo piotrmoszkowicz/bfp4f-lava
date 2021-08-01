@@ -1,5 +1,5 @@
 # --- Installing stage
-FROM node:10.16.3-slim AS installer
+FROM node:14-slim AS installer
 
 WORKDIR /usr/src/app
 
@@ -22,7 +22,7 @@ RUN npm run build
 # ---
 
 # Running code under slim image (production part mostly)
-FROM node:10.16.3-slim
+FROM node:14-slim
 
 ## Clean new directory
 WORKDIR /app
