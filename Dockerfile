@@ -16,7 +16,7 @@ WORKDIR /usr/src/app
 
 COPY ./src src
 COPY tsconfig.json .
-COPY tslint.json .
+COPY .eslintrc.js .
 RUN npm run build
 
 # ---
