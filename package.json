@@ -47,7 +47,7 @@
     "mysql2": "^2.2.5",
     "redis": "^3.1.2",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^6.6.5",
+    "sequelize": "^6.28.2",
     "sequelize-typescript": "^2.1.0",
     "winston": "^3.3.3",
     "winston-sentry-raven-transport": "^1.2.2"
